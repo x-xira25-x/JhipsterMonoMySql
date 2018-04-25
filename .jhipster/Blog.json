@@ -1,0 +1,20 @@
+{
+    "fluentMethods": true,
+    "relationships": [],
+    "fields": [
+        {
+            "fieldName": "blog",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "nom",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20180424123633",
+    "dto": "no",
+    "service": "no",
+    "entityTableName": "blog",
+    "jpaMetamodelFiltering": false,
+    "pagination": "no"
+}
