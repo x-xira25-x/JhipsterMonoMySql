@@ -6,8 +6,10 @@ services:
         #     - ~/volumes/jhipster/JhipsterTestMono/mysql/:/var/lib/mysql/
         environment:
             - MYSQL_USER=root
-            - MYSQL_ALLOW_EMPTY_PASSWORD=yes
+            - MYSQL_ALLOW_EMPTY_PASSWORD=no
             - MYSQL_DATABASE=jhipstertestmono
+            #- MYSQL_RANDOM_ROOT_PASSWORD=yes
+            - MYSQL_ROOT_PASSWORD=1234
         ports:
             - 3306:3306
         command: mysqld --lower_case_table_names=1 --skip-ssl --character_set_server=utf8 --explicit_defaults_for_timestamp
