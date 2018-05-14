@@ -1,0 +1,59 @@
+
+<div *ngIf="bien">
+    <h2><span>Bien</span> {{bien.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span>Adresse</span></dt>
+        <dd>
+            <span>{{bien.adresse}}</span>
+        </dd>
+        <dt><span>Npa</span></dt>
+        <dd>
+            <span>{{bien.npa}}</span>
+        </dd>
+        <dt><span>Localite</span></dt>
+        <dd>
+            <span>{{bien.localite}}</span>
+        </dd>
+        <dt><span>Annee Construction</span></dt>
+        <dd>
+            <span>{{bien.anneeConstruction | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span>Nb Pieces</span></dt>
+        <dd>
+            <span>{{bien.nbPieces}}</span>
+        </dd>
+        <dt><span>Description</span></dt>
+        <dd>
+            <span>{{bien.description}}</span>
+        </dd>
+        <dt><span>Photo</span></dt>
+        <dd>
+            <div *ngIf="bien.photo">
+                <a (click)="openFile(bien.photoContentType, bien.photo)">
+                    <img [src]="'data:' + bien.photoContentType + ';base64,' + bien.photo" style="max-width: 100%;" alt="bien image"/>
+                </a>
+                {{bien.photoContentType}}, {{byteSize(bien.photo)}}
+            </div>
+        </dd>
+        <dt><span>Prix</span></dt>
+        <dd>
+            <span>{{bien.prix}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'bien/'+ bien.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span> Edit</span>
+    </button>
+</div>
