@@ -1,0 +1,19 @@
+{
+    "fluentMethods": true,
+    "relationships": [],
+    "fields": [
+        {
+            "fieldName": "nom",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "changelogDate": "20180514084726",
+    "dto": "no",
+    "service": "no",
+    "entityTableName": "etat_visite",
+    "jpaMetamodelFiltering": false,
+    "pagination": "no"
+}
