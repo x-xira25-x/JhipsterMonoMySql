@@ -4,6 +4,7 @@ import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { JhipsterTestMonoClientModule } from './client/client.module';
 import { JhipsterTestMonoAgentImmobilierModule } from './agent-immobilier/agent-immobilier.module';
 import { JhipsterTestMonoBienModule } from './bien/bien.module';
+import { JhipsterTestMonoVisiteModule } from './visite/visite.module';
 /* jhipster-needle-add-entity-module-import - JHipster will add entity modules imports here */
 
 @NgModule({
@@ -12,6 +13,7 @@ import { JhipsterTestMonoBienModule } from './bien/bien.module';
         JhipsterTestMonoClientModule,
         JhipsterTestMonoAgentImmobilierModule,
         JhipsterTestMonoBienModule,
+        JhipsterTestMonoVisiteModule,
         /* jhipster-needle-add-entity-module - JHipster will add entity modules here */
     ],
     declarations: [],
