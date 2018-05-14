@@ -87,7 +87,7 @@ public class ClientResource {
     @Timed
     public List<Client> getAllClients() {
         log.debug("REST request to get all Clients");
-        return clientRepository.findAll();
+        return clientRepository.findAllWithEagerRelationships();
         }
 
     /**
@@ -100,7 +100,7 @@ public class ClientResource {
     @Timed
     public ResponseEntity<Client> getClient(@PathVariable Long id) {
         log.debug("REST request to get Client : {}", id);
-        Client client = clientRepository.findOne(id);
+        Client client = clientRepository.findOneWithEagerRelationships(id);
         return ResponseUtil.wrapOrNotFound(Optional.ofNullable(client));
     }
 

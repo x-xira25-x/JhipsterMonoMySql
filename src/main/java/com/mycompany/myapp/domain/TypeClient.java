@@ -1,10 +1,13 @@
 package com.mycompany.myapp.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import javax.validation.constraints.*;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.Objects;
 
 /**
@@ -23,6 +26,10 @@ public class TypeClient implements Serializable {
     @NotNull
     @Column(name = "nom", nullable = false)
     private String nom;
+
+    @ManyToMany(mappedBy = "typeClients")
+    @JsonIgnore
+    private Set<Client> clients = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -44,6 +51,31 @@ public class TypeClient implements Serializable {
 
     public void setNom(String nom) {
         this.nom = nom;
+    }
+
+    public Set<Client> getClients() {
+        return clients;
+    }
+
+    public TypeClient clients(Set<Client> clients) {
+        this.clients = clients;
+        return this;
+    }
+
+    public TypeClient addClient(Client client) {
+        this.clients.add(client);
+        client.getTypeClients().add(this);
+        return this;
+    }
+
+    public TypeClient removeClient(Client client) {
+        this.clients.remove(client);
+        client.getTypeClients().remove(this);
+        return this;
+    }
+
+    public void setClients(Set<Client> clients) {
+        this.clients = clients;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 

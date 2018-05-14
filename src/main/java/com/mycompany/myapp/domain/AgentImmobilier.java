@@ -50,6 +50,9 @@ public class AgentImmobilier implements Serializable {
     @Column(name = "adresse", nullable = false)
     private String adresse;
 
+    @ManyToOne
+    private User user;
+
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
         return id;
@@ -148,6 +151,19 @@ public class AgentImmobilier implements Serializable {
 
     public void setAdresse(String adresse) {
         this.adresse = adresse;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public AgentImmobilier user(User user) {
+        this.user = user;
+        return this;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 

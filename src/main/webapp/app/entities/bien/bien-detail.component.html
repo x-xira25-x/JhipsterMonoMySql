@@ -41,6 +41,18 @@
         <dd>
             <span>{{bien.prix}}</span>
         </dd>
+        <dt><span>Type Bien</span></dt>
+        <dd>
+            <div *ngIf="bien.typeBien">
+                <a [routerLink]="['/type-bien', bien.typeBien?.id]">{{bien.typeBien?.id}}</a>
+            </div>
+        </dd>
+        <dt><span>Client</span></dt>
+        <dd>
+            <div *ngIf="bien.client">
+                <a [routerLink]="['/client', bien.client?.id]">{{bien.client?.id}}</a>
+            </div>
+        </dd>
     </dl>
 
     <button type="submit"

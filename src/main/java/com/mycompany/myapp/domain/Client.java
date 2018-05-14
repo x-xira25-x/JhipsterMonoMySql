@@ -1,10 +1,13 @@
 package com.mycompany.myapp.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import javax.validation.constraints.*;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.Objects;
 
 /**
@@ -47,6 +50,19 @@ public class Client implements Serializable {
 
     @Column(name = "email")
     private String email;
+
+    @ManyToOne
+    private User user;
+
+    @ManyToMany
+    @JoinTable(name = "client_type_client",
+               joinColumns = @JoinColumn(name="clients_id", referencedColumnName="id"),
+               inverseJoinColumns = @JoinColumn(name="type_clients_id", referencedColumnName="id"))
+    private Set<TypeClient> typeClients = new HashSet<>();
+
+    @ManyToMany(mappedBy = "clients")
+    @JsonIgnore
+    private Set<Visite> visites = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -146,6 +162,69 @@ public class Client implements Serializable {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public Client user(User user) {
+        this.user = user;
+        return this;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public Set<TypeClient> getTypeClients() {
+        return typeClients;
+    }
+
+    public Client typeClients(Set<TypeClient> typeClients) {
+        this.typeClients = typeClients;
+        return this;
+    }
+
+    public Client addTypeClient(TypeClient typeClient) {
+        this.typeClients.add(typeClient);
+        typeClient.getClients().add(this);
+        return this;
+    }
+
+    public Client removeTypeClient(TypeClient typeClient) {
+        this.typeClients.remove(typeClient);
+        typeClient.getClients().remove(this);
+        return this;
+    }
+
+    public void setTypeClients(Set<TypeClient> typeClients) {
+        this.typeClients = typeClients;
+    }
+
+    public Set<Visite> getVisites() {
+        return visites;
+    }
+
+    public Client visites(Set<Visite> visites) {
+        this.visites = visites;
+        return this;
+    }
+
+    public Client addVisite(Visite visite) {
+        this.visites.add(visite);
+        visite.getClients().add(this);
+        return this;
+    }
+
+    public Client removeVisite(Visite visite) {
+        this.visites.remove(visite);
+        visite.getClients().remove(this);
+        return this;
+    }
+
+    public void setVisites(Set<Visite> visites) {
+        this.visites = visites;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 

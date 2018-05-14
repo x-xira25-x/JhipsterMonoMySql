@@ -30,8 +30,31 @@
                 <constraints nullable="true" />
             </column>
 
+            <column name="etat_visite_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="bien_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="agent_immobilier_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
         </createTable>
+        
+        <createTable tableName="visite_client">
+            <column name="clients_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="visites_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <addPrimaryKey columnNames="visites_id, clients_id" tableName="visite_client"/>
         
     </changeSet>
     <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here, do not remove-->

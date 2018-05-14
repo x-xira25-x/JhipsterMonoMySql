@@ -90,6 +90,19 @@
                 [(ngModel)]="client.email" />
         </div>
 
+        <div class="form-group">
+            <label class="form-control-label" for="field_user">User</label>
+            <select class="form-control" id="field_user" name="user" [(ngModel)]="client.user" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="userOption.id === client.user?.id ? client.user : userOption" *ngFor="let userOption of users; trackBy: trackUserById">{{userOption.login}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="field_typeClient">Type Client</label>
+            <select class="form-control" id="field_typeClient" multiple name="typeClient" [(ngModel)]="client.typeClients">
+                <option [ngValue]="getSelected(client.typeClients, typeClientOption)" *ngFor="let typeClientOption of typeclients; trackBy: trackTypeClientById">{{typeClientOption.id}}</option>
+            </select>
+        </div>
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">

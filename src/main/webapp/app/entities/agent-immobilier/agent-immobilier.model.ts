@@ -1,4 +1,4 @@
-import { BaseEntity } from './../../shared';
+import { BaseEntity, User } from './../../shared';
 
 export class AgentImmobilier implements BaseEntity {
     constructor(
@@ -10,6 +10,7 @@ export class AgentImmobilier implements BaseEntity {
         public numTel?: string,
         public email?: string,
         public adresse?: string,
+        public user?: User,
     ) {
     }
 }

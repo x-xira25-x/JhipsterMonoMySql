@@ -4,11 +4,13 @@ import { HttpResponse, HttpErrorResponse } from '@angular/common/http';
 
 import { Observable } from 'rxjs/Observable';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import { JhiEventManager, JhiDataUtils } from 'ng-jhipster';
+import { JhiEventManager, JhiAlertService, JhiDataUtils } from 'ng-jhipster';
 
 import { Bien } from './bien.model';
 import { BienPopupService } from './bien-popup.service';
 import { BienService } from './bien.service';
+import { TypeBien, TypeBienService } from '../type-bien';
+import { Client, ClientService } from '../client';
 
 @Component({
     selector: 'jhi-bien-dialog',
@@ -18,12 +20,19 @@ export class BienDialogComponent implements OnInit {
 
     bien: Bien;
     isSaving: boolean;
+
+    typebiens: TypeBien[];
+
+    clients: Client[];
     anneeConstructionDp: any;
 
     constructor(
         public activeModal: NgbActiveModal,
         private dataUtils: JhiDataUtils,
+        private jhiAlertService: JhiAlertService,
         private bienService: BienService,
+        private typeBienService: TypeBienService,
+        private clientService: ClientService,
         private elementRef: ElementRef,
         private eventManager: JhiEventManager
     ) {
@@ -31,6 +40,10 @@ export class BienDialogComponent implements OnInit {
 
     ngOnInit() {
         this.isSaving = false;
+        this.typeBienService.query()
+            .subscribe((res: HttpResponse<TypeBien[]>) => { this.typebiens = res.body; }, (res: HttpErrorResponse) => this.onError(res.message));
+        this.clientService.query()
+            .subscribe((res: HttpResponse<Client[]>) => { this.clients = res.body; }, (res: HttpErrorResponse) => this.onError(res.message));
     }
 
     byteSize(field) {
@@ -77,6 +90,18 @@ export class BienDialogComponent implements OnInit {
 
     private onSaveError() {
         this.isSaving = false;
+    }
+
+    private onError(error: any) {
+        this.jhiAlertService.error(error.message, null, null);
+    }
+
+    trackTypeBienById(index: number, item: TypeBien) {
+        return item.id;
+    }
+
+    trackClientById(index: number, item: Client) {
+        return item.id;
     }
 }
 

@@ -9,6 +9,8 @@ import { JhipsterTestMonoTestModule } from '../../../test.module';
 import { BienDialogComponent } from '../../../../../../main/webapp/app/entities/bien/bien-dialog.component';
 import { BienService } from '../../../../../../main/webapp/app/entities/bien/bien.service';
 import { Bien } from '../../../../../../main/webapp/app/entities/bien/bien.model';
+import { TypeBienService } from '../../../../../../main/webapp/app/entities/type-bien';
+import { ClientService } from '../../../../../../main/webapp/app/entities/client';
 
 describe('Component Tests', () => {
 
@@ -24,6 +26,8 @@ describe('Component Tests', () => {
                 imports: [JhipsterTestMonoTestModule],
                 declarations: [BienDialogComponent],
                 providers: [
+                    TypeBienService,
+                    ClientService,
                     BienService
                 ]
             })

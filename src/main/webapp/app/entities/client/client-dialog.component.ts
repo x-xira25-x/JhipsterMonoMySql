@@ -4,11 +4,14 @@ import { HttpResponse, HttpErrorResponse } from '@angular/common/http';
 
 import { Observable } from 'rxjs/Observable';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import { JhiEventManager } from 'ng-jhipster';
+import { JhiEventManager, JhiAlertService } from 'ng-jhipster';
 
 import { Client } from './client.model';
 import { ClientPopupService } from './client-popup.service';
 import { ClientService } from './client.service';
+import { User, UserService } from '../../shared';
+import { TypeClient, TypeClientService } from '../type-client';
+import { Visite, VisiteService } from '../visite';
 
 @Component({
     selector: 'jhi-client-dialog',
@@ -19,15 +22,31 @@ export class ClientDialogComponent implements OnInit {
     client: Client;
     isSaving: boolean;
 
+    users: User[];
+
+    typeclients: TypeClient[];
+
+    visites: Visite[];
+
     constructor(
         public activeModal: NgbActiveModal,
+        private jhiAlertService: JhiAlertService,
         private clientService: ClientService,
+        private userService: UserService,
+        private typeClientService: TypeClientService,
+        private visiteService: VisiteService,
         private eventManager: JhiEventManager
     ) {
     }
 
     ngOnInit() {
         this.isSaving = false;
+        this.userService.query()
+            .subscribe((res: HttpResponse<User[]>) => { this.users = res.body; }, (res: HttpErrorResponse) => this.onError(res.message));
+        this.typeClientService.query()
+            .subscribe((res: HttpResponse<TypeClient[]>) => { this.typeclients = res.body; }, (res: HttpErrorResponse) => this.onError(res.message));
+        this.visiteService.query()
+            .subscribe((res: HttpResponse<Visite[]>) => { this.visites = res.body; }, (res: HttpErrorResponse) => this.onError(res.message));
     }
 
     clear() {
@@ -58,6 +77,33 @@ export class ClientDialogComponent implements OnInit {
 
     private onSaveError() {
         this.isSaving = false;
+    }
+
+    private onError(error: any) {
+        this.jhiAlertService.error(error.message, null, null);
+    }
+
+    trackUserById(index: number, item: User) {
+        return item.id;
+    }
+
+    trackTypeClientById(index: number, item: TypeClient) {
+        return item.id;
+    }
+
+    trackVisiteById(index: number, item: Visite) {
+        return item.id;
+    }
+
+    getSelected(selectedVals: Array<any>, option: any) {
+        if (selectedVals) {
+            for (let i = 0; i < selectedVals.length; i++) {
+                if (option.id === selectedVals[i].id) {
+                    return selectedVals[i];
+                }
+            }
+        }
+        return option;
     }
 }
 

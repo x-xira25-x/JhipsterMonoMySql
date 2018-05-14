@@ -112,6 +112,20 @@
             </div>
         </div>
 
+        <div class="form-group">
+            <label class="form-control-label" for="field_typeBien">Type Bien</label>
+            <select class="form-control" id="field_typeBien" name="typeBien" [(ngModel)]="bien.typeBien" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="typeBienOption.id === bien.typeBien?.id ? bien.typeBien : typeBienOption" *ngFor="let typeBienOption of typebiens; trackBy: trackTypeBienById">{{typeBienOption.id}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_client">Client</label>
+            <select class="form-control" id="field_client" name="client" [(ngModel)]="bien.client" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="clientOption.id === bien.client?.id ? bien.client : clientOption" *ngFor="let clientOption of clients; trackBy: trackClientById">{{clientOption.id}}</option>
+            </select>
+        </div>
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">

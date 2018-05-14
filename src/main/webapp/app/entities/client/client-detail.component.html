@@ -32,6 +32,16 @@
         <dd>
             <span>{{client.email}}</span>
         </dd>
+        <dt><span>User</span></dt>
+        <dd>
+            {{client.user?.login}}
+        </dd>
+        <dt><span>Type Client</span></dt>
+        <dd>
+            <span *ngFor="let typeClient of client.typeClients; let last = last">
+                <a [routerLink]="['/type-client', typeClient?.id ]">{{typeClient.id}}</a>{{last ? '' : ', '}}
+            </span>
+        </dd>
     </dl>
 
     <button type="submit"

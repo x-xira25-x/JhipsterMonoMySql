@@ -54,6 +54,12 @@ public class Bien implements Serializable {
     @Column(name = "prix", nullable = false)
     private Double prix;
 
+    @ManyToOne
+    private TypeBien typeBien;
+
+    @ManyToOne
+    private Client client;
+
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
         return id;
@@ -178,6 +184,32 @@ public class Bien implements Serializable {
 
     public void setPrix(Double prix) {
         this.prix = prix;
+    }
+
+    public TypeBien getTypeBien() {
+        return typeBien;
+    }
+
+    public Bien typeBien(TypeBien typeBien) {
+        this.typeBien = typeBien;
+        return this;
+    }
+
+    public void setTypeBien(TypeBien typeBien) {
+        this.typeBien = typeBien;
+    }
+
+    public Client getClient() {
+        return client;
+    }
+
+    public Bien client(Client client) {
+        this.client = client;
+        return this;
+    }
+
+    public void setClient(Client client) {
+        this.client = client;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 

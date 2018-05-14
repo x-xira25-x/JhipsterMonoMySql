@@ -2,6 +2,7 @@ import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 import { JhipsterTestMonoSharedModule } from '../../shared';
+import { JhipsterTestMonoAdminModule } from '../../admin/admin.module';
 import {
     ClientService,
     ClientPopupService,
@@ -23,6 +24,7 @@ const ENTITY_STATES = [
 @NgModule({
     imports: [
         JhipsterTestMonoSharedModule,
+        JhipsterTestMonoAdminModule,
         RouterModule.forChild(ENTITY_STATES)
     ],
     declarations: [

@@ -12,6 +12,8 @@ export class Bien implements BaseEntity {
         public photoContentType?: string,
         public photo?: any,
         public prix?: number,
+        public typeBien?: BaseEntity,
+        public client?: BaseEntity,
     ) {
     }
 }

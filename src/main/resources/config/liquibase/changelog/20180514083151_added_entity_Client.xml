@@ -50,8 +50,23 @@
                 <constraints nullable="true" />
             </column>
 
+            <column name="user_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
         </createTable>
+        
+        <createTable tableName="client_type_client">
+            <column name="type_clients_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="clients_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <addPrimaryKey columnNames="clients_id, type_clients_id" tableName="client_type_client"/>
         
     </changeSet>
     <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here, do not remove-->

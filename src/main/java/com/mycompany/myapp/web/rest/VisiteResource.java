@@ -87,7 +87,7 @@ public class VisiteResource {
     @Timed
     public List<Visite> getAllVisites() {
         log.debug("REST request to get all Visites");
-        return visiteRepository.findAll();
+        return visiteRepository.findAllWithEagerRelationships();
         }
 
     /**
@@ -100,7 +100,7 @@ public class VisiteResource {
     @Timed
     public ResponseEntity<Visite> getVisite(@PathVariable Long id) {
         log.debug("REST request to get Visite : {}", id);
-        Visite visite = visiteRepository.findOne(id);
+        Visite visite = visiteRepository.findOneWithEagerRelationships(id);
         return ResponseUtil.wrapOrNotFound(Optional.ofNullable(visite));
     }
 

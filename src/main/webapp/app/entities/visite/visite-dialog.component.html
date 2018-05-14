@@ -39,6 +39,33 @@
             </div>
         </div>
 
+        <div class="form-group">
+            <label class="form-control-label" for="field_etatVisite">Etat Visite</label>
+            <select class="form-control" id="field_etatVisite" name="etatVisite" [(ngModel)]="visite.etatVisite" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="etatVisiteOption.id === visite.etatVisite?.id ? visite.etatVisite : etatVisiteOption" *ngFor="let etatVisiteOption of etatvisites; trackBy: trackEtatVisiteById">{{etatVisiteOption.id}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_bien">Bien</label>
+            <select class="form-control" id="field_bien" name="bien" [(ngModel)]="visite.bien" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="bienOption.id === visite.bien?.id ? visite.bien : bienOption" *ngFor="let bienOption of biens; trackBy: trackBienById">{{bienOption.id}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_agentImmobilier">Agent Immobilier</label>
+            <select class="form-control" id="field_agentImmobilier" name="agentImmobilier" [(ngModel)]="visite.agentImmobilier" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="agentImmobilierOption.id === visite.agentImmobilier?.id ? visite.agentImmobilier : agentImmobilierOption" *ngFor="let agentImmobilierOption of agentimmobiliers; trackBy: trackAgentImmobilierById">{{agentImmobilierOption.id}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="field_client">Client</label>
+            <select class="form-control" id="field_client" multiple name="client" [(ngModel)]="visite.clients">
+                <option [ngValue]="getSelected(visite.clients, clientOption)" *ngFor="let clientOption of clients; trackBy: trackClientById">{{clientOption.id}}</option>
+            </select>
+        </div>
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">

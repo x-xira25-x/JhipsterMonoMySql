@@ -9,6 +9,7 @@ import { JhipsterTestMonoTestModule } from '../../../test.module';
 import { TypeClientDialogComponent } from '../../../../../../main/webapp/app/entities/type-client/type-client-dialog.component';
 import { TypeClientService } from '../../../../../../main/webapp/app/entities/type-client/type-client.service';
 import { TypeClient } from '../../../../../../main/webapp/app/entities/type-client/type-client.model';
+import { ClientService } from '../../../../../../main/webapp/app/entities/client';
 
 describe('Component Tests', () => {
 
@@ -24,6 +25,7 @@ describe('Component Tests', () => {
                 imports: [JhipsterTestMonoTestModule],
                 declarations: [TypeClientDialogComponent],
                 providers: [
+                    ClientService,
                     TypeClientService
                 ]
             })

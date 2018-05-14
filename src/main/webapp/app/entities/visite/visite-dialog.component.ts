@@ -4,11 +4,15 @@ import { HttpResponse, HttpErrorResponse } from '@angular/common/http';
 
 import { Observable } from 'rxjs/Observable';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import { JhiEventManager } from 'ng-jhipster';
+import { JhiEventManager, JhiAlertService } from 'ng-jhipster';
 
 import { Visite } from './visite.model';
 import { VisitePopupService } from './visite-popup.service';
 import { VisiteService } from './visite.service';
+import { EtatVisite, EtatVisiteService } from '../etat-visite';
+import { Bien, BienService } from '../bien';
+import { AgentImmobilier, AgentImmobilierService } from '../agent-immobilier';
+import { Client, ClientService } from '../client';
 
 @Component({
     selector: 'jhi-visite-dialog',
@@ -18,18 +22,39 @@ export class VisiteDialogComponent implements OnInit {
 
     visite: Visite;
     isSaving: boolean;
+
+    etatvisites: EtatVisite[];
+
+    biens: Bien[];
+
+    agentimmobiliers: AgentImmobilier[];
+
+    clients: Client[];
     dateDebutDp: any;
     dateFinDp: any;
 
     constructor(
         public activeModal: NgbActiveModal,
+        private jhiAlertService: JhiAlertService,
         private visiteService: VisiteService,
+        private etatVisiteService: EtatVisiteService,
+        private bienService: BienService,
+        private agentImmobilierService: AgentImmobilierService,
+        private clientService: ClientService,
         private eventManager: JhiEventManager
     ) {
     }
 
     ngOnInit() {
         this.isSaving = false;
+        this.etatVisiteService.query()
+            .subscribe((res: HttpResponse<EtatVisite[]>) => { this.etatvisites = res.body; }, (res: HttpErrorResponse) => this.onError(res.message));
+        this.bienService.query()
+            .subscribe((res: HttpResponse<Bien[]>) => { this.biens = res.body; }, (res: HttpErrorResponse) => this.onError(res.message));
+        this.agentImmobilierService.query()
+            .subscribe((res: HttpResponse<AgentImmobilier[]>) => { this.agentimmobiliers = res.body; }, (res: HttpErrorResponse) => this.onError(res.message));
+        this.clientService.query()
+            .subscribe((res: HttpResponse<Client[]>) => { this.clients = res.body; }, (res: HttpErrorResponse) => this.onError(res.message));
     }
 
     clear() {
@@ -60,6 +85,37 @@ export class VisiteDialogComponent implements OnInit {
 
     private onSaveError() {
         this.isSaving = false;
+    }
+
+    private onError(error: any) {
+        this.jhiAlertService.error(error.message, null, null);
+    }
+
+    trackEtatVisiteById(index: number, item: EtatVisite) {
+        return item.id;
+    }
+
+    trackBienById(index: number, item: Bien) {
+        return item.id;
+    }
+
+    trackAgentImmobilierById(index: number, item: AgentImmobilier) {
+        return item.id;
+    }
+
+    trackClientById(index: number, item: Client) {
+        return item.id;
+    }
+
+    getSelected(selectedVals: Array<any>, option: any) {
+        if (selectedVals) {
+            for (let i = 0; i < selectedVals.length; i++) {
+                if (option.id === selectedVals[i].id) {
+                    return selectedVals[i];
+                }
+            }
+        }
+        return option;
     }
 }
 

@@ -9,6 +9,7 @@ import { JhipsterTestMonoTestModule } from '../../../test.module';
 import { AgentImmobilierDialogComponent } from '../../../../../../main/webapp/app/entities/agent-immobilier/agent-immobilier-dialog.component';
 import { AgentImmobilierService } from '../../../../../../main/webapp/app/entities/agent-immobilier/agent-immobilier.service';
 import { AgentImmobilier } from '../../../../../../main/webapp/app/entities/agent-immobilier/agent-immobilier.model';
+import { UserService } from '../../../../../../main/webapp/app/shared';
 
 describe('Component Tests', () => {
 
@@ -24,6 +25,7 @@ describe('Component Tests', () => {
                 imports: [JhipsterTestMonoTestModule],
                 declarations: [AgentImmobilierDialogComponent],
                 providers: [
+                    UserService,
                     AgentImmobilierService
                 ]
             })

@@ -9,6 +9,10 @@ import { JhipsterTestMonoTestModule } from '../../../test.module';
 import { VisiteDialogComponent } from '../../../../../../main/webapp/app/entities/visite/visite-dialog.component';
 import { VisiteService } from '../../../../../../main/webapp/app/entities/visite/visite.service';
 import { Visite } from '../../../../../../main/webapp/app/entities/visite/visite.model';
+import { EtatVisiteService } from '../../../../../../main/webapp/app/entities/etat-visite';
+import { BienService } from '../../../../../../main/webapp/app/entities/bien';
+import { AgentImmobilierService } from '../../../../../../main/webapp/app/entities/agent-immobilier';
+import { ClientService } from '../../../../../../main/webapp/app/entities/client';
 
 describe('Component Tests', () => {
 
@@ -24,6 +28,10 @@ describe('Component Tests', () => {
                 imports: [JhipsterTestMonoTestModule],
                 declarations: [VisiteDialogComponent],
                 providers: [
+                    EtatVisiteService,
+                    BienService,
+                    AgentImmobilierService,
+                    ClientService,
                     VisiteService
                 ]
             })

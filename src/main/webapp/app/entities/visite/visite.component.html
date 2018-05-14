@@ -19,6 +19,10 @@
             <th><span>ID</span></th>
             <th><span>Date Debut</span></th>
             <th><span>Date Fin</span></th>
+            <th><span>Etat Visite</span></th>
+            <th><span>Bien</span></th>
+            <th><span>Agent Immobilier</span></th>
+            <th><span>Client</span></th>
             <th></th>
             </tr>
             </thead>
@@ -27,6 +31,26 @@
                 <td><a [routerLink]="['../visite', visite.id ]">{{visite.id}}</a></td>
                 <td>{{visite.dateDebut | date:'mediumDate'}}</td>
                 <td>{{visite.dateFin | date:'mediumDate'}}</td>
+                <td>
+                    <div *ngIf="visite.etatVisite">
+                        <a [routerLink]="['../etat-visite', visite.etatVisite?.id ]" >{{visite.etatVisite?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="visite.bien">
+                        <a [routerLink]="['../bien', visite.bien?.id ]" >{{visite.bien?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="visite.agentImmobilier">
+                        <a [routerLink]="['../agent-immobilier', visite.agentImmobilier?.id ]" >{{visite.agentImmobilier?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <span *ngFor="let client of visite.clients; let last = last">
+                            <a class="form-control-static" [routerLink]="['../client', client?.id ]">{{client.id}}</a>{{last ? '' : ', '}}
+                        </span>
+                </td>
                 <td class="text-right">
                     <div class="btn-group flex-btn-group-container">
                         <button type="submit"
