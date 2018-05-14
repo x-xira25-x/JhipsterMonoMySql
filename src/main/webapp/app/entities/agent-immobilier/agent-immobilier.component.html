@@ -1,0 +1,70 @@
+<div>
+    <h2>
+        <span>Agent Immobiliers</span>
+        <button class="btn btn-primary float-right jh-create-entity create-agent-immobilier" [routerLink]="['/', { outlets: { popup: ['agent-immobilier-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span >
+            Create new Agent Immobilier
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="agentImmobiliers">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span>ID</span></th>
+            <th><span>Nom</span></th>
+            <th><span>Prenom</span></th>
+            <th><span>Npa</span></th>
+            <th><span>Localite</span></th>
+            <th><span>Num Tel</span></th>
+            <th><span>Email</span></th>
+            <th><span>Adresse</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let agentImmobilier of agentImmobiliers ;trackBy: trackId">
+                <td><a [routerLink]="['../agent-immobilier', agentImmobilier.id ]">{{agentImmobilier.id}}</a></td>
+                <td>{{agentImmobilier.nom}}</td>
+                <td>{{agentImmobilier.prenom}}</td>
+                <td>{{agentImmobilier.npa}}</td>
+                <td>{{agentImmobilier.localite}}</td>
+                <td>{{agentImmobilier.numTel}}</td>
+                <td>{{agentImmobilier.email}}</td>
+                <td>{{agentImmobilier.adresse}}</td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../agent-immobilier', agentImmobilier.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'agent-immobilier/'+ agentImmobilier.id + '/edit'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'agent-immobilier/'+ agentImmobilier.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
