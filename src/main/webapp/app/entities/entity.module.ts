@@ -6,6 +6,7 @@ import { JhipsterTestMonoAgentImmobilierModule } from './agent-immobilier/agent-
 import { JhipsterTestMonoBienModule } from './bien/bien.module';
 import { JhipsterTestMonoVisiteModule } from './visite/visite.module';
 import { JhipsterTestMonoEtatVisiteModule } from './etat-visite/etat-visite.module';
+import { JhipsterTestMonoTypeBienModule } from './type-bien/type-bien.module';
 /* jhipster-needle-add-entity-module-import - JHipster will add entity modules imports here */
 
 @NgModule({
@@ -16,6 +17,7 @@ import { JhipsterTestMonoEtatVisiteModule } from './etat-visite/etat-visite.modu
         JhipsterTestMonoBienModule,
         JhipsterTestMonoVisiteModule,
         JhipsterTestMonoEtatVisiteModule,
+        JhipsterTestMonoTypeBienModule,
         /* jhipster-needle-add-entity-module - JHipster will add entity modules here */
     ],
     declarations: [],

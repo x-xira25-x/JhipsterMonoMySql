@@ -11,6 +11,7 @@
     <include file="config/liquibase/changelog/20180514084100_added_entity_Bien.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20180514084505_added_entity_Visite.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20180514084726_added_entity_EtatVisite.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180514085023_added_entity_TypeBien.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
 </databaseChangeLog>
