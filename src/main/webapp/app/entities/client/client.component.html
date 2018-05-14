@@ -1,0 +1,70 @@
+<div>
+    <h2>
+        <span>Clients</span>
+        <button class="btn btn-primary float-right jh-create-entity create-client" [routerLink]="['/', { outlets: { popup: ['client-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span >
+            Create new Client
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="clients">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span>ID</span></th>
+            <th><span>Nom</span></th>
+            <th><span>Prenom</span></th>
+            <th><span>Adresse</span></th>
+            <th><span>Npa</span></th>
+            <th><span>Localite</span></th>
+            <th><span>Num Tel</span></th>
+            <th><span>Email</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let client of clients ;trackBy: trackId">
+                <td><a [routerLink]="['../client', client.id ]">{{client.id}}</a></td>
+                <td>{{client.nom}}</td>
+                <td>{{client.prenom}}</td>
+                <td>{{client.adresse}}</td>
+                <td>{{client.npa}}</td>
+                <td>{{client.localite}}</td>
+                <td>{{client.numTel}}</td>
+                <td>{{client.email}}</td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../client', client.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'client/'+ client.id + '/edit'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'client/'+ client.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
