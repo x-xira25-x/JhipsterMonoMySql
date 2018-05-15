@@ -4,10 +4,12 @@
 Immo SA est une application de gestion de visites pour une agence immobilière.
 
 ## Prérequis
-- application monolithique
-- base de données MySQL
+
 
 ## Configuration de l'application
+- application monolithique
+- base de données MySQL
+- Angular 5
 
 ## Technologies utilisées
 
