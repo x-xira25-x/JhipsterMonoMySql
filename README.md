@@ -1,8 +1,11 @@
-# Gestion des visites d'une agence immobilière
+# Immo SA
 
 ## Introduction
+Immo SA est une application de gestion de visites pour une agence immobilière.
 
 ## Prérequis
+- application monolithique
+- base de données MySQL
 
 ## Configuration de l'application
 
