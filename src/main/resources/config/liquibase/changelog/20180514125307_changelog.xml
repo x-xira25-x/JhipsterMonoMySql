@@ -1,0 +1,22 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <changeSet author="jenny.hofmann (generated)" id="1526302400038-1">
+        <createTable tableName="visite_client">
+            <column name="visites_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="clients_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="jenny.hofmann (generated)" id="1526302400038-2">
+        <addPrimaryKey columnNames="visites_id, clients_id" tableName="visite_client"/>
+    </changeSet>
+    <changeSet author="jenny.hofmann (generated)" id="1526302400038-3">
+        <addForeignKeyConstraint baseColumnNames="clients_id" baseTableName="visite_yarnclient" constraintName="FKb4a6njt2j8uv7sgxy2loc9ksk" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="client"/>
+    </changeSet>
+    <changeSet author="jenny.hofmann (generated)" id="1526302400038-4">
+        <addForeignKeyConstraint baseColumnNames="visites_id" baseTableName="visite_client" constraintName="FKmt30abyuq7iw9luqfcv872k79" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="visite"/>
+    </changeSet>
+</databaseChangeLog>

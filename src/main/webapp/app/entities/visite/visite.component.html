@@ -1,0 +1,84 @@
+<div>
+    <h2>
+        <span>Visites</span>
+        <button class="btn btn-primary float-right jh-create-entity create-visite" [routerLink]="['/', { outlets: { popup: ['visite-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span >
+            Create new Visite
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="visites">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span>ID</span></th>
+            <th><span>Date Debut</span></th>
+            <th><span>Date Fin</span></th>
+            <th><span>Etat Visite</span></th>
+            <th><span>Bien</span></th>
+            <th><span>Agent Immobilier</span></th>
+            <th><span>Client</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let visite of visites ;trackBy: trackId">
+                <td><a [routerLink]="['../visite', visite.id ]">{{visite.id}}</a></td>
+                <td>{{visite.dateDebut | date:'mediumDate'}}</td>
+                <td>{{visite.dateFin | date:'mediumDate'}}</td>
+                <td>
+                    <div *ngIf="visite.etatVisite">
+                        <a [routerLink]="['../etat-visite', visite.etatVisite?.id ]" >{{visite.etatVisite?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="visite.bien">
+                        <a [routerLink]="['../bien', visite.bien?.id ]" >{{visite.bien?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="visite.agentImmobilier">
+                        <a [routerLink]="['../agent-immobilier', visite.agentImmobilier?.id ]" >{{visite.agentImmobilier?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <span *ngFor="let client of visite.clients; let last = last">
+                            <a class="form-control-static" [routerLink]="['../client', client?.id ]">{{client.id}}</a>{{last ? '' : ', '}}
+                        </span>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../visite', visite.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'visite/'+ visite.id + '/edit'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'visite/'+ visite.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

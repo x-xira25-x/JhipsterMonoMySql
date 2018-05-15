@@ -1,0 +1,60 @@
+
+<div *ngIf="client">
+    <h2><span>Client</span> {{client.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span>Nom</span></dt>
+        <dd>
+            <span>{{client.nom}}</span>
+        </dd>
+        <dt><span>Prenom</span></dt>
+        <dd>
+            <span>{{client.prenom}}</span>
+        </dd>
+        <dt><span>Adresse</span></dt>
+        <dd>
+            <span>{{client.adresse}}</span>
+        </dd>
+        <dt><span>Npa</span></dt>
+        <dd>
+            <span>{{client.npa}}</span>
+        </dd>
+        <dt><span>Localite</span></dt>
+        <dd>
+            <span>{{client.localite}}</span>
+        </dd>
+        <dt><span>Num Tel</span></dt>
+        <dd>
+            <span>{{client.numTel}}</span>
+        </dd>
+        <dt><span>Email</span></dt>
+        <dd>
+            <span>{{client.email}}</span>
+        </dd>
+        <dt><span>User</span></dt>
+        <dd>
+            {{client.user?.login}}
+        </dd>
+        <dt><span>Type Client</span></dt>
+        <dd>
+            <span *ngFor="let typeClient of client.typeClients; let last = last">
+                <a [routerLink]="['/type-client', typeClient?.id ]">{{typeClient.id}}</a>{{last ? '' : ', '}}
+            </span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'client/'+ client.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span> Edit</span>
+    </button>
+</div>

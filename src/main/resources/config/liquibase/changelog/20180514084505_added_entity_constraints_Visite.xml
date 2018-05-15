@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <!--
+        Added the constraints for entity Visite.
+    -->
+    <changeSet id="20180514084505-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="etat_visite_id"
+                                 baseTableName="visite"
+                                 constraintName="fk_visite_etat_visite_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="etat_visite"/>
+
+        <addForeignKeyConstraint baseColumnNames="bien_id"
+                                 baseTableName="visite"
+                                 constraintName="fk_visite_bien_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="bien"/>
+
+        <addForeignKeyConstraint baseColumnNames="agent_immobilier_id"
+                                 baseTableName="visite"
+                                 constraintName="fk_visite_agent_immobilier_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="agent_immobilier"/>
+
+        <addForeignKeyConstraint baseColumnNames="visites_id"
+                                 baseTableName="visite_client"
+                                 constraintName="fk_visite_client_visites_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="visite"/>
+        <addForeignKeyConstraint baseColumnNames="clients_id"
+                                 baseTableName="visite_client"
+                                 constraintName="fk_visite_client_clients_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="client"/>
+        
+    </changeSet>
+</databaseChangeLog>

@@ -1,0 +1,138 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myBienLabel">Create or edit a Bien</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!bien.id">
+            <label for="id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="bien.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_adresse">Adresse</label>
+            <input type="text" class="form-control" name="adresse" id="field_adresse"
+                [(ngModel)]="bien.adresse" required/>
+            <div [hidden]="!(editForm.controls.adresse?.dirty && editForm.controls.adresse?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.adresse?.errors?.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_npa">Npa</label>
+            <input type="number" class="form-control" name="npa" id="field_npa"
+                [(ngModel)]="bien.npa" required/>
+            <div [hidden]="!(editForm.controls.npa?.dirty && editForm.controls.npa?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.npa?.errors?.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                    [hidden]="!editForm.controls.npa?.errors?.number">
+                    This field should be a number.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_localite">Localite</label>
+            <input type="text" class="form-control" name="localite" id="field_localite"
+                [(ngModel)]="bien.localite" required/>
+            <div [hidden]="!(editForm.controls.localite?.dirty && editForm.controls.localite?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.localite?.errors?.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_anneeConstruction">Annee Construction</label>
+            <div class="input-group">
+                <input id="field_anneeConstruction" type="text" class="form-control" name="anneeConstruction" ngbDatepicker  #anneeConstructionDp="ngbDatepicker" [(ngModel)]="bien.anneeConstruction"
+                />
+                <span class="input-group-append">
+                    <button type="button" class="btn btn-secondary" (click)="anneeConstructionDp.toggle()"><i class="fa fa-calendar"></i></button>
+                </span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_nbPieces">Nb Pieces</label>
+            <input type="number" class="form-control" name="nbPieces" id="field_nbPieces"
+                [(ngModel)]="bien.nbPieces" required/>
+            <div [hidden]="!(editForm.controls.nbPieces?.dirty && editForm.controls.nbPieces?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.nbPieces?.errors?.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                    [hidden]="!editForm.controls.nbPieces?.errors?.number">
+                    This field should be a number.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_description">Description</label>
+            <input type="text" class="form-control" name="description" id="field_description"
+                [(ngModel)]="bien.description" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_photo">Photo</label>
+            <div>
+                <img [src]="'data:' + bien.photoContentType + ';base64,' + bien.photo" style="max-height: 100px;" *ngIf="bien.photo" alt="bien image"/>
+                <div *ngIf="bien.photo" class="form-text text-danger clearfix">
+                    <span class="pull-left">{{bien.photoContentType}}, {{byteSize(bien.photo)}}</span>
+                    <button type="button" (click)="clearInputImage('photo', 'photoContentType', 'fileImage')" class="btn btn-secondary btn-xs pull-right">
+                        <span class="fa fa-times"></span>
+                    </button>
+                </div>
+                <input type="file" id="file_photo" (change)="setFileData($event, bien, 'photo', true)" accept="image/*"/>
+            </div>
+            <input type="hidden" class="form-control" name="photo" id="field_photo"
+                [(ngModel)]="bien.photo" />
+            <input type="hidden" class="form-control" name="photoContentType" id="field_photoContentType"
+                [(ngModel)]="bien.photoContentType" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_prix">Prix</label>
+            <input type="number" class="form-control" name="prix" id="field_prix"
+                [(ngModel)]="bien.prix" required/>
+            <div [hidden]="!(editForm.controls.prix?.dirty && editForm.controls.prix?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.prix?.errors?.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                    [hidden]="!editForm.controls.prix?.errors?.number">
+                    This field should be a number.
+                </small>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="form-control-label" for="field_typeBien">Type Bien</label>
+            <select class="form-control" id="field_typeBien" name="typeBien" [(ngModel)]="bien.typeBien" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="typeBienOption.id === bien.typeBien?.id ? bien.typeBien : typeBienOption" *ngFor="let typeBienOption of typebiens; trackBy: trackTypeBienById">{{typeBienOption.id}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_client">Client</label>
+            <select class="form-control" id="field_client" name="client" [(ngModel)]="bien.client" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="clientOption.id === bien.client?.id ? bien.client : clientOption" *ngFor="let clientOption of clients; trackBy: trackClientById">{{clientOption.id}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span>Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span>Save</span>
+        </button>
+    </div>
+</form>
