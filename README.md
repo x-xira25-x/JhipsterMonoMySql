@@ -26,7 +26,7 @@ MCD
 ![](https://github.com/x-xira25-x/JhipsterMonoMySql/blob/master/ModeleDonnees/MCD.PNG)
 
 MLD
-![](https://github.com/x-xira25-x/JhipsterMonoMySql/blob/master/ModeleDonnees/MLD.png)
+![](https://github.com/x-xira25-x/JhipsterMonoMySql/blob/master/ModeleDonnees/MLD.PNG)
 
 ## Fonctionnement
 
