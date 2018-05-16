@@ -4,11 +4,12 @@
 Immo SA est une application de gestion de visites pour une agence immobilière.
 
 ## Prérequis
-- installer Java 8
-- installer Node.Js
-- installer Yarn
-- installer Yeoman
-- installer docker
+Il faut avoir installer les éléments suivants:
+- Java 8
+- Node.Js
+- Yarn
+- Yeoman
+- Docker
 
 ## Configuration de l'application
 - application monolithique
