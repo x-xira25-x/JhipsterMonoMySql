@@ -22,7 +22,7 @@ Immo SA est une application de gestion de visites pour une agence immobilière.
 
 ## Modèle de données
 MCD
-![Alt text](relative/path/to/img.jpg?raw=true "Title")
+
 ![MCD](https://github.com/x-xira25-x/JhipsterMonoMySql/blob/master/ModeleDonnees/modeleDonneesMCD.pdf)
 
 MLD
