@@ -13,6 +13,7 @@ Immo SA est une application de gestion de visites pour une agence immobilière.
 ## Configuration de l'application
 - application monolithique
 - base de données MySQL pour le développement et la production dans un docker
+- phyMyadmin dans un docker
 - Angular 5
 - JWT authentification
 - Maven
@@ -31,6 +32,13 @@ MLD
 ## Fonctionnement
 
 ## Manuel d'utilisation
+ copier le projet
+ lancer les dockers, il faut qu'ils soient dans le meme réseau
+ lancer le client
+ lancer le serveur
+ phpMyAdmin:
+ pseudo: root
+ mot de passe : 1234
 
 
 
