@@ -185,7 +185,7 @@
                 <div class="form-group">
                     <label for="field_typeClient">Type Client</label>
                     <select class="form-control" id="field_typeClient" multiple name="typeClient" [(ngModel)]="client.typeClients">
-                        <option [ngValue]="getSelected(client.typeClients, typeClientOption)" *ngFor="let typeClientOption of typeclients; trackBy: trackTypeClientById">{{typeClientOption.id}}</option>
+                        <option [ngValue]="getSelected(client.typeClients, typeClientOption)" *ngFor="let typeClientOption of typeclients; trackBy: trackTypeClientByNom">{{typeClientOption.nom}}</option>
                     </select>
                 </div>
 
