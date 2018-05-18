@@ -148,18 +148,18 @@
                 <div class="form-group">
                     <label class="form-control-label" for="field_adresse">Adresse</label>
                     <input type="text" class="form-control" name="adresse" id="field_adresse"
-                           [(ngModel)]="client.adresse" />
+                           [(ngModel)]="client.adresse" required />
                 </div>
                 <div class="form-group">
                     <label class="form-control-label" for="field_npa">Npa</label>
                     <input type="text" class="form-control" name="npa" id="field_npa"
-                           [(ngModel)]="client.npa" pattern="[0-9]{4}"/>
+                           [(ngModel)]="client.npa" required pattern="[0-9]{4}"/>
                 </div>
 
                 <div class="form-group">
                     <label class="form-control-label" for="field_localite">Localite</label>
                     <input type="text" class="form-control" name="localite" id="field_localite"
-                           [(ngModel)]="client.localite" />
+                           [(ngModel)]="client.localite" required/>
                 </div>
                 <div class="form-group">
                     <label class="form-control-label" for="field_numTel">Num Tel</label>
@@ -180,6 +180,13 @@
                         </small>
 
                     </div>
+                </div>
+                <!-- le type de client a aller rechercher dans la base-->
+                <div class="form-group">
+                    <label for="field_typeClient">Type Client</label>
+                    <select class="form-control" id="field_typeClient" multiple name="typeClient" [(ngModel)]="client.typeClients">
+                        <option [ngValue]="getSelected(client.typeClients, typeClientOption)" *ngFor="let typeClientOption of typeclients; trackBy: trackTypeClientById">{{typeClientOption.id}}</option>
+                    </select>
                 </div>
 
 
