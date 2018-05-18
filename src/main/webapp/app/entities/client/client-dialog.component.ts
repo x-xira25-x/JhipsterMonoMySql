@@ -90,6 +90,9 @@ export class ClientDialogComponent implements OnInit {
     trackTypeClientById(index: number, item: TypeClient) {
         return item.id;
     }
+    trackTypeClientByNom(index: number, item: TypeClient) {
+        return item.nom;
+    }
 
     trackVisiteById(index: number, item: Visite) {
         return item.id;
