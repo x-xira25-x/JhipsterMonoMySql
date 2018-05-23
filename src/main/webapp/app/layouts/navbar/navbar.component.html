@@ -22,7 +22,7 @@
             <!-- pour le caché aux visiteur   *ngSwitchCase="true" -->
             <div class="navbar-collapse collapse" iid="bienAvendre-menu" [ngbCollapse]="isNavbarCollapsed" [ngSwitch]="isAuthenticated()">
                 <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
-                    <a class="nav-link" routerLink="jhi-biens-avendre" (click)="collapseNavbar()">
+                    <a class="nav-link" routerLink="avendre" (click)="collapseNavbar()">
                     <span>
                         <i class="fa fa-home" aria-hidden="true"></i>
                         <span>Biens à vendre</span>
