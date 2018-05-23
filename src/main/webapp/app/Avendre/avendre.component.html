@@ -1,3 +1,84 @@
-<p>
-  avendre works!
-</p>
+<div>
+    <h2>
+        <span>Biens</span>
+
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="biens">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th><span>ID</span></th>
+                <th><span>Adresse</span></th>
+                <th><span>Npa</span></th>
+                <th><span>Localite</span></th>
+                <th><span>Annee Construction</span></th>
+                <th><span>Nb Pieces</span></th>
+                <th><span>Description</span></th>
+                <th><span>Photo</span></th>
+                <th><span>Prix</span></th>
+                <th><span>Type Bien</span></th>
+                <th><span>Client</span></th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let bien of biens ;trackBy: trackId">
+                <td><a [routerLink]="['../bien', bien.id ]">{{bien.id}}</a></td>
+                <td>{{bien.adresse}}</td>
+                <td>{{bien.npa}}</td>
+                <td>{{bien.localite}}</td>
+                <td>{{bien.anneeConstruction | date:'mediumDate'}}</td>
+                <td>{{bien.nbPieces}}</td>
+                <td>{{bien.description}}</td>
+                <td>
+                    <a *ngIf="bien.photo" (click)="openFile(bien.photoContentType, bien.photo)">
+                        <img [src]="'data:' + bien.photoContentType + ';base64,' + bien.photo" style="max-height: 30px;" alt="bien image"/>
+                    </a>
+                    <span *ngIf="bien.photo">{{bien.photoContentType}}, {{byteSize(bien.photo)}}</span>
+                </td>
+                <td>{{bien.prix}}</td>
+                <td>
+                    <div *ngIf="bien.typeBien">
+                        <a [routerLink]="['../type-bien', bien.typeBien?.id ]" >{{bien.typeBien?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="bien.client">
+                        <a [routerLink]="['../client', bien.client?.id ]" >{{bien.client?.id}}</a>
+                    </div>
+                </td>
+               <!-- <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../bien', bien.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'bien/'+ bien.id + '/edit'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'bien/'+ bien.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline">Delete</span>
+                        </button>
+                    </div>
+                </td>-->
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
