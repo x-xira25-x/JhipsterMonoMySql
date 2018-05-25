@@ -25,10 +25,10 @@ Il faut avoir installer les éléments suivants:
 ## Modèle de données
 MCD
 
-![](https://github.com/x-xira25-x/JhipsterMonoMySql/blob/master/ModeleDonnees/MCD.PNG)
+![](https://github.com/x-xira25-x/JhipsterMonoMySql/blob/master/ModeleDonnees/MCD2.PNG)
 
 MLD
-![](https://github.com/x-xira25-x/JhipsterMonoMySql/blob/master/ModeleDonnees/MLD.PNG)
+![](https://github.com/x-xira25-x/JhipsterMonoMySql/blob/master/ModeleDonnees/MLD2.PNG)
 
 ## Fonctionnement
 
