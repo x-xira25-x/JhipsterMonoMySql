@@ -6,17 +6,14 @@
     <dl class="row-md jh-entity-details">
         <dt><span>Date Debut</span></dt>
         <dd>
-            <span>{{visite.dateDebut | date:'mediumDate'}}</span>
+            <span>{{visite.dateDebut | date:'hh:mm dd/MM/yyyy'}}</span>
         </dd>
         <dt><span>Date Fin</span></dt>
         <dd>
-            <span>{{visite.dateFin | date:'mediumDate'}}</span>
+            <span>{{visite.dateFin | date:'hh:mm dd/MM/yyyy'}}</span>
         </dd>
         <dt><span>Etat Visite</span></dt>
-        <dd>
-            <div *ngIf="visite.etatVisite">
-                <a [routerLink]="['/etat-visite', visite.etatVisite?.id]">{{visite.etatVisite?.id}}</a>
-            </div>
+        <dd>{{visite.etatVisite?.nom}}
         </dd>
         <dt><span>Bien</span></dt>
         <dd>
