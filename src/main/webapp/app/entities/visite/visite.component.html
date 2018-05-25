@@ -29,13 +29,9 @@
             <tbody>
             <tr *ngFor="let visite of visites ;trackBy: trackId">
                 <td><a [routerLink]="['../visite', visite.id ]">{{visite.id}}</a></td>
-                <td>{{visite.dateDebut | date:'mediumDate'}}</td>
-                <td>{{visite.dateFin | date:'mediumDate'}}</td>
-                <td>
-                    <div *ngIf="visite.etatVisite">
-                        <a [routerLink]="['../etat-visite', visite.etatVisite?.nom ]" >{{visite.etatVisite?.nom}}</a>
-                    </div>
-                </td>
+                <td>{{visite.dateDebut | date:'hh:mm dd/MM/yyyy'}}</td>
+                <td>{{visite.dateFin | date:'hh:mm dd/MM/yyyy'}}</td>
+                <td>{{visite.etatVisite?.nom}} </td>
                 <td>
                     <div *ngIf="visite.bien">
                         <a [routerLink]="['../bien', visite.bien?.id ]" >{{visite.bien?.id}}</a>
