@@ -18,7 +18,7 @@
         </dd>
         <dt><span>Annee Construction</span></dt>
         <dd>
-            <span>{{bien.anneeConstruction | date:'mediumDate'}}</span>
+            <span>{{bien.anneeConstruction | date:'yyyy'}}</span>
         </dd>
         <dt><span>Nb Pieces</span></dt>
         <dd>
@@ -39,14 +39,10 @@
         </dd>
         <dt><span>Prix</span></dt>
         <dd>
-            <span>{{bien.prix}}</span>
+            <span>{{bien.prix}} CHF</span>
         </dd>
         <dt><span>Type Bien</span></dt>
-        <dd>
-            <div *ngIf="bien.typeBien">
-                <a [routerLink]="['/type-bien', bien.typeBien?.id]">{{bien.typeBien?.id}}</a>
-            </div>
-        </dd>
+        <dd>{{bien.typeBien?.nom}} </dd>
         <dt><span>Client</span></dt>
         <dd>
             <div *ngIf="bien.client">
@@ -54,11 +50,7 @@
             </div>
         </dd>
         <dt><span>Etat Bien</span></dt>
-        <dd>
-            <div *ngIf="bien.etatBien">
-                <a [routerLink]="['/etat-bien', bien.etatBien?.id]">{{bien.etatBien?.id}}</a>
-            </div>
-        </dd>
+        <dd>{{bien.etatBien?.nom}}</dd>
     </dl>
 
     <button type="submit"
