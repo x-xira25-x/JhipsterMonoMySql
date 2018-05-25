@@ -46,6 +46,10 @@ export class AvendreComponent implements OnInit {
         this.eventSubscriber = this.eventManager.subscribe('bienListModification', (response) => this.loadAll());
     }
 
+    byteSize(field) {
+        return this.dataUtils.byteSize(field);
+    }
+
     private onError(error) {
         this.jhiAlertService.error(error.message, null, null);
     }

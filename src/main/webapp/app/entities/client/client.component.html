@@ -44,7 +44,7 @@
                 </td>
                 <td>
                     <span *ngFor="let typeClient of client.typeClients; let last = last">
-                            <a class="form-control-static" [routerLink]="['../type-client', typeClient?.id ]">{{typeClient.id}}</a>{{last ? '' : ', '}}
+                            <a class="form-control-static" [routerLink]="['../type-client', typeClient?.nom ]">{{typeClient.nom}}</a>{{last ? '' : ', '}}
                         </span>
                 </td>
                 <td class="text-right">

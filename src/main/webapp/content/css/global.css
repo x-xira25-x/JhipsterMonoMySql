@@ -189,6 +189,12 @@ ui bootstrap tweaks
 ========================================================================== */
 .nav, .pagination, .carousel, .card-title a {
     cursor: pointer;
+
+}
+.imgCarousel {
+    margin: auto;
+    height: auto;
+    width:100%;
 }
 
 .datetime-picker-dropdown > li.date-picker-menu div > table .btn-secondary,
