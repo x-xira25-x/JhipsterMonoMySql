@@ -126,6 +126,13 @@
                 <option [ngValue]="clientOption.id === bien.client?.id ? bien.client : clientOption" *ngFor="let clientOption of clients; trackBy: trackClientById">{{clientOption.id}}</option>
             </select>
         </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_etatBien">Etat Bien</label>
+            <select class="form-control" id="field_etatBien" name="etatBien" [(ngModel)]="bien.etatBien" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="etatBienOption.id === bien.etatBien?.id ? bien.etatBien : etatBienOption" *ngFor="let etatBienOption of etatbiens; trackBy: trackEtatBienById">{{etatBienOption.id}}</option>
+            </select>
+        </div>
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">

@@ -14,6 +14,7 @@ export class Bien implements BaseEntity {
         public prix?: number,
         public typeBien?: BaseEntity,
         public client?: BaseEntity,
+        public etatBien?: BaseEntity,
     ) {
     }
 }
