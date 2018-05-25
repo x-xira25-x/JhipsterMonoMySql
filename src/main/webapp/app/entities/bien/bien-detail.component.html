@@ -3,67 +3,88 @@
     <h2><span>Bien</span> {{bien.id}}</h2>
     <hr>
     <jhi-alert-error></jhi-alert-error>
-    <dl class="row-md jh-entity-details">
-        <dt><span>Adresse</span></dt>
-        <dd>
-            <span>{{bien.adresse}}</span>
-        </dd>
-        <dt><span>Npa</span></dt>
-        <dd>
-            <span>{{bien.npa}}</span>
-        </dd>
-        <dt><span>Localite</span></dt>
-        <dd>
-            <span>{{bien.localite}}</span>
-        </dd>
-        <dt><span>Annee Construction</span></dt>
-        <dd>
-            <span>{{bien.anneeConstruction | date:'yyyy'}}</span>
-        </dd>
-        <dt><span>Nb Pieces</span></dt>
-        <dd>
-            <span>{{bien.nbPieces}}</span>
-        </dd>
-        <dt><span>Description</span></dt>
-        <dd>
-            <span>{{bien.description}}</span>
-        </dd>
-        <dt><span>Photo</span></dt>
-        <dd>
-            <div *ngIf="bien.photo">
-                <a (click)="openFile(bien.photoContentType, bien.photo)">
-                    <img [src]="'data:' + bien.photoContentType + ';base64,' + bien.photo" style="max-width: 100%;" alt="bien image"/>
-                </a>
-                {{bien.photoContentType}}, {{byteSize(bien.photo)}}
-            </div>
-        </dd>
-        <dt><span>Prix</span></dt>
-        <dd>
-            <span>{{bien.prix}} CHF</span>
-        </dd>
-        <dt><span>Type Bien</span></dt>
-        <dd>{{bien.typeBien?.nom}} </dd>
-        <dt><span>Client</span></dt>
-        <dd>
-            <div *ngIf="bien.client">
-                <a [routerLink]="['/client', bien.client?.id]">{{bien.client?.id}}</a>
-            </div>
-        </dd>
-        <dt><span>Etat Bien</span></dt>
-        <dd>{{bien.etatBien?.nom}}</dd>
-    </dl>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <span><b>Photo</b></span>
 
-    <button type="submit"
-            (click)="previousState()"
-            class="btn btn-info">
-        <span class="fa fa-arrow-left"></span>&nbsp;<span> Back</span>
-    </button>
+                <div *ngIf="bien.photo">
+                    <a (click)="openFile(bien.photoContentType, bien.photo)">
+                        <img [src]="'data:' + bien.photoContentType + ';base64,' + bien.photo" style="max-width: 100%;" alt="bien image"/>
+                    </a>
+                    {{bien.photoContentType}}, {{byteSize(bien.photo)}}
+                </div>
+            </div>
+            <div class="col-3">
+                <dl class="row-md jh-entity-details">
 
-    <button type="button"
-            [routerLink]="['/', { outlets: { popup: 'bien/'+ bien.id + '/edit'} }]"
-            replaceUrl="true"
-            queryParamsHandling="merge"
-            class="btn btn-primary">
-        <span class="fa fa-pencil"></span>&nbsp;<span> Edit</span>
-    </button>
+                    <dt><span>Adresse</span></dt>
+                    <dd>
+                        <span>{{bien.adresse}}</span>
+                    </dd>
+                    <dt><span>Npa</span></dt>
+                    <dd>
+                        <span>{{bien.npa}}</span>
+                    </dd>
+                    <dt><span>Localite</span></dt>
+                    <dd>
+                        <span>{{bien.localite}}</span>
+                    </dd>
+                    <dt><span>Annee Construction</span></dt>
+                    <dd>
+                        <span>{{bien.anneeConstruction | date:'yyyy'}}</span>
+                    </dd>
+                    <dt><span>Nb Pieces</span></dt>
+                    <dd>
+                        <span>{{bien.nbPieces}}</span>
+                    </dd>
+                    <dt><span>Description</span></dt>
+                    <dd>
+                        <span>{{bien.description}}</span>
+                    </dd>
+
+                    <dt><span>Prix</span></dt>
+                    <dd>
+                        <span>{{bien.prix}} CHF</span>
+                    </dd>
+                    <dt><span>Type Bien</span></dt>
+                    <dd>{{bien.typeBien?.nom}} </dd>
+                    <dt><span>Etat Bien</span></dt>
+                    <dd>{{bien.etatBien?.nom}}</dd>
+                </dl>
+
+                <button type="submit"
+                        (click)="previousState()"
+                        class="btn btn-info">
+                    <span class="fa fa-arrow-left"></span>&nbsp;<span> Back</span>
+                </button>
+
+                <button type="button"
+                        [routerLink]="['/', { outlets: { popup: 'bien/'+ bien.id + '/edit'} }]"
+                        replaceUrl="true"
+                        queryParamsHandling="merge"
+                        class="btn btn-primary">
+                    <span class="fa fa-pencil"></span>&nbsp;<span> Edit</span>
+                </button>
+
+            </div>
+            <div class="col-2">
+                <dt><span>Client</span></dt>
+                <dd>
+                    <div *ngIf="bien.client"> Id :
+                        <a [routerLink]="['/client', bien.client?.id]">{{bien.client?.id}}</a>
+                    </div>
+                        {{client.nom}}     {{client.prenom}}
+
+
+                </dd>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
 </div>
