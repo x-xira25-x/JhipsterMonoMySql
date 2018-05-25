@@ -60,6 +60,9 @@ public class Bien implements Serializable {
     @ManyToOne
     private Client client;
 
+    @ManyToOne
+    private EtatBien etatBien;
+
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
         return id;
@@ -210,6 +213,19 @@ public class Bien implements Serializable {
 
     public void setClient(Client client) {
         this.client = client;
+    }
+
+    public EtatBien getEtatBien() {
+        return etatBien;
+    }
+
+    public Bien etatBien(EtatBien etatBien) {
+        this.etatBien = etatBien;
+        return this;
+    }
+
+    public void setEtatBien(EtatBien etatBien) {
+        this.etatBien = etatBien;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 

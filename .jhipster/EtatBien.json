@@ -1,0 +1,16 @@
+{
+    "fluentMethods": true,
+    "relationships": [],
+    "fields": [
+        {
+            "fieldName": "nom",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20180525070709",
+    "dto": "no",
+    "service": "no",
+    "entityTableName": "etat_bien",
+    "jpaMetamodelFiltering": false,
+    "pagination": "no"
+}

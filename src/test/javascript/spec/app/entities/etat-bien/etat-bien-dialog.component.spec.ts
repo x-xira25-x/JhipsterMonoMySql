@@ -6,41 +6,35 @@ import { Observable } from 'rxjs/Observable';
 import { JhiEventManager } from 'ng-jhipster';
 
 import { JhipsterTestMonoTestModule } from '../../../test.module';
-import { BienDialogComponent } from '../../../../../../main/webapp/app/entities/bien/bien-dialog.component';
-import { BienService } from '../../../../../../main/webapp/app/entities/bien/bien.service';
-import { Bien } from '../../../../../../main/webapp/app/entities/bien/bien.model';
-import { TypeBienService } from '../../../../../../main/webapp/app/entities/type-bien';
-import { ClientService } from '../../../../../../main/webapp/app/entities/client';
-import { EtatBienService } from '../../../../../../main/webapp/app/entities/etat-bien';
+import { EtatBienDialogComponent } from '../../../../../../main/webapp/app/entities/etat-bien/etat-bien-dialog.component';
+import { EtatBienService } from '../../../../../../main/webapp/app/entities/etat-bien/etat-bien.service';
+import { EtatBien } from '../../../../../../main/webapp/app/entities/etat-bien/etat-bien.model';
 
 describe('Component Tests', () => {
 
-    describe('Bien Management Dialog Component', () => {
-        let comp: BienDialogComponent;
-        let fixture: ComponentFixture<BienDialogComponent>;
-        let service: BienService;
+    describe('EtatBien Management Dialog Component', () => {
+        let comp: EtatBienDialogComponent;
+        let fixture: ComponentFixture<EtatBienDialogComponent>;
+        let service: EtatBienService;
         let mockEventManager: any;
         let mockActiveModal: any;
 
         beforeEach(async(() => {
             TestBed.configureTestingModule({
                 imports: [JhipsterTestMonoTestModule],
-                declarations: [BienDialogComponent],
+                declarations: [EtatBienDialogComponent],
                 providers: [
-                    TypeBienService,
-                    ClientService,
-                    EtatBienService,
-                    BienService
+                    EtatBienService
                 ]
             })
-            .overrideTemplate(BienDialogComponent, '')
+            .overrideTemplate(EtatBienDialogComponent, '')
             .compileComponents();
         }));
 
         beforeEach(() => {
-            fixture = TestBed.createComponent(BienDialogComponent);
+            fixture = TestBed.createComponent(EtatBienDialogComponent);
             comp = fixture.componentInstance;
-            service = fixture.debugElement.injector.get(BienService);
+            service = fixture.debugElement.injector.get(EtatBienService);
             mockEventManager = fixture.debugElement.injector.get(JhiEventManager);
             mockActiveModal = fixture.debugElement.injector.get(NgbActiveModal);
         });
@@ -50,9 +44,9 @@ describe('Component Tests', () => {
                 inject([],
                     fakeAsync(() => {
                         // GIVEN
-                        const entity = new Bien(123);
+                        const entity = new EtatBien(123);
                         spyOn(service, 'update').and.returnValue(Observable.of(new HttpResponse({body: entity})));
-                        comp.bien = entity;
+                        comp.etatBien = entity;
                         // WHEN
                         comp.save();
                         tick(); // simulate async
@@ -60,7 +54,7 @@ describe('Component Tests', () => {
                         // THEN
                         expect(service.update).toHaveBeenCalledWith(entity);
                         expect(comp.isSaving).toEqual(false);
-                        expect(mockEventManager.broadcastSpy).toHaveBeenCalledWith({ name: 'bienListModification', content: 'OK'});
+                        expect(mockEventManager.broadcastSpy).toHaveBeenCalledWith({ name: 'etatBienListModification', content: 'OK'});
                         expect(mockActiveModal.dismissSpy).toHaveBeenCalled();
                     })
                 )
@@ -70,9 +64,9 @@ describe('Component Tests', () => {
                 inject([],
                     fakeAsync(() => {
                         // GIVEN
-                        const entity = new Bien();
+                        const entity = new EtatBien();
                         spyOn(service, 'create').and.returnValue(Observable.of(new HttpResponse({body: entity})));
-                        comp.bien = entity;
+                        comp.etatBien = entity;
                         // WHEN
                         comp.save();
                         tick(); // simulate async
@@ -80,7 +74,7 @@ describe('Component Tests', () => {
                         // THEN
                         expect(service.create).toHaveBeenCalledWith(entity);
                         expect(comp.isSaving).toEqual(false);
-                        expect(mockEventManager.broadcastSpy).toHaveBeenCalledWith({ name: 'bienListModification', content: 'OK'});
+                        expect(mockEventManager.broadcastSpy).toHaveBeenCalledWith({ name: 'etatBienListModification', content: 'OK'});
                         expect(mockActiveModal.dismissSpy).toHaveBeenCalled();
                     })
                 )

@@ -12,6 +12,12 @@
             "otherEntityName": "client",
             "relationshipType": "many-to-one",
             "otherEntityField": "id"
+        },
+        {
+            "relationshipName": "etatBien",
+            "otherEntityName": "etatBien",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
         }
     ],
     "fields": [

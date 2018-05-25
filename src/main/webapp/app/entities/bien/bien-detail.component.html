@@ -53,6 +53,12 @@
                 <a [routerLink]="['/client', bien.client?.id]">{{bien.client?.id}}</a>
             </div>
         </dd>
+        <dt><span>Etat Bien</span></dt>
+        <dd>
+            <div *ngIf="bien.etatBien">
+                <a [routerLink]="['/etat-bien', bien.etatBien?.id]">{{bien.etatBien?.id}}</a>
+            </div>
+        </dd>
     </dl>
 
     <button type="submit"

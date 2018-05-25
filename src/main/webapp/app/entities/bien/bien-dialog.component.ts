@@ -11,6 +11,7 @@ import { BienPopupService } from './bien-popup.service';
 import { BienService } from './bien.service';
 import { TypeBien, TypeBienService } from '../type-bien';
 import { Client, ClientService } from '../client';
+import { EtatBien, EtatBienService } from '../etat-bien';
 
 @Component({
     selector: 'jhi-bien-dialog',
@@ -24,6 +25,8 @@ export class BienDialogComponent implements OnInit {
     typebiens: TypeBien[];
 
     clients: Client[];
+
+    etatbiens: EtatBien[];
     anneeConstructionDp: any;
 
     constructor(
@@ -33,6 +36,7 @@ export class BienDialogComponent implements OnInit {
         private bienService: BienService,
         private typeBienService: TypeBienService,
         private clientService: ClientService,
+        private etatBienService: EtatBienService,
         private elementRef: ElementRef,
         private eventManager: JhiEventManager
     ) {
@@ -44,6 +48,8 @@ export class BienDialogComponent implements OnInit {
             .subscribe((res: HttpResponse<TypeBien[]>) => { this.typebiens = res.body; }, (res: HttpErrorResponse) => this.onError(res.message));
         this.clientService.query()
             .subscribe((res: HttpResponse<Client[]>) => { this.clients = res.body; }, (res: HttpErrorResponse) => this.onError(res.message));
+        this.etatBienService.query()
+            .subscribe((res: HttpResponse<EtatBien[]>) => { this.etatbiens = res.body; }, (res: HttpErrorResponse) => this.onError(res.message));
     }
 
     byteSize(field) {
@@ -101,6 +107,10 @@ export class BienDialogComponent implements OnInit {
     }
 
     trackClientById(index: number, item: Client) {
+        return item.id;
+    }
+
+    trackEtatBienById(index: number, item: EtatBien) {
         return item.id;
     }
 }
