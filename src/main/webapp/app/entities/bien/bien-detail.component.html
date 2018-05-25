@@ -12,25 +12,24 @@
                     <a (click)="openFile(bien.photoContentType, bien.photo)">
                         <img [src]="'data:' + bien.photoContentType + ';base64,' + bien.photo" style="max-width: 100%;" alt="bien image"/>
                     </a>
-                    {{bien.photoContentType}}, {{byteSize(bien.photo)}}
+                    <dl class="row-md jh-entity-details">
+
+                        <dt><span>Adresse</span></dt>
+                        <dd>
+                            <span>{{bien.adresse}}</span>
+                        </dd>
+                        <dt><span>NPA Localite</span></dt>
+                        <dd>
+                            <span>{{bien.npa}} {{bien.localite}}</span>
+                        </dd>
+
+
+                    </dl>
                 </div>
             </div>
             <div class="col-3">
                 <dl class="row-md jh-entity-details">
-
-                    <dt><span>Adresse</span></dt>
-                    <dd>
-                        <span>{{bien.adresse}}</span>
-                    </dd>
-                    <dt><span>Npa</span></dt>
-                    <dd>
-                        <span>{{bien.npa}}</span>
-                    </dd>
-                    <dt><span>Localite</span></dt>
-                    <dd>
-                        <span>{{bien.localite}}</span>
-                    </dd>
-                    <dt><span>Annee Construction</span></dt>
+                    <dt><span>Année de construction</span></dt>
                     <dd>
                         <span>{{bien.anneeConstruction | date:'yyyy'}}</span>
                     </dd>
