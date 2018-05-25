@@ -19,11 +19,11 @@
             <th><span>ID</span></th>
             <th><span>Nom</span></th>
             <th><span>Prenom</span></th>
+            <th><span>Adresse</span></th>
             <th><span>Npa</span></th>
             <th><span>Localite</span></th>
             <th><span>Num Tel</span></th>
             <th><span>Email</span></th>
-            <th><span>Adresse</span></th>
             <th><span>User</span></th>
             <th></th>
             </tr>
@@ -33,13 +33,12 @@
                 <td><a [routerLink]="['../agent-immobilier', agentImmobilier.id ]">{{agentImmobilier.id}}</a></td>
                 <td>{{agentImmobilier.nom}}</td>
                 <td>{{agentImmobilier.prenom}}</td>
+                <td>{{agentImmobilier.adresse}}</td>
                 <td>{{agentImmobilier.npa}}</td>
                 <td>{{agentImmobilier.localite}}</td>
                 <td>{{agentImmobilier.numTel}}</td>
                 <td>{{agentImmobilier.email}}</td>
-                <td>{{agentImmobilier.adresse}}</td>
-                <td>
-                    {{agentImmobilier.user?.login}}
+                <td>{{agentImmobilier.user?.login}}
                 </td>
                 <td class="text-right">
                     <div class="btn-group flex-btn-group-container">
