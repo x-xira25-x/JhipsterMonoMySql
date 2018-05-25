@@ -49,7 +49,7 @@
                 <td>{{bien.prix}}</td>
                 <td>
                     <div *ngIf="bien.typeBien">
-                        <a [routerLink]="['../type-bien', bien.typeBien?.id ]" >{{bien.typeBien?.id}}</a>
+                        <a [routerLink]="['../type-bien', bien.typeBien?.nom ]" >{{bien.typeBien?.nom}}</a>
                     </div>
                 </td>
                 <td>
@@ -59,7 +59,7 @@
                 </td>
                 <td>
                     <div *ngIf="bien.etatBien">
-                        <a [routerLink]="['../etat-bien', bien.etatBien?.id ]" >{{bien.etatBien?.id}}</a>
+                        <a [routerLink]="['../etat-bien', bien.etatBien?.nom ]" >{{bien.etatBien?.nom}}</a>
                     </div>
                 </td>
                 <td class="text-right">
