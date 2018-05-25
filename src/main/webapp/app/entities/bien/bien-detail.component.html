@@ -1,39 +1,45 @@
 
 <div *ngIf="bien">
-    <h2><span>Bien</span> {{bien.id}}</h2>
+    <h2><span>Bien</span> {{bien.id}} - {{bien.etatBien?.nom}}</h2>
     <hr>
+
     <jhi-alert-error></jhi-alert-error>
-    <div class="container">
+    <div class="container-fluid">
         <div class="row">
+            <div class="col-1">
+                <dt><span>Type de bien</span></dt>
+                <dd>{{bien.typeBien?.nom}} </dd>
+            </div>
             <div class="col-md-4">
-                <span><b>Photo</b></span>
+                <span><dt>Photo</dt></span>
 
                 <div *ngIf="bien.photo">
                     <a (click)="openFile(bien.photoContentType, bien.photo)">
-                        <img [src]="'data:' + bien.photoContentType + ';base64,' + bien.photo" style="max-width: 100%;" alt="bien image"/>
+                        <img [src]="'data:' + bien.photoContentType + ';base64,' + bien.photo" style="max-width: 100%;" alt="bien image" alt="Responsive image"/>
                     </a>
                     <dl class="row-md jh-entity-details">
-
                         <dt><span>Adresse</span></dt>
                         <dd>
                             <span>{{bien.adresse}}</span>
                         </dd>
-                        <dt><span>NPA Localite</span></dt>
+                        <dt><span>NPA Localité</span></dt>
                         <dd>
                             <span>{{bien.npa}} {{bien.localite}}</span>
                         </dd>
-
-
                     </dl>
                 </div>
             </div>
             <div class="col-3">
                 <dl class="row-md jh-entity-details">
+                    <dt><span>Prix</span></dt>
+                    <dd>
+                        <span>{{bien.prix| number : fractionSize}} CHF</span>
+                    </dd>
                     <dt><span>Année de construction</span></dt>
                     <dd>
                         <span>{{bien.anneeConstruction | date:'yyyy'}}</span>
                     </dd>
-                    <dt><span>Nb Pieces</span></dt>
+                    <dt><span>Nombre de pièces</span></dt>
                     <dd>
                         <span>{{bien.nbPieces}}</span>
                     </dd>
@@ -41,31 +47,7 @@
                     <dd>
                         <span>{{bien.description}}</span>
                     </dd>
-
-                    <dt><span>Prix</span></dt>
-                    <dd>
-                        <span>{{bien.prix| number : fractionSize}} CHF</span>
-                    </dd>
-                    <dt><span>Type Bien</span></dt>
-                    <dd>{{bien.typeBien?.nom}} </dd>
-                    <dt><span>Etat Bien</span></dt>
-                    <dd>{{bien.etatBien?.nom}}</dd>
                 </dl>
-
-                <button type="submit"
-                        (click)="previousState()"
-                        class="btn btn-info">
-                    <span class="fa fa-arrow-left"></span>&nbsp;<span> Back</span>
-                </button>
-
-                <button type="button"
-                        [routerLink]="['/', { outlets: { popup: 'bien/'+ bien.id + '/edit'} }]"
-                        replaceUrl="true"
-                        queryParamsHandling="merge"
-                        class="btn btn-primary">
-                    <span class="fa fa-pencil"></span>&nbsp;<span> Edit</span>
-                </button>
-
             </div>
             <div class="col-2">
                 <dt><span>Client</span></dt>
@@ -74,16 +56,23 @@
                         <a [routerLink]="['/client', bien.client?.id]">{{bien.client?.id}}</a>
                     </div>
                         {{client.nom}}     {{client.prenom}}
-
-
                 </dd>
-
             </div>
-
         </div>
 
     </div>
-
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'bien/'+ bien.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span> Edit</span>
+    </button
 
 
 </div>
