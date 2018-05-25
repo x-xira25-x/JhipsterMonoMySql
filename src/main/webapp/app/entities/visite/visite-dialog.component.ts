@@ -94,7 +94,9 @@ export class VisiteDialogComponent implements OnInit {
     trackEtatVisiteById(index: number, item: EtatVisite) {
         return item.id;
     }
-
+    trackEtatVisiteByNom(index: number, item: EtatVisite) {
+        return item.nom;
+    }
     trackBienById(index: number, item: Bien) {
         return item.id;
     }
