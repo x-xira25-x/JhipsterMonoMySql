@@ -33,7 +33,7 @@
                 <td>{{visite.dateFin | date:'mediumDate'}}</td>
                 <td>
                     <div *ngIf="visite.etatVisite">
-                        <a [routerLink]="['../etat-visite', visite.etatVisite?.id ]" >{{visite.etatVisite?.id}}</a>
+                        <a [routerLink]="['../etat-visite', visite.etatVisite?.nom ]" >{{visite.etatVisite?.nom}}</a>
                     </div>
                 </td>
                 <td>
