@@ -105,6 +105,9 @@ export class BienDialogComponent implements OnInit {
     trackTypeBienById(index: number, item: TypeBien) {
         return item.id;
     }
+    trackTypeBienByNom(index: number, item: TypeBien) {
+        return item.nom;
+    }
 
     trackClientById(index: number, item: Client) {
         return item.id;
@@ -112,6 +115,9 @@ export class BienDialogComponent implements OnInit {
 
     trackEtatBienById(index: number, item: EtatBien) {
         return item.id;
+    }
+    trackEtatBienByNom(index: number, item: EtatBien) {
+        return item.nom;
     }
 }
 

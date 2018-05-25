@@ -25,9 +25,9 @@
             <th><span>Description</span></th>
             <th><span>Photo</span></th>
             <th><span>Prix</span></th>
-            <th><span>Type Bien</span></th>
+            <th><span>Type du Bien</span></th>
             <th><span>Client</span></th>
-            <th><span>Etat Bien</span></th>
+            <th><span>Etat du Bien</span></th>
             <th></th>
             </tr>
             </thead>
@@ -37,7 +37,7 @@
                 <td>{{bien.adresse}}</td>
                 <td>{{bien.npa}}</td>
                 <td>{{bien.localite}}</td>
-                <td>{{bien.anneeConstruction | date:'mediumDate'}}</td>
+                <td>{{bien.anneeConstruction | date:'yyyy'}}</td>
                 <td>{{bien.nbPieces}}</td>
                 <td>{{bien.description}}</td>
                 <td>

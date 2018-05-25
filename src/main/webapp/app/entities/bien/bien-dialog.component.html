@@ -116,7 +116,7 @@
             <label class="form-control-label" for="field_typeBien">Type Bien</label>
             <select class="form-control" id="field_typeBien" name="typeBien" [(ngModel)]="bien.typeBien" >
                 <option [ngValue]="null"></option>
-                <option [ngValue]="typeBienOption.id === bien.typeBien?.id ? bien.typeBien : typeBienOption" *ngFor="let typeBienOption of typebiens; trackBy: trackTypeBienById">{{typeBienOption.id}}</option>
+                <option [ngValue]="typeBienOption.nom === bien.typeBien?.nom ? bien.typeBien : typeBienOption" *ngFor="let typeBienOption of typebiens; trackBy: trackTypeBienByNom">{{typeBienOption.nom}}</option>
             </select>
         </div>
         <div class="form-group">
@@ -130,7 +130,7 @@
             <label class="form-control-label" for="field_etatBien">Etat Bien</label>
             <select class="form-control" id="field_etatBien" name="etatBien" [(ngModel)]="bien.etatBien" >
                 <option [ngValue]="null"></option>
-                <option [ngValue]="etatBienOption.id === bien.etatBien?.id ? bien.etatBien : etatBienOption" *ngFor="let etatBienOption of etatbiens; trackBy: trackEtatBienById">{{etatBienOption.id}}</option>
+                <option [ngValue]="etatBienOption.nom === bien.etatBien?.nom ? bien.etatBien : etatBienOption" *ngFor="let etatBienOption of etatbiens; trackBy: trackEtatBienByNom">{{etatBienOption.nom}}</option>
             </select>
         </div>
     </div>
