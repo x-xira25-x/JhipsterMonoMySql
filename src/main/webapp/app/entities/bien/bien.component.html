@@ -46,22 +46,14 @@
                     </a>
                     <span *ngIf="bien.photo">{{bien.photoContentType}}, {{byteSize(bien.photo)}}</span>
                 </td>
-                <td>{{bien.prix}}</td>
-                <td>
-                    <div *ngIf="bien.typeBien">
-                        <a [routerLink]="['../type-bien', bien.typeBien?.nom ]" >{{bien.typeBien?.nom}}</a>
-                    </div>
-                </td>
+                <td>{{bien.prix}} CHF</td>
+                <td>{{bien.typeBien?.nom}}</td>
                 <td>
                     <div *ngIf="bien.client">
                         <a [routerLink]="['../client', bien.client?.id ]" >{{bien.client?.id}}</a>
                     </div>
                 </td>
-                <td>
-                    <div *ngIf="bien.etatBien">
-                        <a [routerLink]="['../etat-bien', bien.etatBien?.nom ]" >{{bien.etatBien?.nom}}</a>
-                    </div>
-                </td>
+                <td>{{bien.etatBien?.nom}}</td>
                 <td class="text-right">
                     <div class="btn-group flex-btn-group-container">
                         <button type="submit"
