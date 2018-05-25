@@ -7,9 +7,14 @@
         <p class="lead">Gestion des visites immobilières</p>
 
         <div class="col-md-6" [ngSwitch]="isAuthenticated()">
-            <div class="alert alert-success" *ngSwitchCase="true">
-                <span *ngIf="account"
-                   > You are logged in as user "{{account.login}}". </span>
+            <div class="alert alert-info" *ngSwitchCase="true">
+                <span *ngIf="account"> Vous êtes connecté en tant que "{{account.login}}". </span>
+
+            </div>
+            <div [ngSwitch]="isAuthenticated()">
+                <span> Vous avez la possibilité de vous inscrire à une visite</span>
+                <br>
+                <br>
             </div>
             <div>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit, vulputate eu pharetra nec,
@@ -20,7 +25,7 @@
                 Vivamus varius pretium ligula, a aliquam odio euismod sit amet. Quisque laoreet sem sit amet orci ullamcorper
                 at ultricies metus viverra. Pellentesque arcu mauris, malesuada quis ornare accumsan, blandit sed diam.
             </div>
-            <div class="alert alert-secondary" *ngSwitchCase="false">
+            <div class="alert alert-secondary" *ngSwitchCase="falsee">
                 <a class="btn btn-light btn-rounded" routerLink="register"> Inscription</a>
             </div>
         </div>
