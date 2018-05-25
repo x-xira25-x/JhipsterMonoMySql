@@ -41,7 +41,7 @@
 
         <div class="form-group">
             <label class="form-control-label" for="field_etatVisite">Etat Visite</label>
-            <select class="form-control" id="field_etatVisite" name="etatVisite" [(ngModel)]="visite.etatVisite" >
+            <select class="form-control" id="field_etatVisite" name="etatVisite" [(ngModel)]="visite.etatVisite" required>
                 <option [ngValue]="null"></option>
                 <option [ngValue]="etatVisiteOption.nom === visite.etatVisite?.nom ? visite.etatVisite : etatVisiteOption" *ngFor="let etatVisiteOption of etatvisites; trackBy: trackEtatVisiteById">{{etatVisiteOption.nom}}</option>
             </select>
@@ -49,14 +49,12 @@
         <div class="form-group">
             <label class="form-control-label" for="field_bien">Bien</label>
             <select class="form-control" id="field_bien" name="bien" [(ngModel)]="visite.bien" required>
-                <option [ngValue]="null"></option>
                 <option [ngValue]="bienOption.id === visite.bien?.id ? visite.bien : bienOption" *ngFor="let bienOption of biens; trackBy: trackBienById">{{bienOption.id}}</option>
             </select>
         </div>
         <div class="form-group">
             <label class="form-control-label" for="field_agentImmobilier">Agent Immobilier</label>
             <select class="form-control" id="field_agentImmobilier" name="agentImmobilier" [(ngModel)]="visite.agentImmobilier" required>
-
                 <option [ngValue]="agentImmobilierOption.id === visite.agentImmobilier?.id ? visite.agentImmobilier : agentImmobilierOption" *ngFor="let agentImmobilierOption of agentimmobiliers; trackBy: trackAgentImmobilierById">{{agentImmobilierOption.id}}</option>
             </select>
         </div>
