@@ -22,5 +22,6 @@ only screen and (                min-resolution: 2dppx) {
         background: url("../../content/images/office-building-icon.png") no-repeat center top;
         background-size: contain;
     }
+
 }
 

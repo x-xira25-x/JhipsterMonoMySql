@@ -29,30 +29,31 @@
                 <a class="btn btn-light btn-rounded" routerLink="register"> Inscription</a>
             </div>
         </div>
-        <div class="col-md-5">
-            <ngb-carousel *ngIf="images">
+        <div class="col-md-4">
+            <ngb-carousel>
                 <ng-template ngbSlide>
-                    <img [src]="images[0]" alt="Random first slide">
+                    <img class="imgCarousel" src="../../content/images/maisonCarousel1.jpg" alt="Random first slide" height="50%" width="50%">
                     <div class="carousel-caption">
-                        <h3>First slide label</h3>
+                        <h3>First slide labe</h3>
                         <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
                     </div>
                 </ng-template>
                 <ng-template ngbSlide>
-                    <img [src]="images[1]" alt="Random second slide">
+                    <img class="imgCarousel" src="../../content/images/maisonCarousel2.jpg"  height="70%" width="70%" alt="Random second slide">
                     <div class="carousel-caption">
                         <h3>Second slide label</h3>
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
                     </div>
                 </ng-template>
                 <ng-template ngbSlide>
-                    <img [src]="images[2]" alt="Random third slide">
+                    <img class="imgCarousel" src="../../content/images/maisonCarousel3.jpg"  height="70%" width="70%" alt="Random third slide">
                     <div class="carousel-caption">
                         <h3>Third slide label</h3>
                         <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
                     </div>
                 </ng-template>
             </ngb-carousel>
+
 
         </div>
         </div>
