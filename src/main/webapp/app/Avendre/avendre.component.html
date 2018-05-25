@@ -39,7 +39,6 @@
                     <a *ngIf="bien.photo" (click)="openFile(bien.photoContentType, bien.photo)">
                         <img [src]="'data:' + bien.photoContentType + ';base64,' + bien.photo" style="max-height: 30px;" alt="bien image"/>
                     </a>
-                    <span *ngIf="bien.photo">{{bien.photoContentType}}, {{byteSize(bien.photo)}}</span>
                 </td>
                 <td>{{bien.prix| number : fractionSize}} CHF</td>
                 <td>{{bien.typeBien?.nom}}</td>
