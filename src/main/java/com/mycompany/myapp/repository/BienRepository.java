@@ -17,7 +17,7 @@ import java.util.List;
 @Repository
 public interface BienRepository extends JpaRepository<Bien, Long> {
 
-    @Query("Select bien from Bien bien where bien.vendu='n'")
+    @Query("Select bien from Bien bien where bien.etatBien.id =1")
     List<Bien> findAllAvendre();
     @Query ("select visite from Bien bien, Visite visite where bien.id =:idBien")
     List<Visite>findAllBiensVisites(@Param("idBien") Long idBien);
