@@ -49,6 +49,27 @@ export class AvendreVisiteDialogComponent implements OnInit {
         this.etatBienService.query()
             .subscribe((res: HttpResponse<EtatBien[]>) => { this.etatbiens = res.body; }, (res: HttpErrorResponse) => this.onError(res.message));
     }
+
+    byteSize(field) {
+        return this.dataUtils.byteSize(field);
+    }
+
+    openFile(contentType, field) {
+        return this.dataUtils.openFile(contentType, field);
+    }
+
+    setFileData(event, entity, field, isImage) {
+        this.dataUtils.setFileData(event, entity, field, isImage);
+    }
+
+    clearInputImage(field: string, fieldContentType: string, idInput: string) {
+        this.dataUtils.clearInputImage(this.bien, this.elementRef, field, fieldContentType, idInput);
+    }
+
+    clear() {
+        this.activeModal.dismiss('cancel');
+    }
+
     private onError(error: any) {
         this.jhiAlertService.error(error.message, null, null);
     }
