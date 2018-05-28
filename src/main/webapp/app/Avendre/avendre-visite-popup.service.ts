@@ -24,44 +24,49 @@ export class AvendreVisitePopupService {
         this.ngbModalRef = null;
     }
     open(component: Component, id?: number | any): Promise<NgbModalRef> {
+        console.log("open service")
     return new Promise<NgbModalRef>((resolve, reject) => {
     const isOpen = this.ngbModalRef !== null;
     if (isOpen) {
         resolve(this.ngbModalRef);
     }
 
-    if (id) {
-        this.visiteService.find(id)
-            .subscribe((visiteResponse: HttpResponse<Visite>) => {
-                const visite: Visite = visiteResponse.body;
-                if (visite.dateDebut) {
-                    visite.dateDebut = {
-                        year: visite.dateDebut.getFullYear(),
-                        month: visite.dateDebut.getMonth() + 1,
-                        day: visite.dateDebut.getDate()
-                    };
-                }
-                if (visite.dateFin) {
-                    visite.dateFin = {
-                        year: visite.dateFin.getFullYear(),
-                        month: visite.dateFin.getMonth() + 1,
-                        day: visite.dateFin.getDate()
-                    };
-                }
+        if (id) {
+            this.visiteService.queryVisiteBien(id).subscribe((res: HttpResponse<Visite[]>) => {
+                console.log('appel la fonction');
+                const visite: Visite[] = res.body;
+                this.visites = res.body;
+                console.log(this.visites);
+                console.log(visite);
+
+                /*   if (visite.dateDebut) {
+                       visite.dateDebut = {
+                           year: visite.dateDebut.getFullYear(),
+                           month: visite.dateDebut.getMonth() + 1,
+                           day: visite.dateDebut.getDate()
+                       };
+                   }
+                   if (visite.dateFin) {
+                       visite.dateFin = {
+                           year: visite.dateFin.getFullYear(),
+                           month: visite.dateFin.getMonth() + 1,
+                           day: visite.dateFin.getDate()
+                       };
+                   }*/
                 this.ngbModalRef = this.visiteModalRef(component, visite);
                 resolve(this.ngbModalRef);
             });
-    } else {
+    } /*else {
     // setTimeout used as a workaround for getting ExpressionChangedAfterItHasBeenCheckedError
     setTimeout(() => {
     this.ngbModalRef = this.visiteModalRef(component, new Visite());
     resolve(this.ngbModalRef);
 }, 0);
-}
-});
+};*/
+})
 }
 
-visiteModalRef(component: Component, visite: Visite): NgbModalRef {
+visiteModalRef(component: Component, visite: Visite []): NgbModalRef {
     const modalRef = this.modalService.open(component, { size: 'lg', backdrop: 'static'});
     modalRef.componentInstance.visite = visite;
     modalRef.result.then((result) => {
