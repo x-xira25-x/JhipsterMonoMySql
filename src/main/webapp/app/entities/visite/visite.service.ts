@@ -39,6 +39,18 @@ export class VisiteService {
         return this.http.get<Visite[]>(this.resourceUrl, { params: options, observe: 'response' })
             .map((res: HttpResponse<Visite[]>) => this.convertArrayResponse(res));
     }
+    queryVisiteBien(idBien:number): Observable<HttpResponse<Visite[]>> {
+        const options = createRequestOption(idBien);
+        return this.http.get<Visite[]>(`http://localhost:8080/api/biens/${idBien}/visites`, { params: options, observe: 'response' })
+            .map((res: HttpResponse<Visite[]>) => this.convertArrayResponse(res));
+    }
+
+
+    queryByclient(login:any): Observable<HttpResponse<Visite[]>> {
+        const options = createRequestOption(login);
+        return this.http.get<Visite[]>(`http://localhost:8080/api/visitesBy/${login}`, { params: options, observe: 'response' })
+            .map((res: HttpResponse<Visite[]>) => this.convertArrayResponse(res));
+    }
 
     delete(id: number): Observable<HttpResponse<any>> {
         return this.http.delete<any>(`${this.resourceUrl}/${id}`, { observe: 'response'});
