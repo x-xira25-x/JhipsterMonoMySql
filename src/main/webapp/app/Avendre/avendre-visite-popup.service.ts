@@ -24,110 +24,68 @@ export class AvendreVisitePopupService {
         this.ngbModalRef = null;
     }
     open(component: Component, id?: number | any): Promise<NgbModalRef> {
-        return new Promise<NgbModalRef>((resolve, reject) => {
-            const isOpen = this.ngbModalRef !== null;
-            if (isOpen) {
-                resolve(this.ngbModalRef);
-            }
-
-            if (id) {
-                this.bienService.find(id)
-                    .subscribe((bienResponse: HttpResponse<Bien>) => {
-                        const bien: Bien = bienResponse.body;
-                        if (bien.anneeConstruction) {
-                            bien.anneeConstruction = {
-                                year: bien.anneeConstruction.getFullYear(),
-                                month: bien.anneeConstruction.getMonth() + 1,
-                                day: bien.anneeConstruction.getDate()
-                            };
-                        }
-                        this.ngbModalRef = this.bienModalRef(component, bien);
-                        resolve(this.ngbModalRef);
-                    });
-            } else {
-                // setTimeout used as a workaround for getting ExpressionChangedAfterItHasBeenCheckedError
-                setTimeout(() => {
-                    this.ngbModalRef = this.bienModalRef(component, new Bien());
-                    resolve(this.ngbModalRef);
-                }, 0);
-            }
-        });
+    return new Promise<NgbModalRef>((resolve, reject) => {
+    const isOpen = this.ngbModalRef !== null;
+    if (isOpen) {
+        resolve(this.ngbModalRef);
     }
 
+    if (id) {
+        this.visiteService.find(id)
+            .subscribe((visiteResponse: HttpResponse<Visite>) => {
+                const visite: Visite = visiteResponse.body;
+                if (visite.dateDebut) {
+                    visite.dateDebut = {
+                        year: visite.dateDebut.getFullYear(),
+                        month: visite.dateDebut.getMonth() + 1,
+                        day: visite.dateDebut.getDate()
+                    };
+                }
+                if (visite.dateFin) {
+                    visite.dateFin = {
+                        year: visite.dateFin.getFullYear(),
+                        month: visite.dateFin.getMonth() + 1,
+                        day: visite.dateFin.getDate()
+                    };
+                }
+                this.ngbModalRef = this.visiteModalRef(component, visite);
+                resolve(this.ngbModalRef);
+            });
+    } else {
+    // setTimeout used as a workaround for getting ExpressionChangedAfterItHasBeenCheckedError
+    setTimeout(() => {
+    this.ngbModalRef = this.visiteModalRef(component, new Visite());
+    resolve(this.ngbModalRef);
+}, 0);
+}
+});
+}
+
+visiteModalRef(component: Component, visite: Visite): NgbModalRef {
+    const modalRef = this.modalService.open(component, { size: 'lg', backdrop: 'static'});
+    modalRef.componentInstance.visite = visite;
+    modalRef.result.then((result) => {
+        this.router.navigate([{ outlets: { popup: null }}], { replaceUrl: true, queryParamsHandling: 'merge' });
+        this.ngbModalRef = null;
+    }, (reason) => {
+        this.router.navigate([{ outlets: { popup: null }}], { replaceUrl: true, queryParamsHandling: 'merge' });
+        this.ngbModalRef = null;
+    });
+    return modalRef;
+}
+/*
     bienModalRef(component: Component, bien: Bien): NgbModalRef {
-        const modalRef = this.modalService.open(component, { size: 'lg', backdrop: 'static'});
+        const modalRef = this.modalService.open(component, {size: 'lg', backdrop: 'static'});
         modalRef.componentInstance.bien = bien;
         modalRef.result.then((result) => {
-            this.router.navigate([{ outlets: { popup: null }}], { replaceUrl: true, queryParamsHandling: 'merge' });
+            this.router.navigate([{outlets: {popup: null}}], {replaceUrl: true, queryParamsHandling: 'merge'});
             this.ngbModalRef = null;
         }, (reason) => {
-            this.router.navigate([{ outlets: { popup: null }}], { replaceUrl: true, queryParamsHandling: 'merge' });
+            this.router.navigate([{outlets: {popup: null}}], {replaceUrl: true, queryParamsHandling: 'merge'});
             this.ngbModalRef = null;
         });
-        return modalRef;
-    }
-
-
-    /*open(component: Component, id?: number | any): Promise<NgbModalRef> {
-        return new Promise<NgbModalRef>((resolve, reject) => {
-            console.log('avendrevisitepopuservice open');
-            const isOpen = this.ngbModalRef !== null;
-            if (isOpen) {
-                resolve(this.ngbModalRef);
-            }
-
-            if (id) {
-                this.visiteService.queryVisiteBien(id).subscribe((res: HttpResponse<Visite[]>) => {
-                    console.log('appel la fonction queryvisiteBien');
-                    const visite: Visite[] = res.body;
-                    this.visites = res.body;
-                    console.log(this.visites);
-                    console.log(visite);
-
-
-
-
-                    /!*if (visite.dateDebut) {
-                        visite.dateDebut = {
-                            year: visite.dateDebut.getFullYear(),
-                            month: visite.dateDebut.getMonth() + 1,
-                            day: visite.dateDebut.getDate()
-                        };
-                    }
-                    if (visite.dateFin) {
-                        visite.dateFin = {
-                            year: visite.dateFin.getFullYear(),
-                            month: visite.dateFin.getMonth() + 1,
-                            day: visite.dateFin.getDate()
-                        };
-                        console.log('aprsè if' +visite);
-                    }*!/
-                    this.ngbModalRef = this.visiteModalRef(component, visite);
-                    console.log('aprsè ngmodalref' +visite);
-                    resolve(this.ngbModalRef);
-                });
-
-
-            } /!*else {
-                // setTimeout used as a workaround for getting ExpressionChangedAfterItHasBeenCheckedError
-                setTimeout(() => {
-                    this.ngbModalRef = this.visiteModalRef(component, new Visite());
-                    resolve(this.ngbModalRef);
-                }, 0);
-            }*!/
-        });
-    }
-
-    visiteModalRef(component: Component, visite: Visite[]): NgbModalRef {
-        const modalRef = this.modalService.open(component, { size: 'lg', backdrop: 'static'});
-        modalRef.componentInstance.visite = visite;
-        modalRef.result.then((result) => {
-            this.router.navigate([{ outlets: { popup: null }}], { replaceUrl: true, queryParamsHandling: 'merge' });
-            this.ngbModalRef = null;
-        }, (reason) => {
-            this.router.navigate([{ outlets: { popup: null }}], { replaceUrl: true, queryParamsHandling: 'merge' });
-            this.ngbModalRef = null;
-        });
-        return modalRef;
     }*/
+
+
+
 }
