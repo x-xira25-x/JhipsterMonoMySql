@@ -19,7 +19,7 @@ public interface BienRepository extends JpaRepository<Bien, Long> {
 
     @Query("Select bien from Bien bien where bien.etatBien.id =1")
     List<Bien> findAllAvendre();
-    @Query ("select visite from Bien bien, Visite visite where bien.id =:idBien")
+    @Query ("select visite from  Visite visite where visite.bien.id =:idBien")
     List<Visite>findAllBiensVisites(@Param("idBien") Long idBien);
 
 }
