@@ -117,4 +117,13 @@ public class ClientResource {
         clientRepository.delete(id);
         return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert(ENTITY_NAME, id.toString())).build();
     }
+
+    //méthode qui retourne l'id du client
+    @GetMapping("/clientLogin/{login}")
+    @Timed
+    public ResponseEntity<Client>   findIdClient(@PathVariable String login){
+        log.debug("REST request to get Client : {}", login);
+        Client client = clientRepository.findIdClient(login);
+        return ResponseUtil.wrapOrNotFound(Optional.ofNullable(client));
+    }
 }
