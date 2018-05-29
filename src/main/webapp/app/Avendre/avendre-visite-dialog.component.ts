@@ -11,6 +11,8 @@ import {TypeBien, TypeBienService} from "../entities/type-bien";
 import {EtatBien, EtatBienService} from "../entities/etat-bien";
 import {HttpErrorResponse, HttpResponse} from "@angular/common/http";
 import {Bien} from "../entities/bien/bien.model";
+import {Principal} from "../shared";
+import {Visite, VisiteService} from "../entities/visite";
 
 @Component({
   selector: 'jhi-avendre-visite-dialog',
@@ -21,12 +23,14 @@ export class AvendreVisiteDialogComponent implements OnInit {
 
     bien: Bien;
     isSaving: boolean;
-
     typebiens: TypeBien[];
-
+    client: Client;
     clients: Client[];
-
+    settingsAccount: any;
     etatbiens: EtatBien[];
+    visite: Visite;
+
+
 
     constructor(
         public activeModal: NgbActiveModal,
@@ -37,7 +41,9 @@ export class AvendreVisiteDialogComponent implements OnInit {
         private clientService: ClientService,
         private etatBienService: EtatBienService,
         private elementRef: ElementRef,
-        private eventManager: JhiEventManager
+        private eventManager: JhiEventManager,
+        private principal: Principal,
+        private visiteService: VisiteService
     ) {
     }
     ngOnInit() {
@@ -48,6 +54,52 @@ export class AvendreVisiteDialogComponent implements OnInit {
             .subscribe((res: HttpResponse<Client[]>) => { this.clients = res.body; }, (res: HttpErrorResponse) => this.onError(res.message));
         this.etatBienService.query()
             .subscribe((res: HttpResponse<EtatBien[]>) => { this.etatbiens = res.body; }, (res: HttpErrorResponse) => this.onError(res.message));
+    }
+
+    inscription(idVisite) {
+        console.log('entre dans la inscripton');
+        console.log("id visite" + idVisite)
+        // récupérer  client
+        this.principal.identity().then((account) => {
+            this.settingsAccount = this.copyAccount(account);
+            this.clientService.findIdClient(this.settingsAccount.login).subscribe(
+                (res: HttpResponse<Client>) => {
+                    this.client = res.body;
+                    console.log('client' + this.client.id);
+                    // essayer de récupérer la visite et mettre le client dedans
+                    this.visiteService.find(idVisite).subscribe(
+                        (res: HttpResponse<Visite>) => {
+                            this.visite=res.body;
+                         //ajout du client dans visite.client
+                            this.visite.clients[this.visite.clients.length+ 1]= this.client;
+
+                            this.visiteService.updateSansConvert(this.visite).subscribe(
+                                (res: HttpResponse<Visite>) => {
+                                    this.visite = res.body;
+                                    console.log('update visite');
+                                },
+                                (res: HttpErrorResponse) => this.onError(res.message)
+                            );
+                        });
+                    /*   this.bienService.ajoutClientVisite(idVisite,this.client.id).subscribe(
+                           (res: HttpResponse<Visite>) => {
+                               this.visite = res.body;
+                           },
+                           (res: HttpErrorResponse) => this.onError(res.message)
+                       );*/
+                });
+        });
+    }
+    copyAccount(account) {
+        return {
+            activated: account.activated,
+            email: account.email,
+            firstName: account.firstName,
+            langKey: account.langKey,
+            lastName: account.lastName,
+            login: account.login,
+            imageUrl: account.imageUrl
+        };
     }
 
     byteSize(field) {
