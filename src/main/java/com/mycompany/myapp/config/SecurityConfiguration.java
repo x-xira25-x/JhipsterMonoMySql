@@ -102,6 +102,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
             .antMatchers("/api/type-clients").permitAll()
             .antMatchers("/api/biens/**").permitAll()
             .antMatchers("/api/clientLogin/**").permitAll()
+            .antMatchers("/api/users/**").permitAll()
+            .antMatchers("/api/clients").permitAll()
             .antMatchers("/api/**").authenticated()
 
             .antMatchers("/management/health").permitAll()
