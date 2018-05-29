@@ -80,6 +80,7 @@ export class AvendreVisiteDialogComponent implements OnInit {
                                 },
                                 (res: HttpErrorResponse) => this.onError(res.message)
                             );
+                            window.location.reload(false)
                         });
                     /*   this.bienService.ajoutClientVisite(idVisite,this.client.id).subscribe(
                            (res: HttpResponse<Visite>) => {
