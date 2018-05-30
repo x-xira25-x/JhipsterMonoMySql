@@ -7,14 +7,14 @@
        Pour obtenir plus de détails, veuillez cliquer sur le numéro ID
     </div>
 -->
-
+<!--filtre qui ne fonctionne pas, ne retourne pas la valeur choisi-->
 <div class="col-2">
     <form>
        Filtre
 
         <div class="form-group" >
             <label class="form-control-label" for="field_typeBien">Type Bien</label>
-            <select class="form-control" id="field_typeBien" name="typeBien"   [(ngModel)]="typeBien">
+            <select class="form-control" id="field_typeBien" name="typeBien"   [(ngModel)]="typebien">
                 <option [ngValue]="null"></option>
                 <option [ngValue]="typeBienOption.nom === typeBien?.nom ? typeBien : typeBienOption" *ngFor="let typeBienOption of typebiens; trackBy: trackTypeBienByNom">{{typeBienOption.nom}}</option>
             </select>
@@ -106,7 +106,7 @@
                         <p class="card-text">{{bien.description}}</p>
                         <a [routerLink]="['../bien', bien.id ]"class="btn btn-primary">Détail</a>
 
-                            <a *jhiHasAnyAuthority="'ROLE_USER'" 
+                            <a *jhiHasAnyAuthority="'ROLE_USER'"
                                     [routerLink]="['/', { outlets: { popup: 'bienVisite/'+ bien.id + '/visite'} }]"
                                     replaceUrl="true"
 

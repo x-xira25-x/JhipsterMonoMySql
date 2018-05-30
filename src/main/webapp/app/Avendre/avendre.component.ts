@@ -6,6 +6,7 @@ import {BienService} from "../entities/bien/bien.service";
 import {Principal} from "../shared";
 import {Subscription} from "rxjs/Subscription";
 import {TypeBien, TypeBienService} from "../entities/type-bien";
+import {AvendreVisiteService} from "./avendre-visite.service";
 
 @Component({
   selector: 'jhi-avendre',
@@ -27,6 +28,7 @@ export class AvendreComponent implements OnInit {
       private eventManager: JhiEventManager,
       private principal: Principal,
     private typeBienService: TypeBienService,
+      private avendreVisiteService :AvendreVisiteService,
   ) {
 
   }
@@ -66,11 +68,14 @@ export class AvendreComponent implements OnInit {
     trackTypeBienByNom(index: number, item: TypeBien) {
         return item.nom;
     }
-    filtre(){
-      console.log("filtre")
-    console.log(this.typebiens)
-        console.log(this.typebien)
-        console.log(this.bien)
+    filtre() {
+        console.log("filtre")
+        this.avendreVisiteService.findBienByType(this.typebien.id).subscribe(
+            (res: HttpResponse<Bien[]>) => {
+                this.biens = res.body;
+            },
+            (res: HttpErrorResponse) => this.onError(res.message)
+        );
     }
 
 
