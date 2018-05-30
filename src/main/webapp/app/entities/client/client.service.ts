@@ -32,6 +32,13 @@ export class ClientService {
             .map((res: EntityResponseType) => this.convertResponse(res));
     }
 
+    // ajout méthode qui retourne du client par login
+    findIdClient(login:any): Observable<EntityResponseType>  {
+        return this.http.get<Client>(`http://localhost:8080/api/clientLogin/${login}`, {observe: 'response' })
+            .map((res: EntityResponseType) => this.convertResponse(res));
+    }
+
+
     query(req?: any): Observable<HttpResponse<Client[]>> {
         const options = createRequestOption(req);
         return this.http.get<Client[]>(this.resourceUrl, { params: options, observe: 'response' })

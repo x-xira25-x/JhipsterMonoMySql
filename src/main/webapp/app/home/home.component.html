@@ -11,19 +11,20 @@
                 <span *ngIf="account"> Vous êtes connecté en tant que "{{account.login}}". </span>
 
             </div>
-            <div [ngSwitch]="isAuthenticated()">
+            <div [ngSwitch]="isAuthenticated()"  *ngSwitchCase="true">
                 <span> Vous avez la possibilité de vous inscrire à une visite</span>
                 <br>
                 <br>
             </div>
             <div>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit, vulputate eu pharetra nec,
-                mattis ac neque. Duis vulputate commodo lectus, ac blandit elit tincidunt id. Sed rhoncus, tortor sed
-                eleifend tristique, tortor mauris molestie elit, et lacinia ipsum quam nec dui. Quisque nec mauris sit amet
-                elit iaculis pretium sit amet quis magna. Aenean velit odio, elementum in tempus ut, vehicula eu diam.
-                Pellentesque rhoncus aliquam mattis. Ut vulputate eros sed felis sodales nec vulputate justo hendrerit.
-                Vivamus varius pretium ligula, a aliquam odio euismod sit amet. Quisque laoreet sem sit amet orci ullamcorper
-                at ultricies metus viverra. Pellentesque arcu mauris, malesuada quis ornare accumsan, blandit sed diam.
+                <p>Depuis 2000 notre agence immobilière oeuvre en Suisse.</p>
+
+                <p>Nous mettons à votre disposition notre réseau relationnel afin que vous puissiez aboutir, dans les meilleures conditions possibles, dans vos recherches immobilières.
+                </p>
+                <p> Au delà de l'achat/vente d'un objet immobilier, nous sommes à même de vous proposer nos services pour l'estimation de votre immeuble
+                et vous conseiller sur les aspects fiscaux de toute situation..
+                </p>
+                <p>Inscrivez-vous afin de pouvoir effectuer des visites rapidement sur des biens qui vous intéresse.</p>
             </div>
             <div class="alert alert-secondary" *ngSwitchCase="false">
                 <a class="btn btn-light btn-rounded" routerLink="register"> Inscription</a>
@@ -34,22 +35,22 @@
                 <ng-template ngbSlide>
                     <img class="imgCarousel" src="../../content/images/maisonCarousel1.jpg" alt="Random first slide" height="50%" width="50%">
                     <div class="carousel-caption">
-                        <h3>First slide labe</h3>
-                        <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                        <h3>Belle maison spacieux</h3>
+                        <p>Avec un beau jardin</p>
                     </div>
                 </ng-template>
                 <ng-template ngbSlide>
                     <img class="imgCarousel" src="../../content/images/maisonCarousel2.jpg"  height="70%" width="70%" alt="Random second slide">
                     <div class="carousel-caption">
-                        <h3>Second slide label</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                        <h3></h3>
+                        <p>Avec des baies vitrées et un balcon</p>
                     </div>
                 </ng-template>
                 <ng-template ngbSlide>
                     <img class="imgCarousel" src="../../content/images/maisonCarousel3.jpg"  height="70%" width="70%" alt="Random third slide">
                     <div class="carousel-caption">
-                        <h3>Third slide label</h3>
-                        <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+                        <h3>Une belle salle à manger</h3>
+                        <p></p>
                     </div>
                 </ng-template>
             </ngb-carousel>

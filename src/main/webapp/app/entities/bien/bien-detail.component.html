@@ -49,7 +49,7 @@
                     </dd>
                 </dl>
             </div>
-            <div class="col-2">
+            <div class="col-2" *jhiHasAnyAuthority="'ROLE_ADMIN'" >
                 <dt><span>Client</span></dt>
                 <dd>
                     <div *ngIf="bien.client"> Id :
@@ -66,13 +66,13 @@
             class="btn btn-info">
         <span class="fa fa-arrow-left"></span>&nbsp;<span> Back</span>
     </button>
-    <button type="button"
+    <button *jhiHasAnyAuthority="'ROLE_ADMIN'"  type="button"
             [routerLink]="['/', { outlets: { popup: 'bien/'+ bien.id + '/edit'} }]"
             replaceUrl="true"
             queryParamsHandling="merge"
             class="btn btn-primary">
         <span class="fa fa-pencil"></span>&nbsp;<span> Edit</span>
-    </button
+    </button>
 
 
 </div>

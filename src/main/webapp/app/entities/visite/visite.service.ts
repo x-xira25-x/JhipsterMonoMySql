@@ -29,6 +29,14 @@ export class VisiteService {
             .map((res: EntityResponseType) => this.convertResponse(res));
     }
 
+    updateSansConvert(visite: Visite): Observable<EntityResponseType> {
+        console.log('update avant convert'+ visite);
+        const copy = visite;
+        console.log('update'+ visite);
+        return this.http.put<Visite>(this.resourceUrl, copy, { observe: 'response' })
+            .map((res: EntityResponseType) => this.convertResponse(res));
+    }
+
     find(id: number): Observable<EntityResponseType> {
         return this.http.get<Visite>(`${this.resourceUrl}/${id}`, { observe: 'response'})
             .map((res: EntityResponseType) => this.convertResponse(res));
@@ -37,6 +45,18 @@ export class VisiteService {
     query(req?: any): Observable<HttpResponse<Visite[]>> {
         const options = createRequestOption(req);
         return this.http.get<Visite[]>(this.resourceUrl, { params: options, observe: 'response' })
+            .map((res: HttpResponse<Visite[]>) => this.convertArrayResponse(res));
+    }
+    queryVisiteBien(idBien:number): Observable<HttpResponse<Visite[]>> {
+        const options = createRequestOption(idBien);
+        return this.http.get<Visite[]>(`http://localhost:8080/api/biens/${idBien}/visites`, { params: options, observe: 'response' })
+            .map((res: HttpResponse<Visite[]>) => this.convertArrayResponse(res));
+    }
+
+
+    queryByclient(login:any): Observable<HttpResponse<Visite[]>> {
+        const options = createRequestOption(login);
+        return this.http.get<Visite[]>(`http://localhost:8080/api/visitesBy/${login}`, { params: options, observe: 'response' })
             .map((res: HttpResponse<Visite[]>) => this.convertArrayResponse(res));
     }
 

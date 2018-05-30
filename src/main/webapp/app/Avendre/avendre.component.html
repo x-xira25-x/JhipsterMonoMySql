@@ -1,81 +1,98 @@
 <div>
 
     <h2>
-        <span>Biens</span>
-
+        <span>Tous les biens à vendre</span>
     </h2>
+    <div class="alert alert-info" role="alert">
+       Pour obtenir plus de détails, veuillez cliquer sur le numéro ID
+    </div>
+    <div>
+
+        filtre
+    </div>
     <jhi-alert></jhi-alert>
     <div class="row">
     </div>
     <br/>
-    <div class="table-responsive" *ngIf="biens">
+  <!--  <div class="table-responsive" *ngIf="biens">
         <table class="table table-striped">
             <thead>
             <tr>
                 <th><span>ID</span></th>
-                <th><span>Adresse</span></th>
-                <th><span>Npa</span></th>
-                <th><span>Localite</span></th>
-                <th><span>Annee Construction</span></th>
-                <th><span>Nb Pieces</span></th>
-                <th><span>Description</span></th>
-                <th><span>Photo</span></th>
                 <th><span>Prix</span></th>
+                <th><span>Photo</span></th>
                 <th><span>Type Bien</span></th>
-                <!--<th><span>Client</span></th>-->
+                <th><span>Adresse</span></th>
+                <th><span>NPA</span></th>
+                <th><span>Localité</span></th>
+                <th><span>Année de construction</span></th>
+                <th><span>Nb Pièces</span></th>
+                <th><span>Description</span></th>
+
+                <th></th>
+                &lt;!&ndash;<th><span>Client</span></th>&ndash;&gt;
                 <th></th>
             </tr>
             </thead>
             <tbody>
             <tr *ngFor="let bien of biens ;trackBy: trackId">
                 <td><a [routerLink]="['../bien', bien.id ]">{{bien.id}}</a></td>
+                <td>{{bien.prix| number : fractionSize}} CHF</td>
+                <td>
+                    <a *ngIf="bien.photo" >
+                        <img [src]="'data:' + bien.photoContentType + ';base64,' + bien.photo" style="max-height: 50px;" alt="bien image"/>
+                    </a>
+                </td>
+
+                <td>{{bien.typeBien?.nom}}</td>
                 <td>{{bien.adresse}}</td>
                 <td>{{bien.npa}}</td>
                 <td>{{bien.localite}}</td>
-                <td>{{bien.anneeConstruction | date:'yyyy'}}</td>
+                <td  class="text-center">{{bien.anneeConstruction | date:'yyyy'}}</td>
                 <td>{{bien.nbPieces}}</td>
                 <td>{{bien.description}}</td>
-                <td>
-                    <a *ngIf="bien.photo" (click)="openFile(bien.photoContentType, bien.photo)">
-                        <img [src]="'data:' + bien.photoContentType + ';base64,' + bien.photo" style="max-height: 30px;" alt="bien image"/>
-                    </a>
+
+                <td *jhiHasAnyAuthority="'ROLE_ADMIN'">
+                <button type="submit"
+                        [routerLink]="['/', { outlets: { popup: 'bienVisite/'+ bien.id + '/visite'} }]"
+                        replaceUrl="true"
+                        queryParamsHandling="merge"
+                        class="btn btn-info btn-sm">
+                    <span class="fa fa-address-card-o"></span>
+                    <span class="d-none d-md-inline">visite</span>
+                </button>
                 </td>
-                <td>{{bien.prix| number : fractionSize}} CHF</td>
-                <td>{{bien.typeBien?.nom}}</td>
-                <!--
+                &lt;!&ndash;
                 <td>
                     <div *ngIf="bien.client">
                         <a [routerLink]="['../client', bien.client?.id ]" >{{bien.client?.id}}</a>
                     </div>
                 </td>
-                <td class="text-right">
-                    <div class="btn-group flex-btn-group-container">
-                        <button type="submit"
-                                [routerLink]="['../bien', bien.id ]"
-                                class="btn btn-info btn-sm">
-                            <span class="fa fa-eye"></span>
-                            <span class="d-none d-md-inline">View</span>
-                        </button>
-                        <button type="submit"
-                                [routerLink]="['/', { outlets: { popup: 'bien/'+ bien.id + '/edit'} }]"
-                                replaceUrl="true"
-                                queryParamsHandling="merge"
-                                class="btn btn-primary btn-sm">
-                            <span class="fa fa-pencil"></span>
-                            <span class="d-none d-md-inline">Edit</span>
-                        </button>
-                        <button type="submit"
-                                [routerLink]="['/', { outlets: { popup: 'bien/'+ bien.id + '/delete'} }]"
-                                replaceUrl="true"
-                                queryParamsHandling="merge"
-                                class="btn btn-danger btn-sm">
-                            <span class="fa fa-remove"></span>
-                            <span class="d-none d-md-inline">Delete</span>
-                        </button>
-                    </div>
-                </td>-->
+              &ndash;&gt;
             </tr>
             </tbody>
         </table>
-    </div>
+    </div>-->
+
+    <div class="row"*ngIf="biens">
+        <div class="col-sm-3"*ngFor="let bien of biens ;trackBy: trackId">
+            <div  >
+                <div  class="card" style="width: 18rem;">
+                    <a *ngIf="bien.photo" >
+                        <img  class="card-img-top" [src]="'data:' + bien.photoContentType + ';base64,' + bien.photo" style="max-height: 170px;"alt="Card image cap"/>
+                    </a>
+
+                    <div class="card-body">
+                        <h5 class="card-title"> {{bien.prix| number : fractionSize}} CHF</h5>
+                        <p>Référence : {{bien.id}}</p>
+                        <h6>{{bien.typeBien?.nom}}</h6>
+                        <p class="card-text">{{bien.description}}</p>
+                        <a [routerLink]="['../bien', bien.id ]"class="btn btn-primary">Détail</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        </div>
+</div>
 </div>
