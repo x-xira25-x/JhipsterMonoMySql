@@ -5,6 +5,7 @@ import {JhiAlertService, JhiDataUtils, JhiEventManager} from "ng-jhipster";
 import {BienService} from "../entities/bien/bien.service";
 import {Principal} from "../shared";
 import {Subscription} from "rxjs/Subscription";
+import {TypeBien, TypeBienService} from "../entities/type-bien";
 
 @Component({
   selector: 'jhi-avendre',
@@ -15,13 +16,17 @@ export class AvendreComponent implements OnInit {
     biens: Bien[];
     currentAccount: any;
     eventSubscriber: Subscription;
+    bien: Bien;
+    typebiens: TypeBien[];
+    typebien : TypeBien;
 
   constructor(
       private bienService: BienService,
       private jhiAlertService: JhiAlertService,
       private dataUtils: JhiDataUtils,
       private eventManager: JhiEventManager,
-      private principal: Principal
+      private principal: Principal,
+    private typeBienService: TypeBienService,
   ) {
 
   }
@@ -33,6 +38,7 @@ export class AvendreComponent implements OnInit {
             },
             (res: HttpErrorResponse) => this.onError(res.message)
         );
+        console.log(this.bien)
     }
     ngOnInit() {
         this.loadAll();
@@ -40,7 +46,11 @@ export class AvendreComponent implements OnInit {
         this.principal.identity().then((account) => {
             this.currentAccount = account;
         });
+        this.typeBienService.query()
+            .subscribe((res: HttpResponse<TypeBien[]>) => { this.typebiens = res.body; }, (res: HttpErrorResponse) => this.onError(res.message));
+       console.log("typeiben")
         this.registerChangeInBiens();
+
     }
     registerChangeInBiens() {
         this.eventSubscriber = this.eventManager.subscribe('bienListModification', (response) => this.loadAll());
@@ -53,5 +63,15 @@ export class AvendreComponent implements OnInit {
     private onError(error) {
         this.jhiAlertService.error(error.message, null, null);
     }
+    trackTypeBienByNom(index: number, item: TypeBien) {
+        return item.nom;
+    }
+    filtre(){
+      console.log("filtre")
+    console.log(this.typebiens)
+        console.log(this.typebien)
+        console.log(this.bien)
+    }
+
 
 }

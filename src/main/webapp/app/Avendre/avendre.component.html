@@ -3,13 +3,30 @@
     <h2>
         <span>Tous les biens à vendre</span>
     </h2>
-    <div class="alert alert-info" role="alert">
+ <!--   <div class="alert alert-info" role="alert">
        Pour obtenir plus de détails, veuillez cliquer sur le numéro ID
     </div>
-    <div>
+-->
 
-        filtre
-    </div>
+<div class="col-2">
+    <form>
+       Filtre
+
+        <div class="form-group" >
+            <label class="form-control-label" for="field_typeBien">Type Bien</label>
+            <select class="form-control" id="field_typeBien" name="typeBien"   [(ngModel)]="typeBien">
+                <option [ngValue]="null"></option>
+                <option [ngValue]="typeBienOption.nom === typeBien?.nom ? typeBien : typeBienOption" *ngFor="let typeBienOption of typebiens; trackBy: trackTypeBienByNom">{{typeBienOption.nom}}</option>
+            </select>
+        </div>
+
+        <button type="submit" (click)="filtre()" class="btn btn-primary">
+            <span ></span>&nbsp;<span>Continuer</span>
+        </button>
+
+    </form>
+</div>
+
     <jhi-alert></jhi-alert>
     <div class="row">
     </div>
@@ -88,11 +105,19 @@
                         <h6>{{bien.typeBien?.nom}}</h6>
                         <p class="card-text">{{bien.description}}</p>
                         <a [routerLink]="['../bien', bien.id ]"class="btn btn-primary">Détail</a>
+
+                            <a *jhiHasAnyAuthority="'ROLE_USER'" 
+                                    [routerLink]="['/', { outlets: { popup: 'bienVisite/'+ bien.id + '/visite'} }]"
+                                    replaceUrl="true"
+
+                                    class="btn btn-info ">
+                                <span class="fa fa-address-card-o"></span>
+                            visite
+                            </a>
                     </div>
                 </div>
             </div>
         </div>
-
-        </div>
+    </div>
 </div>
 </div>
