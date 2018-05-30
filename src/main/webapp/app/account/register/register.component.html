@@ -1,26 +1,26 @@
 <div>
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <h1>Registration</h1>
+            <h1>Inscription</h1>
 
             <div class="alert alert-success" *ngIf="success">
-                <strong>Registration saved!</strong> Please check your email for confirmation.
+                <strong>Inscription enregistrée!</strong>
             </div>
 
             <div class="alert alert-danger" *ngIf="error">
-                <strong>Registration failed!</strong> Please try again later.
+                <strong>Inscription échouée</strong> Merci d'essayer plus tard
             </div>
 
             <div class="alert alert-danger" *ngIf="errorUserExists">
-                <strong>Login name already registered!</strong> Please choose another one.
+                <strong>Le login est déjà utilisé</strong> Merci d'en choisir un autre
             </div>
 
             <div class="alert alert-danger" *ngIf="errorEmailExists">
-                <strong>Email is already in use!</strong> Please choose another one.
+                <strong>Email déjà utilisé</strong> Merci d'en choisir un autre
             </div>
 
             <div class="alert alert-danger" *ngIf="doNotMatch">
-                The password and its confirmation do not match!
+                Le mot de passe et la confirmation ne sont pas les memes
             </div>
         </div>
     </div>
@@ -28,8 +28,8 @@
         <div class="col-md-8">
             <form name="form" role="form" (ngSubmit)="register()" #registerForm="ngForm"  *ngIf="!success">
                 <div class="form-group">
-                    <label class="form-control-label" for="login">Username</label>
-                    <input type="text" class="form-control" [(ngModel)]="registerAccount.login" id="login" name="login" #login="ngModel" placeholder="Your username"
+                    <label class="form-control-label" for="login">Pseudo</label>
+                    <input type="text" class="form-control" [(ngModel)]="registerAccount.login" id="login" name="login" #login="ngModel" placeholder="Ton pseudo"
                             required minlength="1" maxlength="50" pattern="^[_'.@A-Za-z0-9-]*$">
                     <div *ngIf="login.dirty && login.invalid">
                         <small class="form-text text-danger" *ngIf="login.errors.required">
@@ -51,7 +51,7 @@
                 </div>
                 <div class="form-group">
                     <label class="form-control-label" for="email">Email</label>
-                    <input type="email" class="form-control" id="email" name="email" #email="ngModel" placeholder="Your email"
+                    <input type="email" class="form-control" id="email" name="email" #email="ngModel" placeholder="Ton email"
                             [(ngModel)]="registerAccount.email" minlength=5 maxlength=100 email required>
                     <div *ngIf="email.dirty && email.invalid">
                         <small class="form-text text-danger" *ngIf="email.errors.required"
@@ -73,13 +73,13 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="form-control-label" for="password">New password</label>
-                    <input type="password" class="form-control" id="password" name="password" #password="ngModel" placeholder="New password"
+                    <label class="form-control-label" for="password">Nouveau mot de passe</label>
+                    <input type="password" class="form-control" id="password" name="password" #password="ngModel" placeholder="Nouveau mot de passe"
                             [(ngModel)]="registerAccount.password" minlength=4 maxlength=50 required>
                     <div *ngIf="password.dirty && password.invalid">
                         <small class="form-text text-danger" *ngIf="password.errors.required"
                                >
-                            Your password is required.
+                           Tom mot de passe est obligatoire
                         </small>
                         <small class="form-text text-danger" *ngIf="password.errors.minlength"
                                >
@@ -93,8 +93,8 @@
                     <jhi-password-strength-bar [passwordToCheck]="registerAccount.password"></jhi-password-strength-bar>
                 </div>
                 <div class="form-group">
-                    <label class="form-control-label" for="confirmPassword">New password confirmation</label>
-                    <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" #confirmPasswordInput="ngModel" placeholder="Confirm the new password"
+                    <label class="form-control-label" for="confirmPassword">Confirmation du nouveau mot de passe</label>
+                    <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" #confirmPasswordInput="ngModel" placeholder="Confirme ton nouveau mot de passe"
                             [(ngModel)]="confirmPassword" minlength=4 maxlength=50 required>
                     <div *ngIf="confirmPasswordInput.dirty && confirmPasswordInput.invalid">
                         <small class="form-text text-danger" *ngIf="confirmPasswordInput.errors.required"
@@ -151,18 +151,18 @@
                            [(ngModel)]="client.adresse" required />
                 </div>
                 <div class="form-group">
-                    <label class="form-control-label" for="field_npa">Npa</label>
-                    <input type="text" class="form-control" name="npa" id="field_npa"
+                    <label class="form-control-label" for="field_npa">NPA</label>
+                    <input type="text" class="form-control" name="npa" id="field_npa" placeholder="1000"
                            [(ngModel)]="client.npa" required pattern="[0-9]{4}"/>
                 </div>
 
                 <div class="form-group">
-                    <label class="form-control-label" for="field_localite">Localite</label>
+                    <label class="form-control-label" for="field_localite">Localité</label>
                     <input type="text" class="form-control" name="localite" id="field_localite"
                            [(ngModel)]="client.localite" required/>
                 </div>
                 <div class="form-group">
-                    <label class="form-control-label" for="field_numTel">Num Tel</label>
+                    <label class="form-control-label" for="field_numTel">Numéro de téléphone</label>
                     <input type="text" class="form-control" name="numTel" id="field_numTel" placeholder="033 444 55 66 ou 0323334455"
                            [(ngModel)]="client.numTel"  required pattern="0[1-9][0-9]([/ ]?[0-9]{3})([/ ]?[0-9]{2}){2}"/>
                     <div [hidden]="!(registerForm.controls.numTel?.dirty && registerForm.controls.numTel?.invalid)">
@@ -190,13 +190,13 @@
                 </div>
 
 
-                <button type="submit" [disabled]="registerForm.form.invalid" class="btn btn-primary">Register</button>
+                <button type="submit" [disabled]="registerForm.form.invalid" class="btn btn-primary">Enregistrer</button>
             </form>
             <p></p>
-            <div class="alert alert-warning">
+            <!--<div class="alert alert-warning">
                 <span>If you want to </span>
                 <a class="alert-link" (click)="openLogin()">sign in</a><span>, you can try the default accounts:<br/>- Administrator (login="admin" and password="admin") <br/>- User (login="user" and password="user").</span>
-            </div>
+            </div>-->
         </div>
     </div>
 </div>

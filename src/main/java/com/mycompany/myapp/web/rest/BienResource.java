@@ -10,6 +10,7 @@ import com.mycompany.myapp.web.rest.util.HeaderUtil;
 import io.github.jhipster.web.util.ResponseUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.data.repository.query.Param;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -108,6 +109,14 @@ public class BienResource {
         log.debug("REST request to get all Biens");
         return bienRepository.findAll();
         }
+    @GetMapping("/biens/{idTypeBien}/typeBien")
+    @Timed
+    public List<Bien> findAllBienByTypeBien(@PathVariable("idTypeBien")Long idTypeBien){
+
+        log.debug("REST request to get all visite of Biens");
+
+        return bienRepository.findAllBienByTypeBien(idTypeBien);
+    }
 
     /**
      * GET  /biens/:id : get the "id" bien.

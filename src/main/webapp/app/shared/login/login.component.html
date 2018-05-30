@@ -1,5 +1,5 @@
 <div class="modal-header">
-    <h4 class="modal-title">Sign in</h4>
+    <h4 class="modal-title">Se connecter</h4>
     <button aria-label="Close" data-dismiss="modal" class="close" type="button" (click)="activeModal.dismiss('closed')"><span aria-hidden="true">x</span>
     </button>
 </div>
@@ -14,29 +14,29 @@
             <form class="form" role="form" (ngSubmit)="login()">
                 <div class="form-group">
                     <label for="username">Login</label>
-                    <input type="text" class="form-control" name="username" id="username" placeholder="Your username"
+                    <input type="text" class="form-control" name="username" id="username" placeholder="Ton pseudo"
                     [(ngModel)]="username">
                 </div>
                 <div class="form-group">
-                    <label for="password">Password</label>
-                    <input type="password" class="form-control" name="password" id="password" placeholder="Your password"
+                    <label for="password">Mot de passe</label>
+                    <input type="password" class="form-control" name="password" id="password" placeholder="Ton mot de passe"
                            [(ngModel)]="password">
                 </div>
                 <div class="form-check">
                     <label class="form-check-label" for="rememberMe">
                         <input class="form-check-input" type="checkbox" name="rememberMe" id="rememberMe" [(ngModel)]="rememberMe" checked>
-                        <span>Remember me</span>
+                        <span>Se souvenir de moi</span>
                     </label>
                 </div>
-                <button type="submit" class="btn btn-primary">Sign in</button>
+                <button type="submit" class="btn btn-primary">Connexion</button>
             </form>
             <p></p>
             <div class="alert alert-warning">
-                <a class="alert-link" (click)="requestResetPassword()">Did you forget your password?</a>
+                <a class="alert-link" (click)="requestResetPassword()">As-tu oublié ton mot de passe?</a>
             </div>
             <div class="alert alert-warning">
-                <span>You don't have an account yet?</span>
-                <a class="alert-link" (click)="register()">Register a new account</a>
+                <span>Tu n'as pas encore de compte ?</span>
+                <a class="alert-link" (click)="register()">Enregistrer un nouveau compte</a>
             </div>
         </div>
     </div>
