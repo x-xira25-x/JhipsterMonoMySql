@@ -22,6 +22,7 @@
                 <th><span>Photo</span></th>
                 <th><span>Prix</span></th>
                 <th><span>Type Bien</span></th>
+                <th></th>
                 <!--<th><span>Client</span></th>-->
                 <th></th>
             </tr>
@@ -42,6 +43,7 @@
                 </td>
                 <td>{{bien.prix| number : fractionSize}} CHF</td>
                 <td>{{bien.typeBien?.nom}}</td>
+                <td *jhiHasAnyAuthority="'ROLE_ADMIN'">
                 <button type="submit"
                         [routerLink]="['/', { outlets: { popup: 'bienVisite/'+ bien.id + '/visite'} }]"
                         replaceUrl="true"
@@ -50,6 +52,7 @@
                     <span class="fa fa-address-card-o"></span>
                     <span class="d-none d-md-inline">visite</span>
                 </button>
+                </td>
                 <!--
                 <td>
                     <div *ngIf="bien.client">
