@@ -11,11 +11,7 @@
                 <span *ngIf="account"> Vous êtes connecté en tant que "{{account.login}}". </span>
 
             </div>
-            <div [ngSwitch]="isAuthenticated()"  *ngSwitchCase="true">
-                <span> Vous avez la possibilité de vous inscrire à une visite</span>
-                <br>
-                <br>
-            </div>
+
             <div>
                 <p>Depuis 2000 notre agence immobilière oeuvre en Suisse.</p>
 
@@ -24,7 +20,12 @@
                 <p> Au delà de l'achat/vente d'un objet immobilier, nous sommes à même de vous proposer nos services pour l'estimation de votre immeuble
                 et vous conseiller sur les aspects fiscaux de toute situation..
                 </p>
-                <p>Inscrivez-vous afin de pouvoir effectuer des visites rapidement sur des biens qui vous intéresse.</p>
+                <p [ngSwitch]="isAuthenticated()"  *ngSwitchCase="false" >Inscrivez-vous afin de pouvoir effectuer des visites rapidement sur des biens qui vous intéresse.</p>
+            </div>
+            <div [ngSwitch]="isAuthenticated()"  *ngSwitchCase="true">
+                <span> Vous avez la possibilité de vous inscrire à une visite</span>
+                <br>
+                <br>
             </div>
             <div class="alert alert-secondary" *ngSwitchCase="false">
                 <a class="btn btn-light btn-rounded" routerLink="register"> Inscription</a>
