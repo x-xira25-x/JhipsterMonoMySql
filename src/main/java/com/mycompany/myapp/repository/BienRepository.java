@@ -22,4 +22,6 @@ public interface BienRepository extends JpaRepository<Bien, Long> {
     @Query ("select distinct visite from  Visite visite    left join fetch visite.clients where visite.bien.id =:idBien")
     List<Visite>findAllBiensVisites(@Param("idBien") Long idBien);
 
+    @Query("select bien from Bien bien where bien.typeBien.id =:idTypeBien")
+    List<Bien> findAllBienByTypeBien(@Param("idTypeBien")Long idTypeBien);
 }
