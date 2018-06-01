@@ -8,7 +8,7 @@ export const presentationRoute: Routes = [
         component: PresentationComponent,
         data: {
             // authorities: ['ROLE_USER'],
-            pageTitle: 'presentation'
+            pageTitle: 'Présentation'
         },
 
     }
