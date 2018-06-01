@@ -4,7 +4,13 @@
             (click)="clear()">&times;</button>
 </div>
 <div class="modal-body">
+     <div class="alert alert-success" *ngIf="success">
+        <strong>Inscription enregistrée!</strong>
+    </div>
 
+    <div class="alert alert-danger" *ngIf="error">
+        <strong>Inscription échouée</strong> Merci d'essayer plus tard
+    </div>
 
     <div class="table-responsive"*ngIf="visite" >
         <table class="table table-striped">
@@ -15,7 +21,7 @@
                 <th><span>Date Fin</span></th>
                 <th><span>Vendeur</span></th>
                 <th><span>Bien</span></th>
-                <th><span>Client</span></th>
+                <th *jhiHasAnyAuthority="'ROLE_ADMIN'"><span>Client</span></th>
                 <th></th>
             </tr>
             </thead>
@@ -34,7 +40,7 @@
                         <a [routerLink]="['../bien', visite.bien?.id ]" >{{visite.bien?.id}}</a>
                     </div>
                 </td>
-                <td>
+                <td *jhiHasAnyAuthority="'ROLE_ADMIN'">
                     <span *ngFor="let client of visite.clients; let last = last">
                             <a class="form-control-static" [routerLink]="['../client', client?.id ]">{{client.id}}</a>{{last ? '' : ', '}}
                         </span>
