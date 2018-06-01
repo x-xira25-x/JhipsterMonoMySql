@@ -26,8 +26,8 @@
                 <td>{{visite.dateDebut | date:'mediumDate'}}</td>
                 <td>{{visite.dateFin | date:'mediumDate'}}</td>
                 <td>
-                    <div *ngIf="visite.vendeur">
-                        <a [routerLink]="['../vendeur', visite.vendeur?.id ]" >{{visite.vendeur?.id}}</a>
+                    <div *ngIf="visite.agentImmobilier">
+                        <a [routerLink]="['../vendeur', visite.agentImmobilier?.id ]" >{{visite.agentImmobilier?.nom}} {{visite.agentImmobilier.prenom}}</a>
                     </div>
                 </td>
                 <td>
@@ -35,11 +35,11 @@
                         <a [routerLink]="['../bien', visite.bien?.id ]" >{{visite.bien?.id}}</a>
                     </div>
                 </td>
-                <td>
+                <!--<td>
                     <div *ngIf="visite.client">
                         <a [routerLink]="['../client', visite.client?.id ]" >{{visite.client?.id}}</a>
                     </div>
-                </td>
+                </td>-->
                 <td class="text-right">
                     <!--ajout bouton suppression du client à la viste-->
                     <button *ngIf="visite.client" type="submit"
