@@ -22,11 +22,11 @@
             <tbody>
             <tr *ngFor="let visite of visite ;trackBy: trackId">
                 <td><a [routerLink]="['../visite', visite.id ]">{{visite.id}}</a></td>
-                <td>{{visite.dateDebut | date:'mediumDate'}}</td>
-                <td>{{visite.dateFin | date:'mediumDate'}}</td>
+                <td>{{visite.dateDebut | date:'h:mm a MM/d/yyyy'}}</td>
+                <td>{{visite.dateFin | date:'h:mm a MM/d/yyyy '}}</td>
                 <td>
                     <div *ngIf="visite.agentImmobilier">
-                        <a [routerLink]="['../vendeur', visite.agentImmobilier?.id ]" >{{visite.agentImmobilier.id}}</a>
+                        <a [routerLink]="['../vendeur', visite.agentImmobilier?.id ]" >{{visite.agentImmobilier.nom}} {{visite.agentImmobilier.prenom}}</a>
                     </div>
                 </td>
                 <td>
