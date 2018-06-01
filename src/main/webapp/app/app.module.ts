@@ -30,6 +30,8 @@ import {
 import {JhipsterTestMonoEntityModule} from './entities/entity.module';
 import { PresentationComponent } from './presentation/presentation.component';
 import {PresentationModule} from './presentation/presentation.module';
+import { VisitesClientComponent } from './visites-client/visites-client.component';
+import {VisitesClientModule} from "./visites-client/visites-client.module";
 
 @NgModule({
     imports: [
@@ -43,6 +45,7 @@ import {PresentationModule} from './presentation/presentation.module';
         JhipsterTestMonoEntityModule,
         AvendreModule,
         PresentationModule,
+        VisitesClientModule,
         // jhipster-needle-angular-add-module JHipster will add new module here
     ],
     declarations: [
@@ -51,7 +54,6 @@ import {PresentationModule} from './presentation/presentation.module';
         ErrorComponent,
         PageRibbonComponent,
         FooterComponent,
-
     ],
     providers: [
         ProfileService,
