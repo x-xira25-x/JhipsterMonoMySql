@@ -29,6 +29,7 @@ export class AvendreVisiteDialogComponent implements OnInit {
     settingsAccount: any;
     etatbiens: EtatBien[];
     visite: Visite;
+    success: boolean;
 
     constructor(
         public activeModal: NgbActiveModal,
@@ -45,6 +46,8 @@ export class AvendreVisiteDialogComponent implements OnInit {
     ) {
     }
     ngOnInit() {
+        this.success = false;
+        console.log(this.success);
         this.isSaving = false;
         this.typeBienService.query()
             .subscribe((res: HttpResponse<TypeBien[]>) => { this.typebiens = res.body; }, (res: HttpErrorResponse) => this.onError(res.message));
@@ -75,10 +78,13 @@ export class AvendreVisiteDialogComponent implements OnInit {
                                 (res: HttpResponse<Visite>) => {
                                     this.visite = res.body;
                                     console.log('update visite');
+                                    console.log(this.success);
+
                                 },
                                 (res: HttpErrorResponse) => this.onError(res.message)
                             );
-                            window.location.reload(false);
+                           // window.location.reload(false);
+                            this.success = true;
                         });
                     /*   this.bienService.ajoutClientVisite(idVisite,this.client.id).subscribe(
                            (res: HttpResponse<Visite>) => {
