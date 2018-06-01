@@ -6,8 +6,8 @@ import { JhiEventManager, JhiDataUtils } from 'ng-jhipster';
 
 import { Bien } from './bien.model';
 import { BienService } from './bien.service';
-import {Client} from "../client";
-import {ClientService} from "../client/client.service";
+import {Client} from '../client';
+import {ClientService} from '../client/client.service';
 
 @Component({
     selector: 'jhi-bien-detail',
@@ -16,7 +16,7 @@ import {ClientService} from "../client/client.service";
 export class BienDetailComponent implements OnInit, OnDestroy {
 
     bien: Bien;
-    client:Client;
+    client: Client;
     private subscription: Subscription;
     private eventSubscriber: Subscription;
 

@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import {Bien} from "../entities/bien/bien.model";
-import {HttpErrorResponse, HttpResponse} from "@angular/common/http";
-import {JhiAlertService, JhiDataUtils, JhiEventManager} from "ng-jhipster";
-import {BienService} from "../entities/bien/bien.service";
-import {Principal} from "../shared";
-import {Subscription} from "rxjs/Subscription";
-import {TypeBien, TypeBienService} from "../entities/type-bien";
-import {AvendreVisiteService} from "./avendre-visite.service";
+import {Bien} from '../entities/bien/bien.model';
+import {HttpErrorResponse, HttpResponse} from '@angular/common/http';
+import {JhiAlertService, JhiDataUtils, JhiEventManager} from 'ng-jhipster';
+import {BienService} from '../entities/bien/bien.service';
+import {Principal} from '../shared';
+import {Subscription} from 'rxjs/Subscription';
+import {TypeBien, TypeBienService} from '../entities/type-bien';
+import {AvendreVisiteService} from './avendre-visite.service';
 
 @Component({
   selector: 'jhi-avendre',
@@ -19,7 +19,7 @@ export class AvendreComponent implements OnInit {
     eventSubscriber: Subscription;
     bien: Bien;
     typebiens: TypeBien[];
-    typebien : TypeBien;
+    typebien: TypeBien;
 
   constructor(
       private bienService: BienService,
@@ -27,8 +27,8 @@ export class AvendreComponent implements OnInit {
       private dataUtils: JhiDataUtils,
       private eventManager: JhiEventManager,
       private principal: Principal,
-    private typeBienService: TypeBienService,
-      private avendreVisiteService :AvendreVisiteService,
+      private typeBienService: TypeBienService,
+      private avendreVisiteService: AvendreVisiteService,
   ) {
 
   }
@@ -40,17 +40,16 @@ export class AvendreComponent implements OnInit {
             },
             (res: HttpErrorResponse) => this.onError(res.message)
         );
-        console.log(this.bien)
+        console.log(this.bien);
     }
     ngOnInit() {
         this.loadAll();
-        console.log("load")
         this.principal.identity().then((account) => {
             this.currentAccount = account;
         });
         this.typeBienService.query()
             .subscribe((res: HttpResponse<TypeBien[]>) => { this.typebiens = res.body; }, (res: HttpErrorResponse) => this.onError(res.message));
-       console.log("typeiben")
+       console.log('typeiben');
         this.registerChangeInBiens();
 
     }
@@ -69,7 +68,6 @@ export class AvendreComponent implements OnInit {
         return item.nom;
     }
     filtre() {
-        console.log("filtre")
         this.avendreVisiteService.findBienByType(this.typebien.id).subscribe(
             (res: HttpResponse<Bien[]>) => {
                 this.biens = res.body;
@@ -77,6 +75,5 @@ export class AvendreComponent implements OnInit {
             (res: HttpErrorResponse) => this.onError(res.message)
         );
     }
-
 
 }

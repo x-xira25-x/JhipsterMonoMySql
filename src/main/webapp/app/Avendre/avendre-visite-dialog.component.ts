@@ -1,18 +1,18 @@
 import {Component, ElementRef, OnDestroy, OnInit} from '@angular/core';
-import {ActivatedRoute} from "@angular/router";
-import {BienPopupService} from "../entities/bien/bien-popup.service";
-import {BienDialogComponent, BienPopupComponent} from "../entities/bien/bien-dialog.component";
-import {AvendreVisitePopupService} from "./avendre-visite-popup.service";
-import {JhiAlertService, JhiDataUtils, JhiEventManager} from "ng-jhipster";
-import {Client, ClientService} from "../entities/client";
-import {BienService} from "../entities/bien/bien.service";
-import {NgbActiveModal} from "@ng-bootstrap/ng-bootstrap";
-import {TypeBien, TypeBienService} from "../entities/type-bien";
-import {EtatBien, EtatBienService} from "../entities/etat-bien";
-import {HttpErrorResponse, HttpResponse} from "@angular/common/http";
-import {Bien} from "../entities/bien/bien.model";
-import {Principal} from "../shared";
-import {Visite, VisiteService} from "../entities/visite";
+import {ActivatedRoute} from '@angular/router';
+import {BienPopupService} from '../entities/bien/bien-popup.service';
+import {BienDialogComponent, BienPopupComponent} from '../entities/bien/bien-dialog.component';
+import {AvendreVisitePopupService} from './avendre-visite-popup.service';
+import {JhiAlertService, JhiDataUtils, JhiEventManager} from 'ng-jhipster';
+import {Client, ClientService} from '../entities/client';
+import {BienService} from '../entities/bien/bien.service';
+import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
+import {TypeBien, TypeBienService} from '../entities/type-bien';
+import {EtatBien, EtatBienService} from '../entities/etat-bien';
+import {HttpErrorResponse, HttpResponse} from '@angular/common/http';
+import {Bien} from '../entities/bien/bien.model';
+import {Principal} from '../shared';
+import {Visite, VisiteService} from '../entities/visite';
 
 @Component({
   selector: 'jhi-avendre-visite-dialog',
@@ -29,8 +29,6 @@ export class AvendreVisiteDialogComponent implements OnInit {
     settingsAccount: any;
     etatbiens: EtatBien[];
     visite: Visite;
-
-
 
     constructor(
         public activeModal: NgbActiveModal,
@@ -58,7 +56,7 @@ export class AvendreVisiteDialogComponent implements OnInit {
 
     inscription(idVisite) {
         console.log('entre dans la inscripton');
-        console.log("id visite" + idVisite)
+        console.log('id visite' + idVisite);
         // récupérer  client
         this.principal.identity().then((account) => {
             this.settingsAccount = this.copyAccount(account);
@@ -69,9 +67,9 @@ export class AvendreVisiteDialogComponent implements OnInit {
                     // essayer de récupérer la visite et mettre le client dedans
                     this.visiteService.find(idVisite).subscribe(
                         (res: HttpResponse<Visite>) => {
-                            this.visite=res.body;
-                         //ajout du client dans visite.client
-                            this.visite.clients[this.visite.clients.length+ 1]= this.client;
+                            this.visite = res.body;
+                         // ajout du client dans visite.client
+                            this.visite.clients[this.visite.clients.length + 1] = this.client;
 
                             this.visiteService.updateSansConvert(this.visite).subscribe(
                                 (res: HttpResponse<Visite>) => {
@@ -80,7 +78,7 @@ export class AvendreVisiteDialogComponent implements OnInit {
                                 },
                                 (res: HttpErrorResponse) => this.onError(res.message)
                             );
-                            window.location.reload(false)
+                            window.location.reload(false);
                         });
                     /*   this.bienService.ajoutClientVisite(idVisite,this.client.id).subscribe(
                            (res: HttpResponse<Visite>) => {
@@ -127,7 +125,6 @@ export class AvendreVisiteDialogComponent implements OnInit {
         this.jhiAlertService.error(error.message, null, null);
     }
 
-
 }
 
 @Component({
@@ -135,7 +132,6 @@ export class AvendreVisiteDialogComponent implements OnInit {
     template: ''
 })
     export class avendreVisitePopupComponent implements OnInit, OnDestroy {
-
 
     routeSub: any;
 
@@ -146,7 +142,7 @@ export class AvendreVisiteDialogComponent implements OnInit {
 
     ngOnInit() {
         this.routeSub = this.route.params.subscribe((params) => {
-            console.log("ngninit dans avendrevisitedialogcomponsent")
+            console.log('ngninit dans avendrevisitedialogcomponsent')
             if ( params['id'] ) {
                 this.avendreVisitePopupService
                     .open(AvendreVisiteDialogComponent as Component, params['id']);

@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
-import {Bien} from "../entities/bien/bien.model";
-import {EntityResponseType} from "../entities/bien/bien.service";
-import {Observable} from "rxjs/Observable";
-import {SERVER_API_URL} from "../app.constants";
-import {HttpClient, HttpResponse} from "@angular/common/http";
-import {JhiDateUtils} from "ng-jhipster";
-import {createRequestOption} from "../shared";
-import {Visite} from "../entities/visite/visite.model";
+import {Bien} from '../entities/bien/bien.model';
+import {EntityResponseType} from '../entities/bien/bien.service';
+import {Observable} from 'rxjs/Observable';
+import {SERVER_API_URL} from '../app.constants';
+import {HttpClient, HttpResponse} from '@angular/common/http';
+import {JhiDateUtils} from 'ng-jhipster';
+import {createRequestOption} from '../shared';
+import {Visite} from '../entities/visite/visite.model';
 
 @Injectable()
 export class AvendreVisiteService {

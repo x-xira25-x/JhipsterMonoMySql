@@ -1,11 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {avendrePopupRoute, avendreRoute} from "../Avendre/avendre.route";
-import {presentationRoute} from "./presentation.route";
-import {JhipsterTestMonoSharedModule} from "../shared";
-import {RouterModule} from "@angular/router";
-import {PresentationComponent} from "./presentation.component";
-
+import {presentationRoute} from './presentation.route';
+import {JhipsterTestMonoSharedModule} from '../shared';
+import {RouterModule} from '@angular/router';
+import {PresentationComponent} from './presentation.component';
 
 const ENTITY_STATES = [
     ...presentationRoute
@@ -24,6 +22,5 @@ const ENTITY_STATES = [
         PresentationComponent
         ]
 })
-
 
 export class PresentationModule { }

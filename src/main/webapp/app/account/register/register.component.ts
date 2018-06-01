@@ -4,9 +4,9 @@ import { NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 
 import { Register } from './register.service';
 import {LoginModalService, EMAIL_ALREADY_USED_TYPE, LOGIN_ALREADY_USED_TYPE, UserService} from '../../shared';
-import {Client, ClientService} from "../../entities/client";
-import {TypeClient, TypeClientService} from "../../entities/type-client";
-import {JhiAlertService} from "ng-jhipster";
+import {Client, ClientService} from '../../entities/client';
+import {TypeClient, TypeClientService} from '../../entities/type-client';
+import {JhiAlertService} from 'ng-jhipster';
 
 @Component({
     selector: 'jhi-register',
@@ -30,8 +30,8 @@ export class RegisterComponent implements OnInit, AfterViewInit {
         private registerService: Register,
         private elementRef: ElementRef,
         private renderer: Renderer,
-        private clientService : ClientService,
-        private userService : UserService,
+        private clientService: ClientService,
+        private userService: UserService,
         private typeClientService: TypeClientService,
         private jhiAlertService: JhiAlertService,
     ) {
@@ -60,21 +60,18 @@ export class RegisterComponent implements OnInit, AfterViewInit {
             this.registerAccount.langKey = 'en';
             this.registerService.save(this.registerAccount).subscribe(() => {
                 this.success = true;
-                //retourne le user
-                this.userService.find(this.registerAccount.login).subscribe(resp=>{
-                    console.log('essai '+ resp.body.login);
-                    this.client.user =resp.body;
-                    console.info('login client :' +this.client.user.login);
+                // retourne le user
+                this.userService.find(this.registerAccount.login).subscribe(resp => {
+                    console.log('essai ' + resp.body.login);
+                    this.client.user = resp.body;
+                    console.log('login client :' + this.client.user.login);
                     // appeler la sauvegarde du client
 
-                    console.info('appel create client');
-                    this.clientService.create(this.client).subscribe(resp=>{
+                    console.log('appel create client');
+                    this.clientService.create(this.client).subscribe( resp => {
                         console.log(resp.body.id);
-
                     });
                 });
-
-
             }, (response) => this.processError(response));
         }
     }
@@ -84,7 +81,6 @@ export class RegisterComponent implements OnInit, AfterViewInit {
     }
 
     trackTypeClientByNom(index: number, item: TypeClient) {
-        console.log("nom Type client")
         return item.nom;
     }
 

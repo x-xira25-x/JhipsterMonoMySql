@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
 import {Principal, AccountService, User} from '../../shared';
-import {Client, ClientService} from "../../entities/client";
-import {UserService} from "../../shared/user/user.service";
+import {Client, ClientService} from '../../entities/client';
+import {UserService} from '../../shared/user/user.service';
 
 @Component({
     selector: 'jhi-settings',
@@ -13,8 +13,8 @@ export class SettingsComponent implements OnInit {
     success: string;
     settingsAccount: any;
     languages: any[];
-    client:Client;
-    user : User[];
+    client: Client;
+    user: User[];
 
     constructor(
         private account: AccountService,
@@ -26,20 +26,14 @@ export class SettingsComponent implements OnInit {
 
     ngOnInit() {
         this.principal.identity().then((account) => {
-
-            console.log(this.copyAccount(account))
-
+            console.log(this.copyAccount(account));
             this.clientService.findIdClient(this.copyAccount(account).login).subscribe(resp => {
-                        this.client =resp.body
-                      account.valueOf().firstName= resp.body.nom
-                account.valueOf().lastName= resp.body.prenom
+                        this.client = resp.body;
+                      account.valueOf().firstName = resp.body.nom;
+                account.valueOf().lastName = resp.body.prenom;
                 this.settingsAccount = this.copyAccount(account);
-                        });
-
-
+            });
         });
-
-
 
     }
 
@@ -49,11 +43,11 @@ export class SettingsComponent implements OnInit {
             this.success = 'OK';
             this.principal.identity(true).then((account) => {
                 this.settingsAccount = this.copyAccount(account);
-                console.log(this.client.prenom)
-                this.client.nom = account.valueOf().firstName
-                this.client.prenom = account.valueOf().lastName
-                console.log(this.client.prenom)
-                console.log(account.valueOf().lastName)
+                console.log(this.client.prenom);
+                this.client.nom = account.valueOf().firstName;
+                this.client.prenom = account.valueOf().lastName;
+                console.log(this.client.prenom);
+                console.log(account.valueOf().lastName);
                 this.clientService.update(this.client).subscribe(resp => {});
             });
         }, () => {
@@ -63,7 +57,6 @@ export class SettingsComponent implements OnInit {
     }
 
     copyAccount(account) {
-
 
         return {
 

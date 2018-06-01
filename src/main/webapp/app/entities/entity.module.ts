@@ -1,6 +1,4 @@
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-
-
 import { JhipsterTestMonoClientModule } from './client/client.module';
 import { JhipsterTestMonoAgentImmobilierModule } from './agent-immobilier/agent-immobilier.module';
 import { JhipsterTestMonoBienModule } from './bien/bien.module';

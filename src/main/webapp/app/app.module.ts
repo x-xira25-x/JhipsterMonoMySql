@@ -15,7 +15,7 @@ import { JhipsterTestMonoAppRoutingModule} from './app-routing.module';
 import { JhipsterTestMonoHomeModule } from './home/home.module';
 import { JhipsterTestMonoAdminModule } from './admin/admin.module';
 import { JhipsterTestMonoAccountModule } from './account/account.module';
-import { AvendreModule} from "./Avendre/avendre.module";
+import { AvendreModule} from './Avendre/avendre.module';
 import { PaginationConfig } from './blocks/config/uib-pagination.config';
 // jhipster-needle-angular-add-module-import JHipster will add new module here
 import {
@@ -27,9 +27,9 @@ import {
     ErrorComponent
 } from './layouts';
 
-import {JhipsterTestMonoEntityModule} from "./entities/entity.module";
+import {JhipsterTestMonoEntityModule} from './entities/entity.module';
 import { PresentationComponent } from './presentation/presentation.component';
-import {PresentationModule} from "./presentation/presentation.module";
+import {PresentationModule} from './presentation/presentation.module';
 
 @NgModule({
     imports: [

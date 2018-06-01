@@ -1,6 +1,5 @@
 import { Routes } from '@angular/router';
-import {PresentationComponent} from "./presentation.component";
-
+import {PresentationComponent} from './presentation.component';
 
 export const presentationRoute: Routes = [
     {

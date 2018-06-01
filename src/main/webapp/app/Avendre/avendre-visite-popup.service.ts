@@ -1,11 +1,10 @@
 import {Component, Injectable} from '@angular/core';
-import {HttpResponse} from "@angular/common/http";
-import {Bien} from "../entities/bien/bien.model";
-import {NgbModal, NgbModalRef} from "@ng-bootstrap/ng-bootstrap";
-import {BienService} from "../entities/bien/bien.service";
-import {Router} from "@angular/router";
-import {Visite, VisiteService} from "../entities/visite";
-import {JhiAlertService} from "ng-jhipster";
+import {HttpResponse} from '@angular/common/http';
+import {NgbModal, NgbModalRef} from '@ng-bootstrap/ng-bootstrap';
+import {BienService} from '../entities/bien/bien.service';
+import {Router} from '@angular/router';
+import {Visite, VisiteService} from '../entities/visite';
+import {JhiAlertService} from 'ng-jhipster';
 
 @Injectable()
 export class AvendreVisitePopupService {
@@ -17,14 +16,14 @@ export class AvendreVisitePopupService {
         private modalService: NgbModal,
         private router: Router,
         private visiteService: VisiteService,
-        private bienService : BienService,
+        private bienService: BienService,
         private jhiAlertService: JhiAlertService
 
     ) {
         this.ngbModalRef = null;
     }
     open(component: Component, id?: number | any): Promise<NgbModalRef> {
-        console.log("open service")
+        console.log('open service');
     return new Promise<NgbModalRef>((resolve, reject) => {
     const isOpen = this.ngbModalRef !== null;
     if (isOpen) {
@@ -63,7 +62,7 @@ export class AvendreVisitePopupService {
     resolve(this.ngbModalRef);
 }, 0);
 };*/
-})
+});
 }
 
 visiteModalRef(component: Component, visite: Visite []): NgbModalRef {
@@ -90,7 +89,5 @@ visiteModalRef(component: Component, visite: Visite []): NgbModalRef {
             this.ngbModalRef = null;
         });
     }*/
-
-
 
 }
