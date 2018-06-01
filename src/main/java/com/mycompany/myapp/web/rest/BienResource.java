@@ -3,12 +3,14 @@ package com.mycompany.myapp.web.rest;
 import com.codahale.metrics.annotation.Timed;
 import com.mycompany.myapp.domain.Bien;
 
+import com.mycompany.myapp.domain.Visite;
 import com.mycompany.myapp.repository.BienRepository;
 import com.mycompany.myapp.web.rest.errors.BadRequestAlertException;
 import com.mycompany.myapp.web.rest.util.HeaderUtil;
 import io.github.jhipster.web.util.ResponseUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.data.repository.query.Param;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -78,6 +80,24 @@ public class BienResource {
             .body(result);
     }
 
+
+    @GetMapping("/biensAvendre")
+    @Timed
+    public List<Bien> getAllBiensAvendre() {
+        log.debug("REST request to get all Biens");
+
+        return bienRepository.findAllAvendre();
+
+    }
+
+    @GetMapping("/biens/{idBien}/visites")
+    @Timed
+    public List<Visite> getAllBiensAvendre(@PathVariable Long idBien) {
+        log.debug("REST request to get all visite of Biens");
+
+        return bienRepository.findAllBiensVisites(idBien);
+
+    }
     /**
      * GET  /biens : get all the biens.
      *
@@ -89,6 +109,14 @@ public class BienResource {
         log.debug("REST request to get all Biens");
         return bienRepository.findAll();
         }
+    @GetMapping("/biens/{idTypeBien}/typeBien")
+    @Timed
+    public List<Bien> findAllBienByTypeBien(@PathVariable("idTypeBien")Long idTypeBien){
+
+        log.debug("REST request to get all visite of Biens");
+
+        return bienRepository.findAllBienByTypeBien(idTypeBien);
+    }
 
     /**
      * GET  /biens/:id : get the "id" bien.
