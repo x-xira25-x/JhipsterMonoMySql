@@ -4,11 +4,11 @@ import {VisitesClientComponent} from "./visites-client.component";
 
 export const visitesClientRoute: Routes = [
     {
-        path: 'VistiesClient',
+        path: 'VisitesClient',
         component: VisitesClientComponent,
         data: {
             // authorities: ['ROLE_USER'],
-            pageTitle: 'Vistite'
+            pageTitle: 'Visite'
         },
     }
 ];
