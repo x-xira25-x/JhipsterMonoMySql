@@ -32,7 +32,7 @@
             </div>
             <!--onglet les visites du client-->
 
-            <div class="navbar-collapse collapse" iid="visiteClient-menu" [ngbCollapse]="isNavbarCollapsed" [ngSwitch]="isAuthenticated()">
+            <div *jhiHasAnyAuthority="'ROLE_USER'" class="navbar-collapse collapse" iid="visiteClient-menu" [ngbCollapse]="isNavbarCollapsed" [ngSwitch]="isAuthenticated()">
                 <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
                     <a class="nav-link" routerLink="VisitesClient" (click)="collapseNavbar()">
                     <span>
