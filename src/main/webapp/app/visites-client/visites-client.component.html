@@ -1,3 +1,83 @@
-<p>
-  visites-client works!
-</p>
+
+<div class="jumbotron jumbotron-fluid">
+    <div class="container">
+
+        <h4 class="display-4">Vos visites  </h4>
+    </div>
+</div>
+<div class="container">
+    <!-- *ngIf="visites"-->
+    <div class="table-responsive" *ngIf="visites">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th><span>ID</span></th>
+                <th><span>Date Debut</span></th>
+                <th><span>Date Fin</span></th>
+                <th><span>Vendeur</span></th>
+                <th><span>Bien</span></th>
+                <th><span>Client</span></th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let visite of visites ;trackBy: trackId">
+                <td><a [routerLink]="['../visite', visite.id ]">{{visite.id}}</a></td>
+                <td>{{visite.dateDebut | date:'mediumDate'}}</td>
+                <td>{{visite.dateFin | date:'mediumDate'}}</td>
+                <td>
+                    <div *ngIf="visite.vendeur">
+                        <a [routerLink]="['../vendeur', visite.vendeur?.id ]" >{{visite.vendeur?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="visite.bien">
+                        <a [routerLink]="['../bien', visite.bien?.id ]" >{{visite.bien?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="visite.client">
+                        <a [routerLink]="['../client', visite.client?.id ]" >{{visite.client?.id}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <!--ajout bouton suppression du client à la viste-->
+                    <button *ngIf="visite.client" type="submit"
+                            (click)="desister(visite.id)"
+                            replaceUrl="true"
+                            queryParamsHandling="merge"
+                            class="btn btn-primary btn-sm">
+                        <span class="fa fa-pencil"></span>
+                        <span class="d-none d-md-inline">se désister</span>
+                    </button>
+
+                    <div class="btn-group flex-btn-group-container" *jhiHasAnyAuthority="'ROLE_ADMIN'">
+                        <button type="submit"
+                                [routerLink]="['../visite', visite.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'visite/'+ visite.id + '/edit'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'visite/'+ visite.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
