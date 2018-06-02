@@ -30,6 +30,30 @@
                     </a>
                 </li>
             </div>
+            <!--onglet les visites du client-->
+
+            <div *jhiHasAnyAuthority="'ROLE_USER'" class="navbar-collapse collapse" iid="visiteClient-menu" [ngbCollapse]="isNavbarCollapsed" [ngSwitch]="isAuthenticated()">
+                <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                    <a class="nav-link" routerLink="VisitesClient" (click)="collapseNavbar()">
+                    <span>
+                        <i class="fa fa-calendar" aria-hidden="true"></i>
+                        <span>Visites</span>
+                    </span>
+                    </a>
+                </li>
+            </div>
+            <!--onglet présentation-->
+
+            <div class="navbar-collapse collapse" iid="bienAvendre-menu" [ngbCollapse]="isNavbarCollapsed" [ngSwitch]="isAuthenticated()">
+                <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                    <a class="nav-link" routerLink="presentation" (click)="collapseNavbar()">
+                    <span>
+                        <i class="fa fa-address-book" aria-hidden="true"></i>
+                        <span>Présentation</span>
+                    </span>
+                    </a>
+                </li>
+            </div>
             <!-- jhipster-needle-add-element-to-menu - JHipster will add new menu items here -->
             <li  *jhiHasAnyAuthority="'ROLE_ADMIN'"  ngbDropdown class="nav-item dropdown pointer" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
                 <a class="nav-link dropdown-toggle" ngbDropdownToggle href="javascript:void(0);" id="entity-menu">
@@ -147,18 +171,7 @@
                     <!-- jhipster-needle-add-element-to-admin-menu - JHipster will add entities to the admin menu here -->
                 </ul>
             </li>
-            <!--onglet présentation-->
 
-            <div class="navbar-collapse collapse" iid="bienAvendre-menu" [ngbCollapse]="isNavbarCollapsed" [ngSwitch]="isAuthenticated()">
-                <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
-                    <a class="nav-link" routerLink="presentation" (click)="collapseNavbar()">
-                    <span>
-                        <i class="fa fa-home" aria-hidden="true"></i>
-                        <span>Présentation</span>
-                    </span>
-                    </a>
-                </li>
-            </div>
             <li ngbDropdown class="nav-item dropdown pointer" placement="bottom-right" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
                 <a class="nav-link dropdown-toggle" ngbDropdownToggle href="javascript:void(0);" id="account-menu">
                   <span *ngIf="!getImageUrl()">

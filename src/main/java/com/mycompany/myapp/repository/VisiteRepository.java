@@ -19,4 +19,7 @@ public interface VisiteRepository extends JpaRepository<Visite, Long> {
     @Query("select visite from Visite visite left join fetch visite.clients where visite.id =:id")
     Visite findOneWithEagerRelationships(@Param("id") Long id);
 
+    @Query("select distinct visite from Visite visite join visite.clients vc where vc.id =:idClient")
+    List<Visite>FindAllByClient(@Param("idClient")Long login);
+
 }

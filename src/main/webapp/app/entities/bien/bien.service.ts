@@ -7,7 +7,6 @@ import { JhiDateUtils } from 'ng-jhipster';
 
 import { Bien } from './bien.model';
 import { createRequestOption } from '../../shared';
-import {Client} from "../client";
 
 export type EntityResponseType = HttpResponse<Bien>;
 
@@ -34,8 +33,6 @@ export class BienService {
         return this.http.get<Bien>(`${this.resourceUrl}/${id}`, { observe: 'response'})
             .map((res: EntityResponseType) => this.convertResponse(res));
     }
-
-
 
     query(req?: any): Observable<HttpResponse<Bien[]>> {
         const options = createRequestOption(req);

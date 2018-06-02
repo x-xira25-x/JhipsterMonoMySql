@@ -4,7 +4,13 @@
             (click)="clear()">&times;</button>
 </div>
 <div class="modal-body">
+     <div class="alert alert-success" *ngIf="success">
+        <strong>Inscription enregistrée!</strong>
+    </div>
 
+    <div class="alert alert-danger" *ngIf="error">
+        <strong>Inscription échouée</strong> Merci d'essayer plus tard
+    </div>
 
     <div class="table-responsive"*ngIf="visite" >
         <table class="table table-striped">
@@ -15,18 +21,18 @@
                 <th><span>Date Fin</span></th>
                 <th><span>Vendeur</span></th>
                 <th><span>Bien</span></th>
-                <th><span>Client</span></th>
+                <th *jhiHasAnyAuthority="'ROLE_ADMIN'"><span>Client</span></th>
                 <th></th>
             </tr>
             </thead>
             <tbody>
             <tr *ngFor="let visite of visite ;trackBy: trackId">
                 <td><a [routerLink]="['../visite', visite.id ]">{{visite.id}}</a></td>
-                <td>{{visite.dateDebut | date:'mediumDate'}}</td>
-                <td>{{visite.dateFin | date:'mediumDate'}}</td>
+                <td>{{visite.dateDebut | date:'h:mm a MM/d/yyyy'}}</td>
+                <td>{{visite.dateFin | date:'h:mm a MM/d/yyyy '}}</td>
                 <td>
                     <div *ngIf="visite.agentImmobilier">
-                        <a [routerLink]="['../vendeur', visite.agentImmobilier?.id ]" >{{visite.agentImmobilier.id}}</a>
+                        <a [routerLink]="['../vendeur', visite.agentImmobilier?.id ]" >{{visite.agentImmobilier.nom}} {{visite.agentImmobilier.prenom}}</a>
                     </div>
                 </td>
                 <td>
@@ -34,7 +40,7 @@
                         <a [routerLink]="['../bien', visite.bien?.id ]" >{{visite.bien?.id}}</a>
                     </div>
                 </td>
-                <td>
+                <td *jhiHasAnyAuthority="'ROLE_ADMIN'">
                     <span *ngFor="let client of visite.clients; let last = last">
                             <a class="form-control-static" [routerLink]="['../client', client?.id ]">{{client.id}}</a>{{last ? '' : ', '}}
                         </span>

@@ -1,12 +1,7 @@
 import { Routes } from '@angular/router';
-
-
-import {AvendreComponent} from "./avendre.component";
-import {BienPopupComponent} from "../entities/bien/bien-dialog.component";
-import {UserRouteAccessService} from "../shared";
-import {BienDeletePopupComponent} from "../entities/bien/bien-delete-dialog.component";
-import {AvendreVisiteDialogComponent, avendreVisitePopupComponent} from "./avendre-visite-dialog.component";
-
+import {AvendreComponent} from './avendre.component';
+import {UserRouteAccessService} from '../shared';
+import { avendreVisitePopupComponent} from './avendre-visite-dialog.component';
 
 export const avendreRoute: Routes = [
     {
@@ -16,7 +11,6 @@ export const avendreRoute: Routes = [
            // authorities: ['ROLE_USER'],
             pageTitle: 'Avendre'
         },
-
     }
 ];
 export const avendrePopupRoute: Routes = [
@@ -33,5 +27,3 @@ export const avendrePopupRoute: Routes = [
     }
 
 ];
-
-

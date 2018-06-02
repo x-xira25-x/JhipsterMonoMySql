@@ -104,6 +104,14 @@ public class VisiteResource {
         return ResponseUtil.wrapOrNotFound(Optional.ofNullable(visite));
     }
 
+    @GetMapping("/visitesBy/{idClient}")
+    @Timed
+    public List<Visite>FindAllByClient(@PathVariable  Long idClient){
+        log.debug("REST request to get all Visites by client");
+        return visiteRepository.FindAllByClient(idClient);
+    }
+
+
     /**
      * DELETE  /visites/:id : delete the "id" visite.
      *

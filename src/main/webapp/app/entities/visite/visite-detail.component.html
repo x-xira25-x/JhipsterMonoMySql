@@ -27,8 +27,8 @@
                 <a [routerLink]="['/agent-immobilier', visite.agentImmobilier?.id]">{{visite.agentImmobilier?.id}}</a>
             </div>
         </dd>
-        <dt><span>Client</span></dt>
-        <dd>
+        <dt *jhiHasAnyAuthority="'ROLE_ADMIN'"><span>Client</span></dt>
+        <dd *jhiHasAnyAuthority="'ROLE_ADMIN'">
             <span *ngFor="let client of visite.clients; let last = last">
                 <a [routerLink]="['/client', client?.id ]">{{client.id}}</a>{{last ? '' : ', '}}
             </span>
@@ -41,7 +41,7 @@
         <span class="fa fa-arrow-left"></span>&nbsp;<span> Back</span>
     </button>
 
-    <button type="button"
+    <button *jhiHasAnyAuthority="'ROLE_ADMIN'" type="button"
             [routerLink]="['/', { outlets: { popup: 'visite/'+ visite.id + '/edit'} }]"
             replaceUrl="true"
             queryParamsHandling="merge"
