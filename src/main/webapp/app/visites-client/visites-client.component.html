@@ -35,14 +35,16 @@
                         <a [routerLink]="['../bien', visite.bien?.id ]" >{{visite.bien?.id}}</a>
                     </div>
                 </td>
-                <!--<td>
-                    <div *ngIf="visite.client">
-                        <a [routerLink]="['../client', visite.client?.id ]" >{{visite.client?.id}}</a>
+                <td *jhiHasAnyAuthority="'ROLE_ADMIN'">
+                    <div *ngIf="visite.clients">
+                      <span *ngFor="let client of visite.clients; let last = last">
+                     <a [routerLink]="['/client', client?.id ]">{{client.id}}</a>{{last ? '' : ', '}}
+                    </span>
                     </div>
-                </td>-->
+                </td>
                 <td class="text-right">
-                    <!--ajout bouton suppression du client à la viste-->
-                    <button *ngIf="visite.client" type="submit"
+                    <!--ajout bouton suppression du client à la visite-->
+                    <button  type="submit"
                             (click)="desister(visite.id)"
                             replaceUrl="true"
                             queryParamsHandling="merge"
@@ -51,7 +53,7 @@
                         <span class="d-none d-md-inline">se désister</span>
                     </button>
 
-                    <div class="btn-group flex-btn-group-container" *jhiHasAnyAuthority="'ROLE_ADMIN'">
+                   <!-- <div class="btn-group flex-btn-group-container" *jhiHasAnyAuthority="'ROLE_ADMIN'">
                         <button type="submit"
                                 [routerLink]="['../visite', visite.id ]"
                                 class="btn btn-info btn-sm">
@@ -74,7 +76,7 @@
                             <span class="fa fa-remove"></span>
                             <span class="d-none d-md-inline">Delete</span>
                         </button>
-                    </div>
+                    </div>-->
                 </td>
             </tr>
             </tbody>
