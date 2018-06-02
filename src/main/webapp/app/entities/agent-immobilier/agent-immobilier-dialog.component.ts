@@ -10,6 +10,7 @@ import { AgentImmobilier } from './agent-immobilier.model';
 import { AgentImmobilierPopupService } from './agent-immobilier-popup.service';
 import { AgentImmobilierService } from './agent-immobilier.service';
 import { User, UserService } from '../../shared';
+import {Register} from "../../account/register/register.service";
 
 @Component({
     selector: 'jhi-agent-immobilier-dialog',
@@ -19,20 +20,29 @@ export class AgentImmobilierDialogComponent implements OnInit {
 
     agentImmobilier: AgentImmobilier;
     isSaving: boolean;
-
+    registerAccount: any;
     users: User[];
+    success: boolean;
+    confirmPassword: string;
+    doNotMatch: string;
+    error: string;
+    errorEmailExists: string;
+    errorUserExists: string;
+    user: User;
 
     constructor(
         public activeModal: NgbActiveModal,
         private jhiAlertService: JhiAlertService,
         private agentImmobilierService: AgentImmobilierService,
         private userService: UserService,
-        private eventManager: JhiEventManager
+        private eventManager: JhiEventManager,
+        private registerService: Register,
     ) {
     }
 
     ngOnInit() {
         this.isSaving = false;
+        this.registerAccount = {};
         this.userService.query()
             .subscribe((res: HttpResponse<User[]>) => { this.users = res.body; }, (res: HttpErrorResponse) => this.onError(res.message));
     }
@@ -46,9 +56,30 @@ export class AgentImmobilierDialogComponent implements OnInit {
         if (this.agentImmobilier.id !== undefined) {
             this.subscribeToSaveResponse(
                 this.agentImmobilierService.update(this.agentImmobilier));
+
         } else {
-            this.subscribeToSaveResponse(
-                this.agentImmobilierService.create(this.agentImmobilier));
+
+
+            if (this.registerAccount.password !== this.confirmPassword) {
+                this.doNotMatch = 'ERROR';
+            } else {
+                this.doNotMatch = null;
+                this.error = null;
+                this.errorUserExists = null;
+                this.errorEmailExists = null;
+                this.registerAccount.langKey = 'en';
+                console.log(this.registerAccount.valueOf())
+                this.registerService.save(this.registerAccount).subscribe(() => {
+                    this.success = true;
+                    this.userService.find(this.registerAccount.login).subscribe(resp => {
+                        this.user = resp.body;
+                       this.agentImmobilier.user= this.user;
+                        this.subscribeToSaveResponse(this.agentImmobilierService.create(this.agentImmobilier));
+                    });
+
+                });}
+
+
         }
     }
 
