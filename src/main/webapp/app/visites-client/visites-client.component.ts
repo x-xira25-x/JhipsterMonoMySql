@@ -22,6 +22,7 @@ export class VisitesClientComponent implements OnInit {
     biens: Bien[];
     account: Account
     clients: Client[];
+    success: boolean;
 
     constructor(
         private visiteService: VisiteService,
@@ -60,6 +61,7 @@ export class VisitesClientComponent implements OnInit {
         });*/
     }
     ngOnInit() {
+        this.success = false;
         this.principal.identity().then((account) => {
             console.log(this.copyAccount(account));
             this.clientService.findIdClient(this.copyAccount(account).login).subscribe(resp => {
@@ -105,6 +107,7 @@ export class VisitesClientComponent implements OnInit {
                                             this.visite = res.body;
                                             console.log('update visite');
                                             console.log(this.visite.clients[i])
+                                            this.success = true;
                                         },
                                         (res: HttpErrorResponse) => this.onError(res.message)
                                     );

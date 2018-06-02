@@ -5,8 +5,17 @@
         <h4 class="display-4">Vos visites  </h4>
     </div>
 </div>
+
 <div class="container">
     <!-- *ngIf="visites"-->
+    <div class="alert alert-success" *ngIf="success">
+        <strong>Désistement enregistré</strong>
+    </div>
+
+    <div class="alert alert-danger" *ngIf="error">
+        <strong>Désistement échoué</strong> Merci d'essayer plus tard
+    </div>
+
     <div class="table-responsive" *ngIf="visites">
         <table class="table table-striped">
             <thead>
