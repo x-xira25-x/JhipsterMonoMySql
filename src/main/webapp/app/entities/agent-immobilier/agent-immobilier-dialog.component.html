@@ -1,7 +1,7 @@
 <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
 
     <div class="modal-header">
-        <h4 class="modal-title" id="myAgentImmobilierLabel">Create or edit a Agent Immobilier</h4>
+        <h4 class="modal-title" id="myAgentImmobilierLabel">Créer ou modifier un agent Immobilier</h4>
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
                 (click)="clear()">&times;</button>
     </div>
@@ -43,6 +43,17 @@
             </div>
         </div>
         <div class="form-group">
+            <label class="form-control-label" for="field_adresse">Adresse</label>
+            <input type="text" class="form-control" name="adresse" id="field_adresse"
+                   [(ngModel)]="agentImmobilier.adresse" required/>
+            <div [hidden]="!(editForm.controls.adresse?.dirty && editForm.controls.adresse?.invalid)">
+                <small class="form-text text-danger"
+                       [hidden]="!editForm.controls.adresse?.errors?.required">
+                    This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
             <label class="form-control-label" for="field_npa">Npa</label>
             <input type="text" class="form-control" name="npa" id="field_npa"
                 [(ngModel)]="agentImmobilier.npa" required/>
@@ -75,7 +86,7 @@
                 </small>
             </div>
         </div>
-        <div class="form-group">
+        <!--<div class="form-group">
             <label class="form-control-label" for="field_email">Email</label>
             <input type="text" class="form-control" name="email" id="field_email"
                 [(ngModel)]="agentImmobilier.email" required/>
@@ -85,18 +96,8 @@
                    This field is required.
                 </small>
             </div>
-        </div>
-        <div class="form-group">
-            <label class="form-control-label" for="field_adresse">Adresse</label>
-            <input type="text" class="form-control" name="adresse" id="field_adresse"
-                [(ngModel)]="agentImmobilier.adresse" required/>
-            <div [hidden]="!(editForm.controls.adresse?.dirty && editForm.controls.adresse?.invalid)">
-                <small class="form-text text-danger"
-                   [hidden]="!editForm.controls.adresse?.errors?.required">
-                   This field is required.
-                </small>
-            </div>
-        </div>
+        </div>-->
+
 
         <!--<div class="form-group">
             <label class="form-control-label" for="field_user">User</label>
@@ -192,6 +193,13 @@
             </small>
         </div>
     </div>
+        <div class="form-group">
+            <label>Profiles</label>
+            <select class="form-control" multiple name="authority" [(ngModel)]="authorities">
+                <option *ngFor="let authority of authorities" [value]="authority">{{authority}}</option>
+            </select>
+        </div>
+
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
