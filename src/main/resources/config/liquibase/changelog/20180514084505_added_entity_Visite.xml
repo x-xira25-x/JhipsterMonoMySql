@@ -22,11 +22,11 @@
             <column name="id" type="bigint" autoIncrement="${autoIncrement}">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="date_debut" type="date">
+            <column name="date_debut" type="timestamp">
                 <constraints nullable="false" />
             </column>
 
-            <column name="date_fin" type="date">
+            <column name="date_fin" type="timestamp">
                 <constraints nullable="true" />
             </column>
 
@@ -44,6 +44,8 @@
 
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
         </createTable>
+        <dropDefaultValue tableName="visite" columnName="date_debut" columnDataType="datetime"/>
+        <dropDefaultValue tableName="visite" columnName="date_fin" columnDataType="datetime"/>
         
         <createTable tableName="visite_client">
             <column name="clients_id" type="bigint">

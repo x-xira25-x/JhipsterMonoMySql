@@ -5,7 +5,7 @@ import javax.persistence.*;
 import javax.validation.constraints.*;
 
 import java.io.Serializable;
-import java.time.LocalDate;
+import java.time.ZonedDateTime;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.Objects;
@@ -25,10 +25,10 @@ public class Visite implements Serializable {
 
     @NotNull
     @Column(name = "date_debut", nullable = false)
-    private LocalDate dateDebut;
+    private ZonedDateTime dateDebut;
 
     @Column(name = "date_fin")
-    private LocalDate dateFin;
+    private ZonedDateTime dateFin;
 
     @ManyToOne
     private EtatVisite etatVisite;
@@ -54,29 +54,29 @@ public class Visite implements Serializable {
         this.id = id;
     }
 
-    public LocalDate getDateDebut() {
+    public ZonedDateTime getDateDebut() {
         return dateDebut;
     }
 
-    public Visite dateDebut(LocalDate dateDebut) {
+    public Visite dateDebut(ZonedDateTime dateDebut) {
         this.dateDebut = dateDebut;
         return this;
     }
 
-    public void setDateDebut(LocalDate dateDebut) {
+    public void setDateDebut(ZonedDateTime dateDebut) {
         this.dateDebut = dateDebut;
     }
 
-    public LocalDate getDateFin() {
+    public ZonedDateTime getDateFin() {
         return dateFin;
     }
 
-    public Visite dateFin(LocalDate dateFin) {
+    public Visite dateFin(ZonedDateTime dateFin) {
         this.dateFin = dateFin;
         return this;
     }
 
-    public void setDateFin(LocalDate dateFin) {
+    public void setDateFin(ZonedDateTime dateFin) {
         this.dateFin = dateFin;
     }
 

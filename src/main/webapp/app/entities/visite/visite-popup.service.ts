@@ -2,6 +2,7 @@ import { Injectable, Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { HttpResponse } from '@angular/common/http';
+import { DatePipe } from '@angular/common';
 import { Visite } from './visite.model';
 import { VisiteService } from './visite.service';
 
@@ -10,6 +11,7 @@ export class VisitePopupService {
     private ngbModalRef: NgbModalRef;
 
     constructor(
+        private datePipe: DatePipe,
         private modalService: NgbModal,
         private router: Router,
         private visiteService: VisiteService
@@ -29,20 +31,10 @@ export class VisitePopupService {
                 this.visiteService.find(id)
                     .subscribe((visiteResponse: HttpResponse<Visite>) => {
                         const visite: Visite = visiteResponse.body;
-                        if (visite.dateDebut) {
-                            visite.dateDebut = {
-                                year: visite.dateDebut.getFullYear(),
-                                month: visite.dateDebut.getMonth() + 1,
-                                day: visite.dateDebut.getDate()
-                            };
-                        }
-                        if (visite.dateFin) {
-                            visite.dateFin = {
-                                year: visite.dateFin.getFullYear(),
-                                month: visite.dateFin.getMonth() + 1,
-                                day: visite.dateFin.getDate()
-                            };
-                        }
+                        visite.dateDebut = this.datePipe
+                            .transform(visite.dateDebut, 'yyyy-MM-ddTHH:mm:ss');
+                        visite.dateFin = this.datePipe
+                            .transform(visite.dateFin, 'yyyy-MM-ddTHH:mm:ss');
                         this.ngbModalRef = this.visiteModalRef(component, visite);
                         resolve(this.ngbModalRef);
                     });

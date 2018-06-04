@@ -4,7 +4,7 @@
         <button class="btn btn-primary float-right jh-create-entity create-visite" [routerLink]="['/', { outlets: { popup: ['visite-new'] } }]">
             <span class="fa fa-plus"></span>
             <span >
-          Créer une Visite
+             Créer une Visite
             </span>
         </button>
     </h2>
@@ -29,9 +29,9 @@
             <tbody>
             <tr *ngFor="let visite of visites ;trackBy: trackId">
                 <td><a [routerLink]="['../visite', visite.id ]">{{visite.id}}</a></td>
-                <td>{{visite.dateDebut | date:'hh:mm dd/MM/yyyy'}}</td>
-                <td>{{visite.dateFin | date:'hh:mm dd/MM/yyyy'}}</td>
-                <td>{{visite.etatVisite?.nom}} </td>
+                <td>{{visite.dateDebut | date:'medium'}}</td>
+                <td>{{visite.dateFin | date:'medium'}}</td>
+                <td>{{visite.etatVisite.nom}}</td>
                 <td>
                     <div *ngIf="visite.bien">
                         <a [routerLink]="['../bien', visite.bien?.id ]" >{{visite.bien?.id}}</a>

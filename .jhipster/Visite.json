@@ -24,20 +24,21 @@
             "otherEntityName": "client",
             "relationshipType": "many-to-many",
             "ownerSide": true,
-            "otherEntityRelationshipName": "visite"
+            "otherEntityRelationshipName": "visite",
+            "otherEntityField": "id"
         }
     ],
     "fields": [
         {
             "fieldName": "dateDebut",
-            "fieldType": "LocalDate",
+            "fieldType": "ZonedDateTime",
             "fieldValidateRules": [
                 "required"
             ]
         },
         {
             "fieldName": "dateFin",
-            "fieldType": "LocalDate"
+            "fieldType": "ZonedDateTime"
         }
     ],
     "changelogDate": "20180514084505",
