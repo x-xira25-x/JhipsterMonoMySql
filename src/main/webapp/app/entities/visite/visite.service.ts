@@ -28,7 +28,6 @@ export class VisiteService {
         return this.http.put<Visite>(this.resourceUrl, copy, { observe: 'response' })
             .map((res: EntityResponseType) => this.convertResponse(res));
     }
-
     updateSansConvert(visite: Visite): Observable<EntityResponseType> {
         console.log('update avant convert' + visite);
         const copy = visite;
@@ -36,6 +35,7 @@ export class VisiteService {
         return this.http.put<Visite>(this.resourceUrl, copy, { observe: 'response' })
             .map((res: EntityResponseType) => this.convertResponse(res));
     }
+
 
     find(id: number): Observable<EntityResponseType> {
         return this.http.get<Visite>(`${this.resourceUrl}/${id}`, { observe: 'response'})
@@ -47,6 +47,11 @@ export class VisiteService {
         return this.http.get<Visite[]>(this.resourceUrl, { params: options, observe: 'response' })
             .map((res: HttpResponse<Visite[]>) => this.convertArrayResponse(res));
     }
+
+    delete(id: number): Observable<HttpResponse<any>> {
+        return this.http.delete<any>(`${this.resourceUrl}/${id}`, { observe: 'response'});
+    }
+
     queryVisiteBien(idBien: number): Observable<HttpResponse<Visite[]>> {
         const options = createRequestOption(idBien);
         return this.http.get<Visite[]>(`http://localhost:8080/api/biens/${idBien}/visites`, { params: options, observe: 'response' })
@@ -57,10 +62,6 @@ export class VisiteService {
         const options = createRequestOption(idClient);
         return this.http.get<Visite[]>(`http://localhost:8080/api/visitesBy/${idClient}`, { params: options, observe: 'response' })
             .map((res: HttpResponse<Visite[]>) => this.convertArrayResponse(res));
-    }
-
-    delete(id: number): Observable<HttpResponse<any>> {
-        return this.http.delete<any>(`${this.resourceUrl}/${id}`, { observe: 'response'});
     }
 
     private convertResponse(res: EntityResponseType): EntityResponseType {
@@ -83,9 +84,9 @@ export class VisiteService {
     private convertItemFromServer(visite: Visite): Visite {
         const copy: Visite = Object.assign({}, visite);
         copy.dateDebut = this.dateUtils
-            .convertLocalDateFromServer(visite.dateDebut);
+            .convertDateTimeFromServer(visite.dateDebut);
         copy.dateFin = this.dateUtils
-            .convertLocalDateFromServer(visite.dateFin);
+            .convertDateTimeFromServer(visite.dateFin);
         return copy;
     }
 
@@ -94,10 +95,10 @@ export class VisiteService {
      */
     private convert(visite: Visite): Visite {
         const copy: Visite = Object.assign({}, visite);
-        copy.dateDebut = this.dateUtils
-            .convertLocalDateToServer(visite.dateDebut);
-        copy.dateFin = this.dateUtils
-            .convertLocalDateToServer(visite.dateFin);
+
+        copy.dateDebut = this.dateUtils.toDate(visite.dateDebut);
+
+        copy.dateFin = this.dateUtils.toDate(visite.dateFin);
         return copy;
     }
 }

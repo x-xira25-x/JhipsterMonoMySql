@@ -6,13 +6,13 @@
     <dl class="row-md jh-entity-details">
         <dt><span>Date Debut</span></dt>
         <dd>
-            <span>{{visite.dateDebut | date:'hh:mm dd/MM/yyyy'}}</span>
+            <span>{{visite.dateDebut | date:'medium'}}</span>
         </dd>
         <dt><span>Date Fin</span></dt>
         <dd>
-            <span>{{visite.dateFin | date:'hh:mm dd/MM/yyyy'}}</span>
+            <span>{{visite.dateFin | date:'medium'}}</span>
         </dd>
-        <dt><span>Etat Visite</span></dt>
+        <dt><span>Etat de la Visite</span></dt>
         <dd>{{visite.etatVisite?.nom}}
         </dd>
         <dt><span>Bien</span></dt>

@@ -30,8 +30,6 @@ export class VisiteDialogComponent implements OnInit {
     agentimmobiliers: AgentImmobilier[];
 
     clients: Client[];
-    dateDebutDp: any;
-    dateFinDp: any;
 
     constructor(
         public activeModal: NgbActiveModal,
@@ -94,9 +92,7 @@ export class VisiteDialogComponent implements OnInit {
     trackEtatVisiteById(index: number, item: EtatVisite) {
         return item.id;
     }
-    trackEtatVisiteByNom(index: number, item: EtatVisite) {
-        return item.nom;
-    }
+
     trackBienById(index: number, item: Bien) {
         return item.id;
     }
