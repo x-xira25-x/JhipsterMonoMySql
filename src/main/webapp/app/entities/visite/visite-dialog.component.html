@@ -58,12 +58,12 @@
                 <option [ngValue]="agentImmobilierOption.id === visite.agentImmobilier?.id ? visite.agentImmobilier : agentImmobilierOption" *ngFor="let agentImmobilierOption of agentimmobiliers; trackBy: trackAgentImmobilierById">{{agentImmobilierOption.id}}</option>
             </select>
         </div>
-        <div class="form-group">
+        <!--<div class="form-group">
             <label for="field_client">Client</label>
             <select class="form-control" id="field_client" multiple name="client" [(ngModel)]="visite.clients">
                 <option [ngValue]="getSelected(visite.clients, clientOption)" *ngFor="let clientOption of clients; trackBy: trackClientById">{{clientOption.id}}</option>
             </select>
-        </div>
+        </div>-->
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
