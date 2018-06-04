@@ -1,6 +1,6 @@
 
 <div *ngIf="visite">
-    <h2><span>Visite</span> {{visite.id}}</h2>
+    <h2><span>Visite</span> {{visite.id}}- {{visite.etatVisite?.nom}}</h2>
     <hr>
     <jhi-alert-error></jhi-alert-error>
     <dl class="row-md jh-entity-details">
@@ -12,9 +12,7 @@
         <dd>
             <span>{{visite.dateFin | date:'medium'}}</span>
         </dd>
-        <dt><span>Etat de la Visite</span></dt>
-        <dd>{{visite.etatVisite?.nom}}
-        </dd>
+
         <dt><span>Bien</span></dt>
         <dd>
             <div *ngIf="visite.bien">
@@ -24,7 +22,7 @@
         <dt><span>Agent Immobilier</span></dt>
         <dd>
             <div *ngIf="visite.agentImmobilier">
-                <a [routerLink]="['/agent-immobilier', visite.agentImmobilier?.id]">{{visite.agentImmobilier?.id}}</a>
+                <a [routerLink]="['/agent-immobilier', visite.agentImmobilier?.id]">{{visite.agentImmobilier?.nom}} {{visite.agentImmobilier?.prenom}}</a>
             </div>
         </dd>
         <dt *jhiHasAnyAuthority="'ROLE_ADMIN'"><span>Client</span></dt>

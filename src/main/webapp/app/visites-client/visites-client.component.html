@@ -21,8 +21,8 @@
             <thead>
             <tr>
                 <th><span>ID</span></th>
-                <th><span>Date Debut</span></th>
-                <th><span>Date Fin</span></th>
+                <th><span>Date de début</span></th>
+                <th><span>Date de fin</span></th>
                 <th><span>Vendeur</span></th>
                 <th><span>Bien</span></th>
                 <th *jhiHasAnyAuthority="'ROLE_ADMIN'"><span>Client</span></th>
@@ -32,8 +32,8 @@
             <tbody>
             <tr *ngFor="let visite of visites ;trackBy: trackId">
                 <td><a [routerLink]="['../visite', visite.id ]">{{visite.id}}</a></td>
-                <td>{{visite.dateDebut | date:'mediumDate'}}</td>
-                <td>{{visite.dateFin | date:'mediumDate'}}</td>
+                <td>{{visite.dateDebut | date:'hh:mm a dd/MM/yyyy'}}</td>
+                <td>{{visite.dateFin | date:'hh:mm a dd/MM/yyyy'}}</td>
                 <td>
                     <div *ngIf="visite.agentImmobilier">
                         <a [routerLink]="['../agent-immobilier', visite.agentImmobilier?.id ]" >{{visite.agentImmobilier?.nom}} {{visite.agentImmobilier.prenom}}</a>
