@@ -33,14 +33,14 @@ MLD
 ## Fonctionnement
 
 ## Manuel d'utilisation
- copier le projet
- lancer les dockers, il faut qu'ils soient dans le meme réseau
- docker-compose -f src/main/docker/mysql.yml up
- lancer le client
- lancer le serveur
- phpMyAdmin:
- pseudo: root
- mot de passe : 1234
+ - copier le projet
+-  lancer les dockers, il faut qu'ils soient dans le meme réseau :
+ ``docker-compose -f src/main/docker/mysql.yml up``
+-  lancer le client
+- lancer le serveur
+- phpMyAdmin:
+- pseudo: root
+- mot de passe : 1234
 
 
 
