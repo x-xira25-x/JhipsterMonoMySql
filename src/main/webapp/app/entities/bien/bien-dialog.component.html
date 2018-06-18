@@ -1,7 +1,7 @@
 <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
 
     <div class="modal-header">
-        <h4 class="modal-title" id="myBienLabel">Create or edit a Bien</h4>
+        <h4 class="modal-title" id="myBienLabel">Créer ou éditer un Bien</h4>
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
                 (click)="clear()">&times;</button>
     </div>
@@ -84,7 +84,7 @@
             <div>
                 <img [src]="'data:' + bien.photoContentType + ';base64,' + bien.photo" style="max-height: 100px;" *ngIf="bien.photo" alt="bien image"/>
                 <div *ngIf="bien.photo" class="form-text text-danger clearfix">
-                    <span class="pull-left">{{bien.photoContentType}}, {{byteSize(bien.photo)}}</span>
+                   <!-- <span class="pull-left">{{bien.photoContentType}}, {{byteSize(bien.photo)}}</span>-->
                     <button type="button" (click)="clearInputImage('photo', 'photoContentType', 'fileImage')" class="btn btn-secondary btn-xs pull-right">
                         <span class="fa fa-times"></span>
                     </button>
@@ -93,8 +93,8 @@
             </div>
             <input type="hidden" class="form-control" name="photo" id="field_photo"
                 [(ngModel)]="bien.photo" />
-            <input type="hidden" class="form-control" name="photoContentType" id="field_photoContentType"
-                [(ngModel)]="bien.photoContentType" />
+           <!-- <input type="hidden" class="form-control" name="photoContentType" id="field_photoContentType"
+                [(ngModel)]="bien.photoContentType" />-->
         </div>
         <div class="form-group">
             <label class="form-control-label" for="field_prix">Prix</label>
@@ -114,7 +114,7 @@
 
         <div class="form-group">
             <label class="form-control-label" for="field_typeBien">Type Bien</label>
-            <select class="form-control" id="field_typeBien" name="typeBien" [(ngModel)]="bien.typeBien" >
+            <select class="form-control" id="field_typeBien" name="typeBien" [(ngModel)]="bien.typeBien" required>
                 <option [ngValue]="null"></option>
                 <option [ngValue]="typeBienOption.nom === bien.typeBien?.nom ? bien.typeBien : typeBienOption" *ngFor="let typeBienOption of typebiens; trackBy: trackTypeBienByNom">{{typeBienOption.nom}}</option>
             </select>
@@ -128,7 +128,7 @@
         </div>
         <div class="form-group">
             <label class="form-control-label" for="field_etatBien">Etat Bien</label>
-            <select class="form-control" id="field_etatBien" name="etatBien" [(ngModel)]="bien.etatBien" >
+            <select class="form-control" id="field_etatBien" name="etatBien" [(ngModel)]="bien.etatBien" required>
                 <option [ngValue]="null"></option>
                 <option [ngValue]="etatBienOption.nom === bien.etatBien?.nom ? bien.etatBien : etatBienOption" *ngFor="let etatBienOption of etatbiens; trackBy: trackEtatBienByNom">{{etatBienOption.nom}}</option>
             </select>
