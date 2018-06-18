@@ -32,6 +32,12 @@ MLD
 
 ## Fonctionnement
 
+L'application dispose de 4 types d'utilisateurs
+- public
+- client
+- agent immobilier
+- administrateur
+
 ## Manuel d'utilisation
  - copier le projet
 -  lancer les dockers, il faut qu'ils soient dans le meme réseau :
