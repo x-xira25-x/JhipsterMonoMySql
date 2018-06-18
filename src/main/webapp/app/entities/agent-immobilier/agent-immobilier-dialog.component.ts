@@ -44,7 +44,7 @@ export class AgentImmobilierDialogComponent implements OnInit {
     ngOnInit() {
         this.isSaving = false;
         this.registerAccount = {};
-
+        console.log(this.agentImmobilier)
         this.authorities = [];
         this.userService.query()
             .subscribe((res: HttpResponse<User[]>) => { this.users = res.body; }, (res: HttpErrorResponse) => this.onError(res.message));

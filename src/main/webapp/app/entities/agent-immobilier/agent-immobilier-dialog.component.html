@@ -110,7 +110,7 @@
         <!-- user-->
         <div class="form-group">
         <label class="form-control-label" for="login">Pseudo</label>
-        <input type="text" class="form-control" [(ngModel)]="registerAccount.login" id="login" name="login" #login="ngModel" placeholder="Ton pseudo"
+        <input type="text" class="form-control" [(ngModel)]="agentImmobilier.user.login" id="login" name="login" #login="ngModel" placeholder="Ton pseudo"
                required minlength="1" maxlength="50" pattern="^[_'.@A-Za-z0-9-]*$">
         <div *ngIf="login.dirty && login.invalid">
             <small class="form-text text-danger" *ngIf="login.errors.required">
@@ -134,7 +134,7 @@
     <div class="form-group">
         <label class="form-control-label" for="email">Email</label>
         <input type="email" class="form-control" id="email" name="email" #email="ngModel" placeholder="Ton email"
-               [(ngModel)]="registerAccount.email" minlength=5 maxlength=100 email required>
+               [(ngModel)]="agentImmobilier.user.email" minlength=5 maxlength=100 email required>
         <div *ngIf="email.dirty && email.invalid">
             <small class="form-text text-danger" *ngIf="email.errors.required"
             >
@@ -157,7 +157,7 @@
     <div class="form-group">
         <label class="form-control-label" for="password">Nouveau mot de passe</label>
         <input type="password" class="form-control" id="password" name="password" #password="ngModel" placeholder="Nouveau mot de passe"
-               [(ngModel)]="registerAccount.password" minlength=4 maxlength=50 required>
+               [(ngModel)]="agentImmobilier.user.password" minlength=4 maxlength=50 required>
         <div *ngIf="password.dirty && password.invalid">
             <small class="form-text text-danger" *ngIf="password.errors.required"
             >
@@ -195,7 +195,7 @@
     </div>
         <div class="form-group">
             <label>Profiles</label>
-            <select class="form-control" multiple name="authority" [(ngModel)]="authorities">
+            <select class="form-control" multiple name="authority" [(ngModel)]="agentImmobilier.user.authorities">
                 <option *ngFor="let authority of authorities" [value]="authority">{{authority}}</option>
             </select>
         </div>
