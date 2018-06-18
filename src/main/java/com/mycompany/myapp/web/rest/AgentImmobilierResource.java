@@ -117,4 +117,14 @@ public class AgentImmobilierResource {
         agentImmobilierRepository.delete(id);
         return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert(ENTITY_NAME, id.toString())).build();
     }
+
+    //méthode qui retourne l'id du client
+    @GetMapping("/agentImmobilierIdUser/{idUser}")
+    @Timed
+    public ResponseEntity<AgentImmobilier>   findIdClient(@PathVariable Long idUser){
+        log.debug("REST request to get Client : {}", idUser);
+        AgentImmobilier agentImmobilier = agentImmobilierRepository.findIdAgentImmobilier(idUser);
+        return ResponseUtil.wrapOrNotFound(Optional.ofNullable(agentImmobilier));
+    }
+
 }
