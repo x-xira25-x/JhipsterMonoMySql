@@ -20,7 +20,7 @@ Il faut avoir installer les éléments suivants:
 - Maven
 - Developper sur IntelliJ
 
-## Technologies utilisées
+
 
 ## Modèle de données
 MCD
@@ -38,14 +38,14 @@ MLD
  ``docker-compose -f src/main/docker/mysql.yml up``
 -  lancer le client
 - lancer le serveur
-- phpMyAdmin:
-- pseudo: root
-- mot de passe : 1234
 
-
-
-
-
+<ul>
+    <li>phpMyAdmin:</li>
+    <ul>
+        <li>pseudo: root</li>
+        <li>mot de passe : 1234</li>
+    </ul>
+</ul>
 
 
 # JhipsterTestMono
