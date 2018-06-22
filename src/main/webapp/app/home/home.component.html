@@ -3,7 +3,7 @@
         <span class="hipster img-fluid rounded"></span>
     </div>
     <div class="col-md-9">
-        <h1 class="display-4">Bienvenue sur le site d'AgenceImmoSA</h1>
+        <h1 class="display-4">Bienvenue sur le site d'Idéal Biens SA</h1>
         <p class="lead">Gestion des visites immobilières</p>
         <div class="row">
         <div class="col-md-6" [ngSwitch]="isAuthenticated()">
@@ -13,12 +13,13 @@
             </div>
 
             <div>
-                <p>Depuis 2000 notre agence immobilière oeuvre en Suisse.</p>
+                <p>Depuis 2000 ans, notre agence immobilière oeuvre en Suisse.</p>
 
                 <p>Nous mettons à votre disposition notre réseau relationnel afin que vous puissiez aboutir, dans les meilleures conditions possibles, dans vos recherches immobilières.
                 </p>
-                <p> Au delà de l'achat/vente d'un objet immobilier, nous sommes à même de vous proposer nos services pour l'estimation de votre immeuble
-                et vous conseiller sur les aspects fiscaux de toute situation..
+                <p> Venez trouver votre bien idéal grâce à nos annonces en ligne.
+                    <br>
+                    Nous sommes là pour vous conseiller, n'hésitez pas à nous contacter !
                 </p>
                 <p [ngSwitch]="isAuthenticated()"  *ngSwitchCase="false" >Inscrivez-vous afin de pouvoir effectuer des visites rapidement sur des biens qui vous intéresse.</p>
             </div>
