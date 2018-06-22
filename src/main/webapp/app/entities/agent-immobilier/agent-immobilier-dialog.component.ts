@@ -44,17 +44,15 @@ export class AgentImmobilierDialogComponent implements OnInit {
     ngOnInit() {
         this.isSaving = false;
         this.registerAccount = {};
+        this.user={};
         console.log(this.agentImmobilier)
         this.authorities = [];
         this.userService.query()
             .subscribe((res: HttpResponse<User[]>) => { this.users = res.body; }, (res: HttpErrorResponse) => this.onError(res.message));
         this.userService.authorities().subscribe((authorities) => {
             this.authorities = authorities;
-
         });
-
-
-      }
+    }
 
     clear() {
         this.activeModal.dismiss('cancel');
@@ -62,31 +60,14 @@ export class AgentImmobilierDialogComponent implements OnInit {
 
     save() {
         this.isSaving = true;
+       this.agentImmobilier.email = this.agentImmobilier.user.email;
+       console.log(this.agentImmobilier.user)
         if (this.agentImmobilier.id !== undefined) {
             this.subscribeToSaveResponse(
                 this.agentImmobilierService.update(this.agentImmobilier));
         } else {
-            if (this.registerAccount.password !== this.confirmPassword) {
-                this.doNotMatch = 'ERROR';
-            } else {
-                this.doNotMatch = null;
-                this.error = null;
-                this.errorUserExists = null;
-                this.errorEmailExists = null;
-                this.registerAccount.langKey = 'en';
-                this.registerService.save(this.registerAccount).subscribe(() => {
-                    this.success = true;
-                    this.userService.find(this.registerAccount.login).subscribe(resp => {
-                        this.user = resp.body;
-                        this.user.authorities= this.authorities;
-
-                        this.userService.update(this.user).subscribe();
-                        this.agentImmobilier.email = this.registerAccount.email;
-                       this.agentImmobilier.user= this.user;
-                        this.subscribeToSaveResponse(this.agentImmobilierService.create(this.agentImmobilier));
-                    });
-                });}
-        }
+           this.subscribeToSaveResponse(this.agentImmobilierService.create(this.agentImmobilier));
+           }
     }
 
     private subscribeToSaveResponse(result: Observable<HttpResponse<AgentImmobilier>>) {
