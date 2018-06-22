@@ -49,7 +49,7 @@
                     </dd>
                 </dl>
             </div>
-            <div class="col-2" *jhiHasAnyAuthority="'ROLE_ADMIN'" >
+            <div class="col-2" *jhiHasAnyAuthority="['ROLE_ADMIN','ROLE_AGENTIMMO']" >
                 <dt><span>Client</span></dt>
                 <dd>
                     <div *ngIf="bien.client"> Id :
