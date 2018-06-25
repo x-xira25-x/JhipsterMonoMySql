@@ -119,6 +119,7 @@ export class ClientDialogComponent implements OnInit {
     save() {
         this.isSaving = true;
         if (this.client.id !== undefined) {
+
             this.subscribeToSaveResponse(
                 this.clientService.update(this.client));
         } else {
