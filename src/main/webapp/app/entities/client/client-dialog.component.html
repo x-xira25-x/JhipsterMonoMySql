@@ -92,9 +92,9 @@
 
         <div class="form-group">
             <label class="form-control-label" for="field_user">User</label>
-            <select class="form-control" id="field_user" name="user" [(ngModel)]="client.user" >
+            <select class="form-control" id="field_user" name="user" [(ngModel)]="client.user" required>
                 <option [ngValue]="null"></option>
-                <option [ngValue]="userOption.id === client.user?.id ? client.user : userOption" *ngFor="let userOption of users; trackBy: trackUserById">{{userOption.login}}</option>
+                <option [ngValue]="userOption.id === client.user?.id ? client.user : userOption" *ngFor="let userOption of usersDispo; trackBy: trackUserById">{{userOption.login}} {{userOption.authorities}}</option>
             </select>
         </div>
         <div class="form-group">

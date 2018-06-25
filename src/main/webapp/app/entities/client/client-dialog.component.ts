@@ -12,6 +12,8 @@ import { ClientService } from './client.service';
 import { User, UserService } from '../../shared';
 import { TypeClient, TypeClientService } from '../type-client';
 import { Visite, VisiteService } from '../visite';
+import {AgentImmobilier} from "../agent-immobilier/agent-immobilier.model";
+import {AgentImmobilierService} from "../agent-immobilier/agent-immobilier.service";
 
 @Component({
     selector: 'jhi-client-dialog',
@@ -23,10 +25,17 @@ export class ClientDialogComponent implements OnInit {
     isSaving: boolean;
 
     users: User[];
-
+    authorities: any[];
     typeclients: TypeClient[];
 
     visites: Visite[];
+    usersDispo: User[];
+    num: number;
+    listeIdUserClient: number [];
+    listeidUserAgent: number [];
+    listeIdUser: number [];
+    agents: AgentImmobilier[];
+    clients: Client[];
 
     constructor(
         public activeModal: NgbActiveModal,
@@ -35,14 +44,68 @@ export class ClientDialogComponent implements OnInit {
         private userService: UserService,
         private typeClientService: TypeClientService,
         private visiteService: VisiteService,
-        private eventManager: JhiEventManager
+        private eventManager: JhiEventManager,
+        private agentImmobilierService: AgentImmobilierService,
     ) {
     }
 
     ngOnInit() {
         this.isSaving = false;
+        this.usersDispo= [];
+        this.authorities = [];
+        this.listeIdUserClient = [];
+        this.listeidUserAgent = [];
+        this.listeIdUser= [];
         this.userService.query()
-            .subscribe((res: HttpResponse<User[]>) => { this.users = res.body; }, (res: HttpErrorResponse) => this.onError(res.message));
+            .subscribe((res: HttpResponse<User[]>) => {  this.users = res.body; this.agentImmobilierService.query().subscribe((res: HttpResponse<AgentImmobilier[]>) => {
+                this.agents = res.body;
+                this.clientService.query().subscribe((res: HttpResponse<Client[]>) => {
+                    this.clients = res.body;
+                    console.log(this.clients)
+                    console.log(this.users);
+                    //sortir les id
+                    for(let i=0;i<this.clients.length; i++){
+                        this.listeIdUserClient.push(this.clients[i].user.id);
+                    }
+                    console.log("liste id User pour client: " + this.listeIdUserClient);
+
+                    for(let i=0;i<this.agents.length; i++){
+                        this.listeidUserAgent.push(this.agents[i].user.id);
+                    }
+                    console.log("liste id user agent " + this.listeidUserAgent);
+                    for(let i=0;i<this.users.length; i++){
+                        this.listeIdUser.push(this.users[i].id);
+
+                    }
+                    console.log("liste id user " + this.listeIdUser);
+                    // comparer les listes
+
+                    let missingClient = this.listeIdUser.filter(item => this.listeIdUserClient.indexOf(item) < 0);
+                    console.log(missingClient);
+                    let missingAgent = this.listeIdUser.filter(item => this.listeidUserAgent.indexOf(item) < 0);
+                    console.log(missingAgent)
+                    let missingUser = missingClient.filter(item => missingAgent.indexOf(item)>0);
+                    console.log(missingUser)
+                    let num=0;
+                    //aller recherche les users pour les mettre dans la liste
+                    for (let y =0; y< missingUser.length; y++){
+
+                        this.userService.findUserById(missingUser[y]).subscribe((res: HttpResponse<User>) => {
+                                console.log(num)
+                                this.usersDispo[num]= res.body;
+                                console.log(this.usersDispo[y].authorities)
+                                num++;
+                            }
+                        )
+                        console.log(num)
+
+                    }
+                    console.log( this.usersDispo);
+                    console.log(this.users)
+                });
+            });
+
+            }, (res: HttpErrorResponse) => this.onError(res.message));
         this.typeClientService.query()
             .subscribe((res: HttpResponse<TypeClient[]>) => { this.typeclients = res.body; }, (res: HttpErrorResponse) => this.onError(res.message));
         this.visiteService.query()
