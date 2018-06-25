@@ -16,7 +16,7 @@ export class UserResolve implements CanActivate {
     constructor(private principal: Principal) { }
 
     canActivate() {
-        return this.principal.identity().then((account) => this.principal.hasAnyAuthority(['ROLE_ADMIN']));
+        return this.principal.identity().then((account) => this.principal.hasAnyAuthority(['ROLE_ADMIN','ROLE_AGENTIMMO']));
     }
 }
 
@@ -44,14 +44,15 @@ export const userMgmtRoute: Routes = [
             'pagingParams': UserResolvePagingParams
         },
         data: {
-            pageTitle: 'Users'
-        }
+            pageTitle: 'Users',
+        },
+
     },
     {
         path: 'user-management/:login',
         component: UserMgmtDetailComponent,
         data: {
-            pageTitle: 'Users'
+            pageTitle: 'Users',
         }
     }
 ];
