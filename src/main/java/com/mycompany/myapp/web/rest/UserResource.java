@@ -187,4 +187,13 @@ public class UserResource {
         userService.deleteUser(login);
         return ResponseEntity.ok().headers(HeaderUtil.createAlert( "A user is deleted with identifier " + login, login)).build();
     }
+
+    // ajout
+    @GetMapping("/user/{idUser}")
+    @Timed
+    ResponseEntity<User> findUserById (@PathVariable("idUser")Long idUser){
+        log.debug("REST request to get User}", idUser);
+        User user = userRepository.findUserById(idUser);
+        return ResponseUtil.wrapOrNotFound(Optional.ofNullable(user));
+    }
 }

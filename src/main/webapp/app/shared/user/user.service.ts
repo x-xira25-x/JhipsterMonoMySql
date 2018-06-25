@@ -37,4 +37,8 @@ export class UserService {
         return this.http.get<string[]>(SERVER_API_URL + 'api/users/authorities');
     }
 
+    findUserById(idUser: number): Observable<HttpResponse<User>> {
+        return this.http.get<User>(SERVER_API_URL + `api/user/${idUser}`, { observe: 'response' });
+    }
+
 }
