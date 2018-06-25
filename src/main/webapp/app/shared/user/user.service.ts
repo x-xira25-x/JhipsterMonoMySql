@@ -41,4 +41,8 @@ export class UserService {
         return this.http.get<User>(SERVER_API_URL + `api/user/${idUser}`, { observe: 'response' });
     }
 
+    findUserCreatedByLogin(login: string): Observable<HttpResponse<User[]>> {
+        return this.http.get<User[]>(SERVER_API_URL + `api/user/createdBy/${login}`, { observe: 'response' });
+    }
+
 }

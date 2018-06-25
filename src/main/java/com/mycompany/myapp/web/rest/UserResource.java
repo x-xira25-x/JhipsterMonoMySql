@@ -196,4 +196,14 @@ public class UserResource {
         UserDTO user = userRepository.findUserById(idUser);
         return ResponseUtil.wrapOrNotFound(Optional.ofNullable(user));
     }
+
+
+    // ajout
+    @GetMapping("/user/createdBy/{login}")
+    @Timed
+    List<UserDTO>  findUserCreatedByLogin (@PathVariable("login")String login){
+        log.debug("REST request to get User}", login);
+
+        return  userRepository.findUserCreatedByLogin(login);
+    }
 }

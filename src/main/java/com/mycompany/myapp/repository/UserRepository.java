@@ -51,4 +51,7 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
     @Query("select user from User user left join fetch user.authorities where user.id =:idUser")
     UserDTO findUserById (@Param("idUser")Long idUser);
+
+    @Query("select user from User user left join fetch user.authorities where user.createdBy =:login")
+    List <UserDTO> findUserCreatedByLogin (@Param("login")String login);
 }
