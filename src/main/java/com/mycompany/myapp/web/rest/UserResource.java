@@ -187,4 +187,23 @@ public class UserResource {
         userService.deleteUser(login);
         return ResponseEntity.ok().headers(HeaderUtil.createAlert( "A user is deleted with identifier " + login, login)).build();
     }
+
+    // ajout
+    @GetMapping("/user/{idUser}")
+    @Timed
+    ResponseEntity<UserDTO> findUserById (@PathVariable("idUser")Long idUser){
+        log.debug("REST request to get User}", idUser);
+        UserDTO user = userRepository.findUserById(idUser);
+        return ResponseUtil.wrapOrNotFound(Optional.ofNullable(user));
+    }
+
+
+    // ajout
+    @GetMapping("/user/createdBy/{login}")
+    @Timed
+    List<UserDTO>  findUserCreatedByLogin (@PathVariable("login")String login){
+        log.debug("REST request to get User}", login);
+
+        return  userRepository.findUserCreatedByLogin(login);
+    }
 }

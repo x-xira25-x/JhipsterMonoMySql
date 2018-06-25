@@ -19,7 +19,7 @@ export const bienRoute: Routes = [
         path: 'bien/:id',
         component: BienDetailComponent,
         data: {
-             authorities: ['ROLE_USER','ROLE_AGENTIMMO'],
+           //  authorities: ['ROLE_USER','ROLE_AGENTIMMO'],
             pageTitle: 'Biens'
         },
         canActivate: [UserRouteAccessService]

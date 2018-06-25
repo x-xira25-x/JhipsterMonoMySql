@@ -55,8 +55,8 @@
         </div>
         <div class="form-group">
             <label class="form-control-label" for="field_npa">Npa</label>
-            <input type="text" class="form-control" name="npa" id="field_npa"
-                [(ngModel)]="agentImmobilier.npa" required/>
+            <input type="text" class="form-control" name="npa" id="field_npa" placeholder="1000"
+                [(ngModel)]="agentImmobilier.npa" required pattern="[0-9]{4}"/>
             <div [hidden]="!(editForm.controls.npa?.dirty && editForm.controls.npa?.invalid)">
                 <small class="form-text text-danger"
                    [hidden]="!editForm.controls.npa?.errors?.required">
@@ -77,14 +77,25 @@
         </div>
         <div class="form-group">
             <label class="form-control-label" for="field_numTel">Num Tel</label>
-            <input type="text" class="form-control" name="numTel" id="field_numTel"
-                [(ngModel)]="agentImmobilier.numTel" required/>
+            <input type="text" class="form-control" name="numTel" id="field_numTel" placeholder="033 444 55 66 ou 0323334455"
+                [(ngModel)]="agentImmobilier.numTel" required pattern="0[1-9][0-9]([/ ]?[0-9]{3})([/ ]?[0-9]{2}){2}"/>
             <div [hidden]="!(editForm.controls.numTel?.dirty && editForm.controls.numTel?.invalid)">
                 <small class="form-text text-danger"
                    [hidden]="!editForm.controls.numTel?.errors?.required">
                    This field is required.
                 </small>
             </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_user">User</label>
+            <div *ngIf="agentImmobilier.user">
+                {{agentImmobilier.user.login}}
+            </div>
+            <select class="form-control" id="field_user" name="user" [(ngModel)]="agentImmobilier.user" required>
+
+                <option [ngValue]="null"></option>
+                <option [ngValue]="userOption.id === agentImmobilier.id ? agentImmobilier : userOption" *ngFor="let userOption of usersDispo; trackBy: trackUserById">{{userOption.login}} {{userOption.authorities}}</option>
+            </select>
         </div>
         <!--<div class="form-group">
             <label class="form-control-label" for="field_email">Email</label>
@@ -108,99 +119,95 @@
         </div>-->
 
         <!-- user-->
-        <div class="form-group">
-        <label class="form-control-label" for="login">Pseudo</label>
-        <input type="text" class="form-control" [(ngModel)]="agentImmobilier.user.login" id="login" name="login" #login="ngModel" placeholder="Ton pseudo"
-               required minlength="1" maxlength="50" pattern="^[_'.@A-Za-z0-9-]*$">
-        <div *ngIf="login.dirty && login.invalid">
-            <small class="form-text text-danger" *ngIf="login.errors.required">
-                Your username is required.
-            </small>
-            <small class="form-text text-danger" *ngIf="login.errors.minlength"
-            >
-                Your username is required to be at least 1 character.
-            </small>
-            <small class="form-text text-danger" *ngIf="login.errors.maxlength"
-            >
-                Your username cannot be longer than 50 characters.
-            </small>
-            <small class="form-text text-danger" *ngIf="login.errors.pattern"
-            >
-                Your username can only contain letters and digits.
-            </small>
-        </div>
-        </div>
+        <!--  <div class="form-group">
+          <label class="form-control-label" for="login">Pseudo</label>
+          <input type="text" class="form-control" [(ngModel)]="agentImmobilier.user.login" id="login" name="login" #login="ngModel" placeholder="Ton pseudo"
+                 required minlength="1" maxlength="50" pattern="^[_'.@A-Za-z0-9-]*$">
+          <div *ngIf="login.dirty && login.invalid">
+              <small class="form-text text-danger" *ngIf="login.errors.required">
+                  Your username is required.
+              </small>
+              <small class="form-text text-danger" *ngIf="login.errors.minlength"
+              >
+                  Your username is required to be at least 1 character.
+              </small>
+              <small class="form-text text-danger" *ngIf="login.errors.maxlength"
+              >
+                  Your username cannot be longer than 50 characters.
+              </small>
+              <small class="form-text text-danger" *ngIf="login.errors.pattern"
+              >
+                  Your username can only contain letters and digits.
+              </sma          </div>
+          </div>
 
-    <div class="form-group">
-        <label class="form-control-label" for="email">Email</label>
-        <input type="email" class="form-control" id="email" name="email" #email="ngModel" placeholder="Ton email"
-               [(ngModel)]="agentImmobilier.user.email" minlength=5 maxlength=100 email required>
-        <div *ngIf="email.dirty && email.invalid">
-            <small class="form-text text-danger" *ngIf="email.errors.required"
-            >
-                Your email is required.
-            </small>
-            <small class="form-text text-danger" *ngIf="email.errors.invalid"
-            >
-                Your email is invalid.
-            </small>
-            <small class="form-text text-danger" *ngIf="email.errors.minlength"
-            >
-                Your email is required to be at least 5 characters.
-            </small>
-            <small class="form-text text-danger" *ngIf="email.errors.maxlength"
-            >
-                Your email cannot be longer than 100 characters.
-            </small>
-        </div>
-    </div>
-    <!--<div class="form-group">
-        <label class="form-control-label" for="password">Nouveau mot de passe</label>
-        <input type="password" class="form-control" id="password" name="password" #password="ngModel" placeholder="Nouveau mot de passe"
-               [(ngModel)]="agentImmobilier.user.password" minlength=4 maxlength=50 required>
-        <div *ngIf="password.dirty && password.invalid">
-            <small class="form-text text-danger" *ngIf="password.errors.required"
-            >
-                Tom mot de passe est obligatoire
-            </small>
-            <small class="form-text text-danger" *ngIf="password.errors.minlength"
-            >
-                Your password is required to be at least 4 characters.
-            </small>
-            <small class="form-text text-danger" *ngIf="password.errors.maxlength"
-            >
-                Your password cannot be longer than 50 characters.
-            </small>
-        </div>
-        <jhi-password-strength-bar [passwordToCheck]="registerAccount.password"></jhi-password-strength-bar>
-    </div>-->
-   <!-- <div class="form-group">
-        <label class="form-control-label" for="confirmPassword">Confirmation du nouveau mot de passe</label>
-        <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" #confirmPasswordInput="ngModel" placeholder="Confirme ton nouveau mot de passe"
-               [(ngModel)]="confirmPassword" minlength=4 maxlength=50 required>
-        <div *ngIf="confirmPasswordInput.dirty && confirmPasswordInput.invalid">
-            <small class="form-text text-danger" *ngIf="confirmPasswordInput.errors.required"
-            >
-                Your confirmation password is required.
-            </small>
-            <small class="form-text text-danger" *ngIf="confirmPasswordInput.errors.minlength"
-            >
-                Your confirmation password is required to be at least 4 characters.
-            </small>
-            <small class="form-text text-danger" *ngIf="confirmPasswordInput.errors.maxlength"
-            >
-                Your confirmation password cannot be longer than 50 characters.
-            </small>
-        </div>
-    </div>-->
-        <div class="form-group">
-            <label>Profiles</label>
-            <select class="form-control" multiple name="authority" [(ngModel)]="agentImmobilier.user.authorities">
-                <option *ngFor="let authority of authorities" [value]="authority">{{authority}}</option>
-            </select>
-        </div>
+     <!-- <div class="form-group">
+          <label class="form-control-label" for="email">Email</label>
+          <input type="email" class="form-control" id="email" name="email" #email="ngModel" placeholder="Ton email"
+                 [(ngModel)]="agentImmobilier.user.email" minlength=5 maxlength=100 email required>
+          <div *ngIf="email.dirty && email.invalid">
+              <small class="form-text text-danger" *ngIf="email.errors.required"
+              >
+                  Your email is required.
+              </small>
+              <small class="form-text text-danger" *ngIf="email.errors.invalid"
+              >
+                  Your email is invalid.
+              </small>
+              <small class="form-text text-danger" *ngIf="email.errors.minlength"
+              >
+                  Your email is required to be at least 5 characters.
+              </small>
+              <small class="form-text text-danger" *ngIf="email.errors.maxlength"
+              >
+                  Your email cannot be longer than 100 characters.
+              </small>
+          </div>
+      </div>
+      <div class="form-group">
+          <label class="form-control-label" for="password">Nouveau mot de passe</label>
+          <input type="password" class="form-control" id="password" name="password" #password="ngModel" placeholder="Nouveau mot de passe"
+                 [(ngModel)]="agentImmobilier.user.password" minlength=4 maxlength=50 required>
+          <div *ngIf="password.dirty && password.invalid">
+              <small class="form-text text-danger" *ngIf="password.errors.required">
+                  Tom mot de passe est obligatoire
+              </small>
+              <small class="form-text text-danger" *ngIf="password.errors.minlength">
+                  Your password is required to be at least 4 characters.
+              </small>
+              <small class="form-text text-danger" *ngIf="password.errors.maxlength">
+                  Your password cannot be longer than 50 characters.
+              </small>
+          </div>
+          <jhi-password-strength-bar [passwordToCheck]="registerAccount.password"></jhi-password-strength-bar>
+      </div>
+      <div class="form-group">
+          <label class="form-control-label" for="confirmPassword">Confirmation du nouveau mot de passe</label>
+          <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" #confirmPasswordInput="ngModel" placeholder="Confirme ton nouveau mot de passe"
+                 [(ngModel)]="confirmPassword" minlength=4 maxlength=50 required>
+          <div *ngIf="confirmPasswordInput.dirty && confirmPasswordInput.invalid">
+              <small class="form-text text-danger" *ngIf="confirmPasswordInput.errors.required"
+              >
+                  Your confirmation password is required.
+              </small>
+              <small class="form-text text-danger" *ngIf="confirmPasswordInput.errors.minlength"
+              >
+                  Your confirmation password is required to be at least 4 characters.
+              </small>
+              <small class="form-text text-danger" *ngIf="confirmPasswordInput.errors.maxlength"
+              >
+                  Your confirmation password cannot be longer than 50 characters.
+              </small>
+          </div>
+      </div>
+          <div class="form-group">
+              <label>Profiles</label>
+              <select class="form-control" multiple name="authority" [(ngModel)]="agentImmobilier.user.authorities">
+                  <option *ngFor="let authority of authorities" [value]="authority">{{authority}}</option>
+              </select>
+          </div>
 
-    </div>
+      </div>-->
     <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
             <span class="fa fa-ban"></span>&nbsp;<span>Cancel</span>

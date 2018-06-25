@@ -49,13 +49,13 @@
                     </dd>
                 </dl>
             </div>
-            <div class="col-2" *jhiHasAnyAuthority="'ROLE_ADMIN'" >
+            <div class="col-2" *jhiHasAnyAuthority="['ROLE_ADMIN','ROLE_AGENTIMMO']" >
                 <dt><span>Client</span></dt>
                 <dd>
                     <div *ngIf="bien.client"> Id :
                         <a [routerLink]="['/client', bien.client?.id]">{{bien.client?.id}}</a>
                     </div>
-                        {{client.nom}}     {{client.prenom}}
+                        {{bien.client.nom}}     {{bien.client.prenom}}
                 </dd>
             </div>
         </div>
