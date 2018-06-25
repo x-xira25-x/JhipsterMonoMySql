@@ -2,6 +2,7 @@ package com.mycompany.myapp.repository;
 
 import com.mycompany.myapp.domain.User;
 
+import com.mycompany.myapp.service.dto.UserDTO;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -48,6 +49,6 @@ public interface UserRepository extends JpaRepository<User, Long> {
     Page<User> findAllByLoginNot(Pageable pageable, String login);
 
 
-    @Query("select user from User user where user.id =:idUser")
-    User findUserById (@Param("idUser")Long idUser);
+    @Query("select user from User user left join fetch user.authorities where user.id =:idUser")
+    UserDTO findUserById (@Param("idUser")Long idUser);
 }
