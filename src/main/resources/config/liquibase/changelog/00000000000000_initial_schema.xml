@@ -9,6 +9,9 @@
     <property name="now" value="now()" dbms="h2"/>
     <property name="now" value="now()" dbms="mysql"/>
     <property name="autoIncrement" value="true"/>
+    <property name="now" value="sysdate" dbms="oracle"/>
+    <property name="autoIncrement" value="false" dbms="oracle"/>
+    <property name="autoIncrement" value="false" dbms="oracle"/>
 
     <!--
         JHipster core tables.
