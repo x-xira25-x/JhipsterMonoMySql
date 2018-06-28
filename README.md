@@ -1,7 +1,7 @@
-# Immo SA
+# Idéal Biens SA
 
 ## Introduction
-Immo SA est une application de gestion de visites pour une agence immobilière.
+Idéal Biens SA est une application de gestion de visites pour une agence immobilière. Elle a été crée grâce à JHipster en guise d'application de démonstration pour le Travail de Bachelor.
 
 ## Prérequis
 Il faut avoir installer les éléments suivants:
