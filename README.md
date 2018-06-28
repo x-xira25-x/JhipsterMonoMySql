@@ -101,7 +101,7 @@ L'agent immobilier est créé depuis le compte administrateur. Il peut accéder 
 #### Admnistrateur
 L'administrateur dispose d'un onglet "administration" qui lui permet de controler divers paramètre de l'application.
 
-### Compte
+### Comptes
 
 <ul>
     <li>Client:</li>
@@ -111,7 +111,7 @@ L'administrateur dispose d'un onglet "administration" qui lui permet de controle
     </ul>
 </ul>
 <ul>
-    <li>Agent immoblier:</li>
+    <li>Agent immobilier:</li>
     <ul>
         <li>Login: </li>
         <li>mot de passe: </li>
