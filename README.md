@@ -52,10 +52,11 @@ L'application dispose de 4 types d'utilisateurs
  
 -  lancer le client
 
-  ``yarn start``
+   ``yarn start``
 
 - lancer le serveur
-  ``./mvnw ``
+
+   ``./mvnw ``
 <ul>
     <li>phpMyAdmin:</li>
     <ul>
