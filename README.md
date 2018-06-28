@@ -32,13 +32,6 @@ MCD
 MLD
 ![](https://github.com/x-xira25-x/JhipsterMonoMySql/blob/master/ModeleDonnees/MLD2.PNG)
 
-## Fonctionnement
-
-L'application dispose de 4 types d'utilisateurs
-- Public
-- Client
-- Agent immobilier
-- Administrateur
 
 ## Manuel d'utilisation
 
