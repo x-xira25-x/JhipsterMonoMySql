@@ -99,7 +99,7 @@ L'agent immobilier est créé depuis le compte administrateur. Il peut accéder 
 - visite
 
 #### Admnistrateur
-L'administrateur dispose d'un onglet "administration" qui lui permet de controler divers paramètre de l'application.
+L'administrateur dispose d'un onglet "administration" qui lui permet de controler divers paramètres de l'application.
 
 ### Comptes
 
