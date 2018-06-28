@@ -50,15 +50,15 @@ L'application dispose de 4 types d'utilisateurs
 
    ``docker-compose -f src/main/docker/mysql.yml up``
  
--  lancer le client
+-  Lancer le client
 
    ``yarn start``
 
-- lancer le serveur
+- Lancer le serveur
 
    ``./mvnw ``
 <ul>
-    <li>phpMyAdmin:</li>
+    <li>PhpMyAdmin:</li>
     <ul>
         <li>pseudo: root</li>
         <li>mot de passe : 1234</li>
