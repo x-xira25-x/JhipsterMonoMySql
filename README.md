@@ -67,7 +67,7 @@ Il est important que le conteneur docker contenant PHPMyAdmin tourne sur le mêm
 Le plus simple est d'installer Kitematic pour lancer les conteneurs docker.
 
 ## Contexte
-Cette application est destinée pour les agences immobilières. Elle leur permet de mettre en avant des biens à vendre et ainsi, les clients ont la possibilité de s'inscrire, d'effectuer des recherches et s'inscrire à des visites que proposent les agents immobiliers.
+Cette application est destinée pour les agences immobilières. Elle leur permet de mettre en avant des biens à vendre et de ce fait, les clients ont la possibilité de s'inscrire, d'effectuer des recherches et s'inscrire à des visites que proposent les agents immobiliers.
 
 ## Utilisateurs de l'application
 L'application dispose de 4 types d'utilisateurs:
