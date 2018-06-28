@@ -12,9 +12,9 @@ Il faut avoir installer les éléments suivants:
 - Docker
 
 ## Configuration de l'application
-- application monolithique
-- base de données MySQL pour le développement et la production dans un docker
-- phyMyadmin dans un docker
+- Application monolithique
+- Base de données MySQL pour le développement et la production dans un docker
+- PhyMyadmin dans un docker
 - Angular 5
 - JWT authentification
 - Maven
