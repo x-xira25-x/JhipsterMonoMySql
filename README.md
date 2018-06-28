@@ -44,17 +44,17 @@ L'application dispose de 4 types d'utilisateurs
  - Avant de générer le projet, il faut installer et configurer les dépendances: Node.js et Yarn
  - Après l'installation de Node, exécuter la commande ci-dessous pour installer les outils de développement
  ``yarn install   ``
- - copier le projet
--  lancer les dockers, il faut qu'ils soient dans le même réseau :
+ - Cloner le projet
+-  Lancer les dockers, il faut qu'ils soient dans le même réseau :
 
- ``docker-compose -f src/main/docker/mysql.yml up``
+   ``docker-compose -f src/main/docker/mysql.yml up``
  
 -  lancer le client
 
-``yarn start``
+  ``yarn start``
 
 - lancer le serveur
-``./mvnw ``
+  ``./mvnw ``
 <ul>
     <li>phpMyAdmin:</li>
     <ul>
@@ -63,6 +63,7 @@ L'application dispose de 4 types d'utilisateurs
     </ul>
 </ul>
 
+## Installation de PHPMyAdmin
 
 
 
