@@ -90,9 +90,12 @@
                 [(ngModel)]="client.email" />
         </div>
 
-        <div *ngIf="!client.user" class="form-group">
+        <div  class="form-group">
             <label class="form-control-label" for="field_user">User</label>
-            <select class="form-control" id="field_user" name="user" [(ngModel)]="client.user" required>
+                <div *ngIf="client.user">
+                    {{client.user.login}}
+                </div>
+            <select *ngIf="!client.user"class="form-control" id="field_user" name="user" [(ngModel)]="client.user" required>
                 <option [ngValue]="null"></option>
                 <option [ngValue]="userOption.id === client.user?.id ? client.user : userOption" *ngFor="let userOption of usersDispo; trackBy: trackUserById">{{userOption.login}} {{userOption.authorities}}</option>
             </select>
