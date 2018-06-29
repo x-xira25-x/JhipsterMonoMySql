@@ -4,7 +4,7 @@
         <button class="btn btn-primary float-right jh-create-entity create-type-client" [routerLink]="['/', { outlets: { popup: ['type-client-new'] } }]">
             <span class="fa fa-plus"></span>
             <span >
-            Create new Type Client
+           Créer un type de client
             </span>
         </button>
     </h2>
@@ -31,7 +31,7 @@
                                 [routerLink]="['../type-client', typeClient.id ]"
                                 class="btn btn-info btn-sm">
                             <span class="fa fa-eye"></span>
-                            <span class="d-none d-md-inline">View</span>
+                            <span class="d-none d-md-inline">Aperçu</span>
                         </button>
                         <button type="submit"
                                 [routerLink]="['/', { outlets: { popup: 'type-client/'+ typeClient.id + '/edit'} }]"
@@ -39,7 +39,7 @@
                                 queryParamsHandling="merge"
                                 class="btn btn-primary btn-sm">
                             <span class="fa fa-pencil"></span>
-                            <span class="d-none d-md-inline">Edit</span>
+                            <span class="d-none d-md-inline">Modifier</span>
                         </button>
                         <button type="submit"
                                 [routerLink]="['/', { outlets: { popup: 'type-client/'+ typeClient.id + '/delete'} }]"
@@ -47,7 +47,7 @@
                                 queryParamsHandling="merge"
                                 class="btn btn-danger btn-sm">
                             <span class="fa fa-remove"></span>
-                            <span class="d-none d-md-inline">Delete</span>
+                            <span class="d-none d-md-inline">Supprimer</span>
                         </button>
                     </div>
                 </td>
