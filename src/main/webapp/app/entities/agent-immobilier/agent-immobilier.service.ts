@@ -33,7 +33,7 @@ export class AgentImmobilierService {
     }
     // ajout méthode qui retourne du client par login
     findIdAgentImmobilier(id: number): Observable<EntityResponseType> {
-        return this.http.get<AgentImmobilier>(`http://localhost:8080/api/agentImmobilierIdUser/${id}`, {observe: 'response' })
+        return this.http.get<AgentImmobilier>(`http://localhost:8080/api/agent-immobiliers/IdUser/${id}`, {observe: 'response' })
             .map((res: EntityResponseType) => this.convertResponse(res));
     }
 

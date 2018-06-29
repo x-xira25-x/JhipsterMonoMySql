@@ -119,6 +119,12 @@ public class ClientResource {
     }
 
     //méthode qui retourne l'id du client
+
+    /**
+     * GET /clientLogin/:login:
+     * @param login
+     * @return the ResponseEntity with status 200 (OK) and with body the client, or with status 404 (Not Found)
+     */
     @GetMapping("/clientLogin/{login}")
     @Timed
     public ResponseEntity<Client>   findIdClient(@PathVariable String login){

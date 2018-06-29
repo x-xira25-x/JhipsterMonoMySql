@@ -119,7 +119,13 @@ public class AgentImmobilierResource {
     }
 
     //méthode qui retourne l'id du client
-    @GetMapping("/agentImmobilierIdUser/{idUser}")
+
+    /**
+     * GET /agent-immobiliers/IdUser/:idUser:
+     * @param idUser
+     * @return the ResponseEntity with status 200 (OK)
+     */
+    @GetMapping("/agent-immobiliers/IdUser/{idUser}")
     @Timed
     public ResponseEntity<AgentImmobilier>   findIdClient(@PathVariable Long idUser){
         log.debug("REST request to get Client : {}", idUser);

@@ -189,6 +189,12 @@ public class UserResource {
     }
 
     // ajout
+
+    /**
+     * GET /user/:idUser:
+     * @param idUser
+     * @return the ResponseEntity with status 200 (OK) and with body the "login" user, or with status 404 (Not Found)
+     */
     @GetMapping("/user/{idUser}")
     @Timed
     ResponseEntity<UserDTO> findUserById (@PathVariable("idUser")Long idUser){
@@ -199,6 +205,12 @@ public class UserResource {
 
 
     // ajout
+
+    /**
+     * GET /user/createdBy/:login:
+     * @param login
+     * @return the ResponseEntity with status 200 (OK) and with body the "login" user, or with status 404 (Not Found)
+     */
     @GetMapping("/user/createdBy/{login}")
     @Timed
     List<UserDTO>  findUserCreatedByLogin (@PathVariable("login")String login){

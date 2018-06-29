@@ -80,7 +80,10 @@ public class BienResource {
             .body(result);
     }
 
-
+    /**
+     * GET /biensAvendre
+     * @return the ResponseEntity with status 200 (OK) and the list of biens in body
+     */
     @GetMapping("/biensAvendre")
     @Timed
     public List<Bien> getAllBiensAvendre() {
@@ -90,6 +93,11 @@ public class BienResource {
 
     }
 
+    /**
+     * GET /biens/:idBien:/visites
+     * @param idBien
+     * @return the ResponseEntity with status 200 (OK) and the list of biens in body
+     */
     @GetMapping("/biens/{idBien}/visites")
     @Timed
     public List<Visite> getAllBiensAvendre(@PathVariable Long idBien) {

@@ -58,9 +58,7 @@ export class AvendreVisiteDialogComponent implements OnInit {
     }
 
     inscription(idVisite) {
-        console.log('entre dans la inscripton');
-        console.log('id visite' + idVisite);
-        // récupérer  client
+        // récupérer le client
         this.principal.identity().then((account) => {
             this.settingsAccount = this.copyAccount(account);
             this.clientService.findIdClient(this.settingsAccount.login).subscribe(
@@ -73,13 +71,11 @@ export class AvendreVisiteDialogComponent implements OnInit {
                             this.visite = res.body;
                          // ajout du client dans visite.client
                             this.visite.clients[this.visite.clients.length + 1] = this.client;
-
                             this.visiteService.updateSansConvert(this.visite).subscribe(
                                 (res: HttpResponse<Visite>) => {
                                     this.visite = res.body;
                                     console.log('update visite');
                                     console.log(this.success);
-
                                 },
                                 (res: HttpErrorResponse) => this.onError(res.message)
                             );

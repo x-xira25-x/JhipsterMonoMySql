@@ -104,6 +104,11 @@ public class VisiteResource {
         return ResponseUtil.wrapOrNotFound(Optional.ofNullable(visite));
     }
 
+    /**
+     * GET /visitesBy/:idClient:
+     * @param idClient
+     * @return the ResponseEntity with status 200 (OK) and the list of visites in body
+     */
     @GetMapping("/visitesBy/{idClient}")
     @Timed
     public List<Visite>FindAllByClient(@PathVariable  Long idClient){
