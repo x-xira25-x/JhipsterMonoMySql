@@ -120,8 +120,9 @@ L'administrateur dispose d'un onglet "administration" qui lui permet de controle
     </ul>
 </ul>
 
+### Remarque
 
-
+Lors qu'un user est créé depuis un compte administrateur ou agent immobilier son mot de passe est par défaut: 1234
 
 
 
