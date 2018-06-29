@@ -19,11 +19,11 @@
             <tr>
             <th><span>ID</span></th>
             <th><span>Nom</span></th>
-            <th><span>Prenom</span></th>
+            <th><span>Prénom</span></th>
             <th><span>Adresse</span></th>
-            <th><span>Npa</span></th>
-            <th><span>Localite</span></th>
-            <th><span>Num Tel</span></th>
+            <th><span>NPA</span></th>
+            <th><span>Localité</span></th>
+            <th><span>Numéro de téléphone</span></th>
             <th><span>Email</span></th>
             <th><span>User</span></th>
             <th></th>
@@ -47,7 +47,7 @@
                                 [routerLink]="['../agent-immobilier', agentImmobilier.id ]"
                                 class="btn btn-info btn-sm">
                             <span class="fa fa-eye"></span>
-                            <span class="d-none d-md-inline">View</span>
+                            <span class="d-none d-md-inline">Aperçu</span>
                         </button>
                         <button type="submit"
                                 [routerLink]="['/', { outlets: { popup: 'agent-immobilier/'+ agentImmobilier.id + '/edit'} }]"
@@ -55,7 +55,7 @@
                                 queryParamsHandling="merge"
                                 class="btn btn-primary btn-sm">
                             <span class="fa fa-pencil"></span>
-                            <span class="d-none d-md-inline">Edit</span>
+                            <span class="d-none d-md-inline">Modifier</span>
                         </button>
                         <button type="submit"
                                 [routerLink]="['/', { outlets: { popup: 'agent-immobilier/'+ agentImmobilier.id + '/delete'} }]"
@@ -63,7 +63,7 @@
                                 queryParamsHandling="merge"
                                 class="btn btn-danger btn-sm">
                             <span class="fa fa-remove"></span>
-                            <span class="d-none d-md-inline">Delete</span>
+                            <span class="d-none d-md-inline">Supprimer</span>
                         </button>
                     </div>
                 </td>

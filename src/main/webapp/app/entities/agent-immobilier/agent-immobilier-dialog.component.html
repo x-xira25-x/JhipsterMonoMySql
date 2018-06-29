@@ -91,7 +91,7 @@
             <div *ngIf="agentImmobilier.user">
                 {{agentImmobilier.user.login}}
             </div>
-            <select class="form-control" id="field_user" name="user" [(ngModel)]="agentImmobilier.user" required>
+            <select *ngIf="!agentImmobilier.user" class="form-control" id="field_user" name="user" [(ngModel)]="agentImmobilier.user" required>
 
                 <option [ngValue]="null"></option>
                 <option [ngValue]="userOption.id === agentImmobilier.id ? agentImmobilier : userOption" *ngFor="let userOption of usersDispo; trackBy: trackUserById">{{userOption.login}} {{userOption.authorities}}</option>
