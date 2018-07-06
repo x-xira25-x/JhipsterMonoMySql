@@ -108,12 +108,12 @@ L'administrateur dispose d'un onglet "administration" qui lui permet de controle
 <ul>
     <li>Agent immobilier:</li>
     <ul>
-        <li>Login: </li>
-        <li>mot de passe: </li>
+        <li>Login: agent</li>
+        <li>mot de passe: 1234</li>
     </ul>
 </ul>
 <ul>
-    <li>Administarteur::</li>
+    <li>Administarteur:</li>
     <ul>
         <li>Login: admin</li>
         <li>mot de passe: admin</li>
