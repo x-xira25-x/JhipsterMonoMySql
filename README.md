@@ -1,7 +1,7 @@
 # Idéal Biens SA
 
 ## Introduction
-Idéal Biens SA est une application de gestion de visites pour une agence immobilière. Elle a été crée grâce à JHipster en guise d'application de démonstration pour le Travail de Bachelor.
+Idéal Biens SA est une application de gestion de visites pour une agence immobilière. Elle a été créée grâce à JHipster en guise d'application de démonstration pour mon Travail de Bachelor.
 
 ## Prérequis
 Il faut avoir installer les éléments suivants:
@@ -14,7 +14,7 @@ Il faut avoir installer les éléments suivants:
 ## Configuration de l'application
 - JHipster 4.14.3
 - Application monolithique
-- Base de données MySQL pour le développement et la production dans un docker
+- Base de données MySQL pour le développement et la production dans un conteneur Docker
 - PhyMyadmin dans un docker
 - Angular 5
 - JWT authentification
@@ -63,17 +63,17 @@ L'application a une architecture en client-serveur avec une base de données dan
 </ul>
 
 ## Installation de PHPMyAdmin
-La première chose à faire est d'arreter tous les conteneurs docker. Puis lancer la commande suivante
+La première chose à faire est d'arrêter tous les conteneurs Docker. Puis lancer la commande suivante
 ``docker-compose up -d du https://hub.docker.com/r/phpmyadmin/phpmyadmin/  ``
 
-Il est important que le conteneur docker contenant PHPMyAdmin tourne sur le même réseau que le conteneur contenant la base de données.
+Il est important que le conteneur Docker contenant PHPMyAdmin tourne sur le même réseau que le conteneur contenant la base de données.
 
-Le plus simple est d'installer Kitematic pour lancer les conteneurs docker.
+Le plus simple est d'installer Kitematic pour lancer les conteneurs Docker.
 
 PHPMyAdmin est accessible à l'adresse : http://localhost:9191/
 
 ## Contexte
-Cette application est destinée pour les agences immobilières. Elle leur permet de mettre en avant des biens à vendre et de ce fait, les clients ont la possibilité de s'inscrire, d'effectuer des recherches et s'inscrire à des visites que proposent les agents immobiliers.
+Cette application est destinée pour les agences immobilières. Elle leur permet de mettre en avant des biens à vendre et de ce fait, les clients ont la possibilité de visualiser les biens en vente, d'effectuer des recherches et de s'inscrire à des visites que proposent les agents immobiliers.
 
 ## User stories
 Ci-dessous se trouve les user stories implémentés dans l'application:
