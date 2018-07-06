@@ -33,6 +33,7 @@ MLD
 ![](https://github.com/x-xira25-x/JhipsterMonoMySql/blob/master/ModeleDonnees/MLD2.PNG)
 
 ## Structure du projet
+L'application a une architecture en client-serveur avec une base de données dans un conteneur Docker et Liquibase pour gérer les montées de versions de la base de données.
 ![](https://github.com/x-xira25-x/JhipsterMonoMySql/blob/master/structure.PNG)
 
 
