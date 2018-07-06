@@ -32,6 +32,9 @@ MCD
 MLD
 ![](https://github.com/x-xira25-x/JhipsterMonoMySql/blob/master/ModeleDonnees/MLD2.PNG)
 
+## Structure du projet
+![](https://github.com/x-xira25-x/JhipsterMonoMySql/blob/master/structure.PNG)
+
 
 ## Manuel d'utilisation
 
