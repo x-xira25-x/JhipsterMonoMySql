@@ -76,7 +76,7 @@ PHPMyAdmin est accessible à l'adresse : http://localhost:9191/
 Cette application est destinée pour les agences immobilières. Elle leur permet de mettre en avant des biens à vendre et de ce fait, les clients ont la possibilité de s'inscrire, d'effectuer des recherches et s'inscrire à des visites que proposent les agents immobiliers.
 
 ## User stories
-ci-dessous se trouve les user stories implémentés dans l'application:
+Ci-dessous se trouve les user stories implémentés dans l'application:
 
 | User stories  | Implémenté    | 
 | ------------- |:-------------:| 
@@ -106,10 +106,10 @@ En s'inscrivant sur l'application, le client peut etre un vendeur et/ou un achet
 
 #### Agent immobilier
 L'agent immobilier est créé depuis le compte administrateur. Il peut accéder à l'onglet "a vendre" et peut créer, supprimer, modifier les diverses entités suivantes:
-- bien
-- client
-- agent immobilier
-- visite
+- Bien
+- Client
+- Agent immobilier
+- Visite
 
 #### Admnistrateur
 L'administrateur dispose d'un onglet "administration" qui lui permet de controler divers paramètres de l'application.
