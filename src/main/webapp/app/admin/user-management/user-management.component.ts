@@ -48,12 +48,10 @@ export class UserMgmtComponent implements OnInit, OnDestroy {
         this.agentImmo= false;
         this.principal.identity().then((account) => {
             this.currentAccount = account;
-           if(this.currentAccount.valueOf().authorities == 'ROLE_AGENTIMMO'){
-               this.agentImmo= true;
+           if(this.currentAccount.valueOf().authorities === 'ROLE_AGENTIMMO'){
+               this.agentImmo = true;
            }
-           console.log(this.agentImmo)
             this.loadAll();
-           console.log("load")
             this.registerChangeInUsers();
         });
     }
@@ -90,7 +88,6 @@ export class UserMgmtComponent implements OnInit, OnDestroy {
                 (res: HttpResponse<any>) => this.onError(res.body) );
 
         }else {
-
             this.userService.query({
                 page: this.page - 1,
                 size: this.itemsPerPage,
