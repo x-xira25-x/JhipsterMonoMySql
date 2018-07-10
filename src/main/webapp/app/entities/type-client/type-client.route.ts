@@ -11,7 +11,7 @@ export const typeClientRoute: Routes = [
         path: 'type-client',
         component: TypeClientComponent,
         data: {
-            authorities: ['ROLE_USER','ROLE_AGENTIMMO'],
+            authorities: ['ROLE_USER', 'ROLE_AGENTIMMO'],
             pageTitle: 'TypeClients'
         },
         canActivate: [UserRouteAccessService]
@@ -19,7 +19,7 @@ export const typeClientRoute: Routes = [
         path: 'type-client/:id',
         component: TypeClientDetailComponent,
         data: {
-            authorities: ['ROLE_USER','ROLE_AGENTIMMO'],
+            authorities: ['ROLE_USER', 'ROLE_AGENTIMMO'],
             pageTitle: 'TypeClients'
         },
         canActivate: [UserRouteAccessService]
@@ -31,7 +31,7 @@ export const typeClientPopupRoute: Routes = [
         path: 'type-client-new',
         component: TypeClientPopupComponent,
         data: {
-            authorities: ['ROLE_USER','ROLE_AGENTIMMO'],
+            authorities: ['ROLE_USER', 'ROLE_AGENTIMMO'],
             pageTitle: 'TypeClients'
         },
         canActivate: [UserRouteAccessService],
@@ -41,7 +41,7 @@ export const typeClientPopupRoute: Routes = [
         path: 'type-client/:id/edit',
         component: TypeClientPopupComponent,
         data: {
-            authorities: ['ROLE_USER','ROLE_AGENTIMMO'],
+            authorities: ['ROLE_USER', 'ROLE_AGENTIMMO'],
             pageTitle: 'TypeClients'
         },
         canActivate: [UserRouteAccessService],
@@ -51,7 +51,7 @@ export const typeClientPopupRoute: Routes = [
         path: 'type-client/:id/delete',
         component: TypeClientDeletePopupComponent,
         data: {
-            authorities: ['ROLE_USER','ROLE_AGENTIMMO'],
+            authorities: ['ROLE_USER', 'ROLE_AGENTIMMO'],
             pageTitle: 'TypeClients'
         },
         canActivate: [UserRouteAccessService],

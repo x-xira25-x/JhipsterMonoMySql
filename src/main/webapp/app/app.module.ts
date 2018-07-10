@@ -28,10 +28,8 @@ import {
 } from './layouts';
 
 import {JhipsterTestMonoEntityModule} from './entities/entity.module';
-import { PresentationComponent } from './presentation/presentation.component';
 import {PresentationModule} from './presentation/presentation.module';
-import { VisitesClientComponent } from './visites-client/visites-client.component';
-import {VisitesClientModule} from "./visites-client/visites-client.module";
+import {VisitesClientModule} from './visites-client/visites-client.module';
 
 @NgModule({
     imports: [

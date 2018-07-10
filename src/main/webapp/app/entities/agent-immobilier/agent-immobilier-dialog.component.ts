@@ -67,16 +67,16 @@ export class AgentImmobilierDialogComponent implements OnInit {
                         this.clients = res.body;
                         console.log(this.users);
                         // sortir les id
-                            for (let i = 0; i < this.clients.length; i++){
+                            for ( let i = 0; i < this.clients.length; i++){
                                this.listeIdUserClient.push(this.clients[i].user.id);
                             }
                             console.log('liste id User pour client: ' + this.listeIdUserClient);
 
-                        for (let i = 0; i < this.agents.length; i++){
+                        for ( let i = 0; i < this.agents.length; i++){
                             this.listeidUserAgent.push(this.agents[i].user.id);
                         }
                         console.log('liste id user agent ' + this.listeidUserAgent);
-                        for (let i = 0; i < this.users.length; i++){
+                        for (let i = 0 ; i < this.users.length; i++){
                             this.listeIdUser.push(this.users[i].id);
 
                         }

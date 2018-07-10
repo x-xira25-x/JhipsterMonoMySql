@@ -11,7 +11,7 @@ export const bienRoute: Routes = [
         path: 'bien',
         component: BienComponent,
         data: {
-            authorities: ['ROLE_USER','ROLE_AGENTIMMO'],
+            authorities: ['ROLE_USER', 'ROLE_AGENTIMMO'],
             pageTitle: 'Biens'
         },
         canActivate: [UserRouteAccessService]
@@ -31,7 +31,7 @@ export const bienPopupRoute: Routes = [
         path: 'bien-new',
         component: BienPopupComponent,
         data: {
-            authorities: ['ROLE_USER','ROLE_AGENTIMMO'],
+            authorities: ['ROLE_USER', 'ROLE_AGENTIMMO'],
             pageTitle: 'Biens'
         },
         canActivate: [UserRouteAccessService],
@@ -41,7 +41,7 @@ export const bienPopupRoute: Routes = [
         path: 'bien/:id/edit',
         component: BienPopupComponent,
         data: {
-            authorities: ['ROLE_USER','ROLE_AGENTIMMO'],
+            authorities: ['ROLE_USER', 'ROLE_AGENTIMMO'],
             pageTitle: 'Biens'
         },
         canActivate: [UserRouteAccessService],

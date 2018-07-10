@@ -36,7 +36,6 @@ export class VisiteService {
             .map((res: EntityResponseType) => this.convertResponse(res));
     }
 
-
     find(id: number): Observable<EntityResponseType> {
         return this.http.get<Visite>(`${this.resourceUrl}/${id}`, { observe: 'response'})
             .map((res: EntityResponseType) => this.convertResponse(res));

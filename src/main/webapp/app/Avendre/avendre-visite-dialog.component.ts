@@ -144,7 +144,7 @@ export class AvendreVisiteDialogComponent implements OnInit {
 
     ngOnInit() {
         this.routeSub = this.route.params.subscribe((params) => {
-            console.log('ngninit dans avendrevisitedialogcomponsent')
+            console.log('ngninit dans avendrevisitedialogcomponsent');
             if ( params['id'] ) {
                 this.avendreVisitePopupService
                     .open(AvendreVisiteDialogComponent as Component, params['id']);

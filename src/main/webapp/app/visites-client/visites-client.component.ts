@@ -1,26 +1,26 @@
 import { Component, OnInit } from '@angular/core';
-import {Visite, VisiteService} from "../entities/visite";
-import {Client, ClientService} from "../entities/client";
-import {Bien, BienService} from "../entities/bien";
-import {JhiAlertService, JhiEventManager} from "ng-jhipster";
-import {AccountService, Principal} from "../shared";
-import {NgbActiveModal} from "@ng-bootstrap/ng-bootstrap";
-import {HttpErrorResponse, HttpResponse} from "@angular/common/http";
+import {Visite, VisiteService} from '../entities/visite';
+import {Client, ClientService} from '../entities/client';
+import {Bien, BienService} from '../entities/bien';
+import {JhiAlertService, JhiEventManager} from 'ng-jhipster';
+import {AccountService, Principal} from '../shared';
+import {HttpErrorResponse, HttpResponse} from '@angular/common/http';
 
 @Component({
   selector: 'jhi-visites-client',
   templateUrl: './visites-client.component.html',
   styles: []
 })
+
 export class VisitesClientComponent implements OnInit {
     visites: Visite[];
-    login:String;
+    login: String;
     settingsAccount: any;
     visite: Visite;
     isSaving: boolean;
     client: Client;
     biens: Bien[];
-    account: Account
+    account: Account;
     clients: Client[];
     success: boolean;
 
@@ -29,26 +29,22 @@ export class VisitesClientComponent implements OnInit {
         private jhiAlertService: JhiAlertService,
         private accountS: AccountService,
         private principal: Principal,
-
         private bienService: BienService,
         private clientService: ClientService,
         private eventManager: JhiEventManager,
 
-
     ) { }
 
     loadAll() {
-        //récupérer le login
+        // récupérer le login
         /*
                 this.principal.identity().then((account) => {
                     this.account = account;
-                    console.log("account " + aount.name);
+                    console.log('account ' + aount.name);
                   /*  this.clientService.findIdClient(this.account.name).subscribe(
                         (res: HttpResponse<Client>) => {
                             this.client = res.body;
-                            console.log("client " + this.client);
-
-
+                            console.log('client ' + this.client);
                         }
 
                     )*/
@@ -90,32 +86,28 @@ export class VisitesClientComponent implements OnInit {
                     // essayer de récupérer la visite et mettre le client dedans
                     this.visiteService.find(idVisite).subscribe(
                         (res: HttpResponse<Visite>) => {
-                            this.visite=res.body;
-                              console.log('visite'+ this.visite.id);
+                            this.visite = res.body;
+                              console.log('visite' + this.visite.id);
 
                               // recherche le client de la visite pour le mettre à null
-                            for (let i = 0; i <this.visite.clients.length; i++) {
+                            for (let i = 0; i < this.visite.clients.length; i++) {
                                 if (this.client.id === this.visite.clients[i].id) {
                                     // mettre le client à null
-
-                                    console.log(this.visite.clients[i])
-                                    this.visite.clients[i]= null;
-                                    console.log(this.visite.clients[i])
-
+                                    console.log(this.visite.clients[i]);
+                                    this.visite.clients[i] = null;
+                                    console.log(this.visite.clients[i]);
                                     this.visiteService.updateSansConvert(this.visite).subscribe(
                                         (res: HttpResponse<Visite>) => {
                                             this.visite = res.body;
                                             console.log('update visite');
-                                            console.log(this.visite.clients[i])
+                                            console.log(this.visite.clients[i]);
                                             this.success = true;
                                         },
                                         (res: HttpErrorResponse) => this.onError(res.message)
                                     );
                                 }
                             }
-
                         });
-
                 });
         });
     }
@@ -135,4 +127,3 @@ export class VisitesClientComponent implements OnInit {
         };
     }
 }
-

@@ -11,7 +11,7 @@ export const agentImmobilierRoute: Routes = [
         path: 'agent-immobilier',
         component: AgentImmobilierComponent,
         data: {
-            authorities: ['ROLE_USER','ROLE_AGENTIMMO'],
+            authorities: ['ROLE_USER', 'ROLE_AGENTIMMO'],
             pageTitle: 'AgentImmobiliers'
         },
         canActivate: [UserRouteAccessService]
@@ -19,7 +19,7 @@ export const agentImmobilierRoute: Routes = [
         path: 'agent-immobilier/:id',
         component: AgentImmobilierDetailComponent,
         data: {
-            authorities: ['ROLE_USER','ROLE_AGENTIMMO'],
+            authorities: ['ROLE_USER', 'ROLE_AGENTIMMO'],
             pageTitle: 'AgentImmobiliers'
         },
         canActivate: [UserRouteAccessService]
@@ -31,7 +31,7 @@ export const agentImmobilierPopupRoute: Routes = [
         path: 'agent-immobilier-new',
         component: AgentImmobilierPopupComponent,
         data: {
-            authorities: ['ROLE_USER','ROLE_AGENTIMMO'],
+            authorities: ['ROLE_USER', 'ROLE_AGENTIMMO'],
             pageTitle: 'AgentImmobiliers'
         },
         canActivate: [UserRouteAccessService],
@@ -41,7 +41,7 @@ export const agentImmobilierPopupRoute: Routes = [
         path: 'agent-immobilier/:id/edit',
         component: AgentImmobilierPopupComponent,
         data: {
-            authorities: ['ROLE_USER','ROLE_AGENTIMMO'],
+            authorities: ['ROLE_USER', 'ROLE_AGENTIMMO'],
             pageTitle: 'AgentImmobiliers'
         },
         canActivate: [UserRouteAccessService],
@@ -51,7 +51,7 @@ export const agentImmobilierPopupRoute: Routes = [
         path: 'agent-immobilier/:id/delete',
         component: AgentImmobilierDeletePopupComponent,
         data: {
-            authorities: ['ROLE_USER','ROLE_AGENTIMMO'],
+            authorities: ['ROLE_USER', 'ROLE_AGENTIMMO'],
             pageTitle: 'AgentImmobiliers'
         },
         canActivate: [UserRouteAccessService],

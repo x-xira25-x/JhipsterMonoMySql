@@ -11,7 +11,7 @@ export const clientRoute: Routes = [
         path: 'client',
         component: ClientComponent,
         data: {
-            authorities: ['ROLE_USER','ROLE_AGENTIMMO'],
+            authorities: ['ROLE_USER', 'ROLE_AGENTIMMO'],
             pageTitle: 'Clients'
         },
         canActivate: [UserRouteAccessService]
@@ -19,7 +19,7 @@ export const clientRoute: Routes = [
         path: 'client/:id',
         component: ClientDetailComponent,
         data: {
-            authorities: ['ROLE_USER','ROLE_AGENTIMMO'],
+            authorities: ['ROLE_USER', 'ROLE_AGENTIMMO'],
             pageTitle: 'Clients'
         },
         canActivate: [UserRouteAccessService]
@@ -31,7 +31,7 @@ export const clientPopupRoute: Routes = [
         path: 'client-new',
         component: ClientPopupComponent,
         data: {
-            authorities: ['ROLE_USER','ROLE_AGENTIMMO'],
+            authorities: ['ROLE_USER', 'ROLE_AGENTIMMO'],
             pageTitle: 'Clients'
         },
         canActivate: [UserRouteAccessService],
@@ -41,7 +41,7 @@ export const clientPopupRoute: Routes = [
         path: 'client/:id/edit',
         component: ClientPopupComponent,
         data: {
-            authorities: ['ROLE_USER','ROLE_AGENTIMMO'],
+            authorities: ['ROLE_USER', 'ROLE_AGENTIMMO'],
             pageTitle: 'Clients'
         },
         canActivate: [UserRouteAccessService],
@@ -51,7 +51,7 @@ export const clientPopupRoute: Routes = [
         path: 'client/:id/delete',
         component: ClientDeletePopupComponent,
         data: {
-            authorities: ['ROLE_USER','ROLE_AGENTIMMO'],
+            authorities: ['ROLE_USER', 'ROLE_AGENTIMMO'],
             pageTitle: 'Clients'
         },
         canActivate: [UserRouteAccessService],

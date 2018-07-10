@@ -11,7 +11,7 @@ export const visiteRoute: Routes = [
         path: 'visite',
         component: VisiteComponent,
         data: {
-            authorities: ['ROLE_USER','ROLE_AGENTIMMO'],
+            authorities: ['ROLE_USER', 'ROLE_AGENTIMMO'],
             pageTitle: 'Visites'
         },
         canActivate: [UserRouteAccessService]
@@ -19,7 +19,7 @@ export const visiteRoute: Routes = [
         path: 'visite/:id',
         component: VisiteDetailComponent,
         data: {
-            authorities: ['ROLE_USER','ROLE_AGENTIMMO'],
+            authorities: ['ROLE_USER', 'ROLE_AGENTIMMO'],
             pageTitle: 'Visites'
         },
         canActivate: [UserRouteAccessService]
@@ -31,7 +31,7 @@ export const visitePopupRoute: Routes = [
         path: 'visite-new',
         component: VisitePopupComponent,
         data: {
-            authorities: ['ROLE_USER','ROLE_AGENTIMMO'],
+            authorities: ['ROLE_USER', 'ROLE_AGENTIMMO'],
             pageTitle: 'Visites'
         },
         canActivate: [UserRouteAccessService],
@@ -41,7 +41,7 @@ export const visitePopupRoute: Routes = [
         path: 'visite/:id/edit',
         component: VisitePopupComponent,
         data: {
-            authorities: ['ROLE_USER','ROLE_AGENTIMMO'],
+            authorities: ['ROLE_USER', 'ROLE_AGENTIMMO'],
             pageTitle: 'Visites'
         },
         canActivate: [UserRouteAccessService],
@@ -51,7 +51,7 @@ export const visitePopupRoute: Routes = [
         path: 'visite/:id/delete',
         component: VisiteDeletePopupComponent,
         data: {
-            authorities: ['ROLE_USER','ROLE_AGENTIMMO'],
+            authorities: ['ROLE_USER', 'ROLE_AGENTIMMO'],
             pageTitle: 'Visites'
         },
         canActivate: [UserRouteAccessService],

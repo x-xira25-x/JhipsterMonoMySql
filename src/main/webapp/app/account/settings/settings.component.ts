@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import {Principal, AccountService, User} from '../../shared';
 import {Client, ClientService} from '../../entities/client';
 import {UserService} from '../../shared/user/user.service';
-import {AgentImmobilier, AgentImmobilierService} from "../../entities/agent-immobilier";
+import {AgentImmobilier, AgentImmobilierService} from '../../entities/agent-immobilier';
 
 @Component({
     selector: 'jhi-settings',
@@ -37,23 +37,17 @@ export class SettingsComponent implements OnInit {
                 this.settingsAccount = this.copyAccount(account);
 
             });
-            this.userService.find(this.copyAccount(account).login).subscribe(resp =>{
-
-                console.log(resp.body)
-                  this.agentImmoService.findIdAgentImmobilier(resp.body.id).subscribe(resp =>{
+            this.userService.find(this.copyAccount(account).login).subscribe(resp => {
+                console.log(resp.body);
+                  this.agentImmoService.findIdAgentImmobilier(resp.body.id).subscribe(resp => {
                 this.agentImmobilier = resp.body;
                 account.valueOf().firstName = resp.body.nom;
                 account.valueOf().lastName = resp.body.prenom;
-                account.valueOf().email = resp.body.email
+                account.valueOf().email = resp.body.email;
                 this.settingsAccount = this.copyAccount(account);
-            })
-            })
-
-
-
-
+            });
+            });
         });
-
     }
 
     save() {
@@ -68,14 +62,14 @@ export class SettingsComponent implements OnInit {
                     this.client.prenom = account.valueOf().lastName;
                     this.client.email = account.valueOf().email;
                     console.log(this.client.prenom);
-                    console.log("lastaname " + account.valueOf().lastName);
-                    this.clientService.update(this.client).subscribe(resp => {});
-                }else{
+                    console.log('lastaname ' + account.valueOf().lastName);
+                    this.clientService.update(this.client).subscribe(resp => {} );
+                } else {
                     this.agentImmobilier.nom = account.valueOf().firstName;
                     this.agentImmobilier.prenom = account.valueOf().lastName;
                     this.agentImmobilier.email = account.valueOf().email;
-                    console.log("agent" + this.agentImmobilier)
-                    this.agentImmoService.update(this.agentImmobilier).subscribe(res =>{});
+                    console.log('agent' + this.agentImmobilier);
+                    this.agentImmoService.update(this.agentImmobilier).subscribe(res => {} );
                 }
             });
         }, () => {

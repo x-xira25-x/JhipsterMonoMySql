@@ -84,7 +84,7 @@ export class ClientDialogComponent implements OnInit {
 
                         this.userService.findUserById(missingUser[y]).subscribe((res: HttpResponse<User>) => {
                                 console.log(num);
-                                this.usersDispo[num]= res.body;
+                                this.usersDispo[num] = res.body;
                                 console.log(this.usersDispo[y].authorities);
                                 num++;
                             }

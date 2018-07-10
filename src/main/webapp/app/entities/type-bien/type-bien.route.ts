@@ -11,7 +11,7 @@ export const typeBienRoute: Routes = [
         path: 'type-bien',
         component: TypeBienComponent,
         data: {
-            authorities: ['ROLE_USER','ROLE_AGENTIMMO'],
+            authorities: ['ROLE_USER', 'ROLE_AGENTIMMO'],
             pageTitle: 'TypeBiens'
         },
         canActivate: [UserRouteAccessService]
@@ -19,7 +19,7 @@ export const typeBienRoute: Routes = [
         path: 'type-bien/:id',
         component: TypeBienDetailComponent,
         data: {
-            authorities: ['ROLE_USER','ROLE_AGENTIMMO'],
+            authorities: ['ROLE_USER', 'ROLE_AGENTIMMO'],
             pageTitle: 'TypeBiens'
         },
         canActivate: [UserRouteAccessService]
@@ -31,7 +31,7 @@ export const typeBienPopupRoute: Routes = [
         path: 'type-bien-new',
         component: TypeBienPopupComponent,
         data: {
-            authorities: ['ROLE_USER','ROLE_AGENTIMMO'],
+            authorities: ['ROLE_USER', 'ROLE_AGENTIMMO'],
             pageTitle: 'TypeBiens'
         },
         canActivate: [UserRouteAccessService],
@@ -41,7 +41,7 @@ export const typeBienPopupRoute: Routes = [
         path: 'type-bien/:id/edit',
         component: TypeBienPopupComponent,
         data: {
-            authorities: ['ROLE_USER','ROLE_AGENTIMMO'],
+            authorities: ['ROLE_USER', 'ROLE_AGENTIMMO'],
             pageTitle: 'TypeBiens'
         },
         canActivate: [UserRouteAccessService],
@@ -51,7 +51,7 @@ export const typeBienPopupRoute: Routes = [
         path: 'type-bien/:id/delete',
         component: TypeBienDeletePopupComponent,
         data: {
-            authorities: ['ROLE_USER','ROLE_AGENTIMMO'],
+            authorities: ['ROLE_USER', 'ROLE_AGENTIMMO'],
             pageTitle: 'TypeBiens'
         },
         canActivate: [UserRouteAccessService],
